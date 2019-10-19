@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Make site responsive on mobile/tablet -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>VIT</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+		<style media="screen">
+  /* #submit:hover, a:hover{
+    background-color:black;
+    color:white;
+	text-decoration:None;
+	font:Monaco, serif;
+  } */
+
+  #main{
+  background-color:#F1E6E5;
+  border-radius:25px;
+  padding:50px;
+  margin-right: 3.75%;
+  margin-left: 45%;
+	
+  }
+  #header{
+  background-color:#F1E6E5;
+  border-radius:25px;
+  padding:10px 10px 10px 30px;
+  }
+  ul{
+  display:inline-block;
+  }
+  ul li{
+  display:inline-block;
+  }
+  a{
+  color: black;
+  }
+  .scrollable{
+   overflow: auto;
+   height: 80px; 
+ 
+ }
+ .scrollable select{
+   border: none;
+ }
+			.im {
+		width : 100%;
+		z-index : 0;
+		
+	}
+	
+</style>
+
+		 
+	</head>
+	<body>
+
+		
+
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		  <a class="navbar-brand" href="/">VITBLOG</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarCollapse">
+
+			  <ul class="navbar-nav mr-auto">
+					<li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds" class="nav-link">Home</a></li>
+				  </ul> 
+
+
+			  <ul class="navbar-nav navbar-right">
+					<% if(!currentUser){ %>
+
+							<li  class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+								<a href="/login" class="nav-link">Login</a></li>
+
+						  <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+							  <a  href="/register" class="nav-link">Sign Up</a></li>
+					  <% } else { %>
+						  <li class="nav-item" >
+							  <a href="#" class="nav-link">Signed In As <%= currentUser.username %></a></li>
+						  <li class="nav-item">
+							  <a  href="/logout" class="nav-link">Logout</a></li>
+					  <% } %>
+					</ul>
+
+
+
+
+
+			<!-- <form class="form-inline mt-2 mt-md-0">
+			  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+			  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form> -->
+		  </div>
+		</nav>
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="container">
+			<% if(error && error.length > 0){ %>
+			<div   class="alert alert-danger" role="alert">
+	 <%= error %>
+	</div>
+				<% } %>
+				<% if(success && success.length > 0){ %>
+			<div class="alert alert-success" role="alert">
+	 <%= success %>
+	</div>	
+				<% } %>
+		</div>
+				<div class= "container">
+		
+
+			
+		
+	

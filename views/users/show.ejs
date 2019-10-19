@@ -1,0 +1,41 @@
+
+<% include ../partials/header %>
+
+<div class="rew">
+	<div class="col-md-4">
+		
+		<h1>
+			<%= user.firstName + " " + user.lastName %>
+		</h1>
+		<diV class="thumbnail">
+			<img src="<%= user.avatar %>" alt="user profile image">
+			<div class="caption">
+				<a href="mailto:<%= user.username %>"><%= user.username %></a>
+			</div>
+			my name is sanjay babu and i work on my page
+		</diV>
+		
+	</div>
+	<div class="col-md-8">
+		<h3>
+			<%= user.username %>'s Campgrounds:
+		</h3>
+		<ul>
+			
+		
+	<% campgrounds.forEach(function(campground) { %>
+												
+		<li><%= campground.adTitle %>
+			<img src="<%= campground.img1 %>">
+			</li>
+		
+	<%	}); %>
+		</ul>
+	
+	
+	</div>
+		
+</div>
+
+
+<% include ../partials/footer %>

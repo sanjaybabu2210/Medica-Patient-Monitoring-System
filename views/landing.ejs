@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <div id="landing-header">
+ 		<h1>Welcome to VITBLOGS!</h1>
+		<a href="/campgrounds"  class="btn btn-large btn-success">View All ADS</a>
+		
+    </div>
+		
+				<div id="land" >
+				<img src="https://images.pexels.com/photos/2946974/pexels-photo-2946974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+				</div>	
+			
+		
+
+		
+		
+
+
+<% include ./partials/footer %>

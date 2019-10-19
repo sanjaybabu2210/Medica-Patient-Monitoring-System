@@ -1,0 +1,151 @@
+
+
+
+
+
+<% include ../partials/header %>
+
+
+
+
+<!-- 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"> -->
+		<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"> -->
+<!-- <style >
+	.man{
+		text-decoration: line-through;
+	}
+	 -->
+<!-- </style>
+	<link rel = "stylesheet" href="/stylesheets/main.css">
+
+
+</head>
+<body>
+ -->
+
+<div style="margin-top: 40px" class="container jumbotron">
+					<form class="container" action="/campgrounds/<%= campground._id %>?_method = PUT" method="POST">
+						<div class="form-group display-5">
+							DETAILS OF YOUR AD
+								 
+						</div>
+						<div class="form-group">
+							 <label required for="adTitle">Ad Title*</label>
+							    <input type="text" value="<%= campground.adTitle %>" name="campground[adTitle]" class="form-control" id="adTitle" >
+						</div>
+						<hr>
+										
+						<div class="form-group">
+						    <label for="exampleFormControlTextarea1">Description *</label>
+						    <textarea class="form-control" value="<%= campground.description %>" name="campground[description]" id="exampleFormControlTextarea1" rows="5" required></textarea>
+						 </div>
+						 <hr>
+						 <div style="margin-left: 20px; margin-bottom:20px; " class="form-group">
+						 	
+<!-- 
+									 	<div class="form-check col ">
+										          <input class="form-check-input " type="radio" name="type" id="gridRadios1" value="option1" checked>
+										          <label class="form-check-label " for="gridRadios1">
+										            Day Scholar
+										          </label>
+							        </div>
+							        <div class="form-check col">
+									          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+									          <label class="form-check-label" for="gridRadios2">
+									            Hosteler
+												          </label> -->
+						               <div style="margin:auto 350px;" class="ui large buttons">
+										  <button name="type"  class="ui button">Hosteller</button>
+										  <div class="or"></div>
+										  <button name="type"  class="ui button ">Day Scholar</button>
+										</div>
+									 
+						
+				        </div>
+						<div class="form-group">
+							 <label for="address">ENTER YOUR PICK ADRRESS *</label>
+							    <div class="row">
+							    	<div class="col">
+							    		<input required type="text" class="form-control" value="<%= campground.block %> "name="campground[block]" placeholder="Block-HOSTEL/ACADEMIC">
+							    	</div>
+							    	<div class="col">
+							    		<input type="text" class="form-control" name="campground[room]" value="<%= campground.room %>" placeholder="Room NO:(optional)">
+							    	</div>
+							    	
+							    </div>
+						</div>
+
+
+						<div class=" form-group ">
+							<label for="PRICE"  class="display-5">SET A PRICE</label>
+							<hr>
+									<div class="row">
+										<div  class="col ui left action input  ">
+											  <a class="ui teal labeled icon button">
+											    <i class="cart icon"></i>
+											    For Sale(INR)
+											  </a>
+											  <input name="campground[price1]" value="<%= campground.price1 %>" type="number" min="1" step="1">
+										</div>
+
+										<div class="col ui left action input  ">
+											  <a class="ui teal labeled icon button">
+											    <i class="cart icon"></i>
+											    For Rent(INR)
+											  </a>
+											  <input name="campground[price2]" value="<%= campground.price2 %>" type="number" min="1" step="1">
+										</div>
+									</div>	
+						</div>
+						<hr>
+						<div class="form-group">
+								<label required pattern="{10}" for="adTitle">Phone No*</label>
+							    <input name="phone" value="<%= campground.phone %>" type="number" class="form-control" id="adTitle" placeholder="Enter Mobile Number">
+						</div>
+						<label required  for="photos">Photos </label>
+								<div style="margin: 0px 60px 0px 100px " class="form-group">
+										
+										<div class="row">
+											    <input value="<%= campground.img1 %>" name = "campground[img1]" type="text" style="padding:60px 30px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control" id="adTitle" placeholder="Enter Mobile Number">
+											    <input value="<%= campground.img2 %>" name="campground[img2]" type="text" style="padding:60px 30px; margin:2px solid red; margin:20px;" class="  mani btn btn-secondary col-lg-3 form-control" id="adTitle" placeholder="Enter Mobile Number">
+											    <input name="campground[img3]" value="<%= campground.img3 %>" style="padding:60px 30px; margin:2px solid red; margin:20px;" type="text" class=" mani btn btn-secondary col-lg-3 form-control" id="adTitle" placeholder="Enter Mobile Number">
+											    <input name="campground[img4]" value="<%= campground.img4 %>" style="padding:60px 30px; margin:2px solid red; margin:20px;" type="text" class=" mani btn btn-secondary col-lg-3 form-control" id="adTitle" placeholder="Enter Mobile Number">
+											    	<input name="campground[img5]" value="<%= campground.img5 %>" style="padding:60px 30px; margin:2px solid red; margin:20px;" type="text" class=" mani btn btn-secondary col-lg-3 form-control" id="adTitle" placeholder="Enter Mobile Number">
+											    		<input name="campground[img6]" value="<%= campground.img6 %>"style="padding:60px 30px; margin:2px solid red; margin:20px;" type="text" class=" mani btn btn-secondary col-lg-3 form-control" id="adTitle" placeholder="Enter Mobile Number">
+										</div>
+								</div>
+										<hr>
+									<div class="form-group">
+											<label required name="show" for="adTitle">Show My Phone No in Ad<input type="Radio" class="form-control" id="adTitle" ></label>
+										    
+									</div>
+									<div class="form-group">
+										<button style="padding: auto 600px;" class="btn  btn-lg btn-success" class="form-control"  >POST</button>
+									</div>
+					
+					
+					</form>
+
+</div>
+
+
+
+<!-- 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ -->
+
+
+
+
+
+<!-- </body>
+</html> -->
+<% include ../partials/footer %>
