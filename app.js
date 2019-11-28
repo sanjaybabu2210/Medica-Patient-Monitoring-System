@@ -92,7 +92,6 @@ app.use("/adPost/:id/comments", commentRoutes);
 
 
 
-const PORT = process.env.PORT || 8990;
-app.listen(PORT, () => {
-    console.log('Our app is running on port ${ PORT }');
-});
+app.listen(process.env.PORT, process.env.IP,function(){
+	console.log("The YelpCamp Has started");
+})
