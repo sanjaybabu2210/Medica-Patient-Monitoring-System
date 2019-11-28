@@ -4,15 +4,26 @@ var express = require("express"),
     mongoose = require("mongoose"),
 	Comment = require("./models/comment"),
 	Campground = require("./models/campground"),
+	Share = require("./models/share"),
 	seedDB = require("./seed"),
 	passport = require("passport"),
 	flash = require("connect-flash"),
 	LocalStrategy = require("passport-local"),
 	methodOverride = require("method-override"),
 	User = require("./models/user")
-//requring routes
+//requring routescd 
+
+mongoose.connect('mongodb+srv://sanjaybabu:.SANJAY2210.@cluster1-fu4qm.mongodb.net/test?retryWrites=true&w=majority', {
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log('Connected to DB!');
+}).catch(err => {
+	console.log('ERROR:', err.message);
+});
 var commentRoutes = require("./routes/comments"),
-	campgroundRoutes = require("./routes/campground"),
+	ShareRoutes = require("./routes/share")
+	adpostRoutes = require("./routes/adPost"),
 	authRoutes = require("./routes/index")
 	require('dotenv').config()
 
@@ -54,10 +65,11 @@ app.use(flash());
 
 app.locals.moment = require('moment');
 //PASSPORT CONFIGURATION
+
 app.use(require("express-session")({
-	secret: "Once again Rusty wins cutest dog!",
-	resave: false,
-	saveUninitialized: false
+    secret: "Once again Rusty wins cutest dog!",
+    resave: false,
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -73,8 +85,9 @@ app.use(function(req,res, next){
 		});
 
 app.use(authRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/", ShareRoutes)
+app.use("/adPost", adpostRoutes);
+app.use("/adPost/:id/comments", commentRoutes);
 
 
 app.listen(8990, function(){
