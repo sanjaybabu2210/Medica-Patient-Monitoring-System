@@ -90,6 +90,9 @@ app.use("/adPost", adpostRoutes);
 app.use("/adPost/:id/comments", commentRoutes);
 
 
-app.listen(8990, function(){
-	console.log("app starter successfully")
-})
+
+
+const PORT = process.env.PORT || 8990;
+app.listen(PORT, () => {
+    console.log('Our app is running on port ${ PORT }');
+});
