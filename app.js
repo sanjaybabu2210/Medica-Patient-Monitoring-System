@@ -92,6 +92,6 @@ app.use("/adPost/:id/comments", commentRoutes);
 
 
 
-app.listen(process.env.PORT, process.env.IP,function(){
+app.listen(8990,function(){
 	console.log("The YelpCamp Has started");
 })
