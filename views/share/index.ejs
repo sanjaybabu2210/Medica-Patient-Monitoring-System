@@ -1,0 +1,98 @@
+
+<% include ../partials/header %>
+
+
+
+
+
+<form action="/share" method="GET" class="form-inline">
+							<div class="form-group">
+							<input type="text" name="search2" placeholder="Ad search..." class="form-control">
+								<input type="submit" value="search2" class="btn btn-secondary">
+							</div>
+					</form>
+
+			
+	
+		<hr>
+	  
+	-->
+	
+<div  class="py-5 text-center">
+    <h2 id="newlyccc">ShareMyCab - Request</h2>
+    <p class="lead">Request someone to join with them in their journey</p>
+</div>
+<!-- <small class="text-muted">/ mo</small> -->
+	
+<div style="margin-left:40px;" class="row ">
+<% share.forEach(function(share){%>
+	
+
+	  
+	  <div  class="card col-lg-4 "style="height:300px;max-width:450px;margin:15px;" >
+		  
+	  
+
+		
+      <div class="card-header">
+        <h4 class="text-center font-weight-normal"><%=share.name%></h4>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title pricing-card-title"><i class="calendar alternate icon"></i><%= share.date %>    <span class="float-right"><i class=" clock icon"></i><%= share.time %></span></h5>
+		  <!-- <h5 class="card-title pricing-card-title float-left">  -->
+      
+				  <div style="margin-top:50px;">
+					  <label for= "from"><h5>From Location:</h5></label>
+					  <div  id="from">
+						  <%= share.fromPlace %>
+				  </div>
+				</div>
+					   <div style=" margin-top:-45px; padding-left:250px;float:left;">
+						  <label  for= "to"><h5>To Location:</h5></label>
+						  <div  id="to">
+							  <%= share.toPlace %>
+					  </div>
+					</div>
+		<div class="well">
+  <div id="datetimepicker1" class="input-append date">
+    <input data-format="dd/MM/yyyy hh:mm:ss" type="text">
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+</div>
+         
+     
+        <!-- <button type="submit" class="btn btn-lg btn-block btn-primary">Request</button> -->
+		</div>
+      </div>
+	
+						<% }); %>
+	
+	
+</div>
+  
+	 
+    
+
+<hr >
+<!-- <div class="form-group pmd-textfield pmd-textfield-floating-label">
+	<label class="control-label" for="datepicker">Select Date</label>
+	<input type="text" class="form-control" id="datepicker">
+</div>
+<p>Date: <input type="text" id="datepicker"></p>
+ <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      showWeek: true,
+      firstDay: 1
+    });
+  } );
+  </script> -->
+ 
+
+	
+	
+<% include ../partials/footer %>
+

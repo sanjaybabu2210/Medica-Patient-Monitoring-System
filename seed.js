@@ -1,7 +1,9 @@
 var mongoose = require("mongoose");
 var Campground = require("./models/campground");
 var Comment   = require("./models/comment");
-var user = require("./models/user")
+var user = require("./models/user");
+var category = require("./models/category");
+var share = require("./models/share")
  
 var data = [
     {
@@ -60,6 +62,12 @@ function seedDB(){
         // });
     }); 
 	user.remove({},function(err){
+		
+	});
+	category.remove({},function(err){
+		
+	});
+	share.remove({},function(err){
 		
 	});
     //add a few comments

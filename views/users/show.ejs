@@ -1,41 +1,40 @@
 
 <% include ../partials/header %>
 
-<div class="rew">
-	<div class="col-md-4">
-		
-		<h1>
+<div class="text-center">
+	<h1>
 			<%= user.firstName + " " + user.lastName %>
 		</h1>
-		<diV class="thumbnail">
-			<img src="<%= user.avatar %>" alt="user profile image">
-			<div class="caption">
-				<a href="mailto:<%= user.username %>"><%= user.username %></a>
-			</div>
-			my name is sanjay babu and i work on my page
-		</diV>
-		
-	</div>
-	<div class="col-md-8">
-		<h3>
+
+	<a href="mailto:<%= user.username %>">Email To: <i class="fas fa-envelope"></i>  <%= user.username %></a>
+	<h3>
 			<%= user.username %>'s Campgrounds:
 		</h3>
-		<ul>
-			
-		
-	<% campgrounds.forEach(function(campground) { %>
-												
-		<li><%= campground.adTitle %>
-			<img src="<%= campground.img1 %>">
-			</li>
-		
-	<%	}); %>
-		</ul>
 	
-	
-	</div>
-		
 </div>
+		
+	
+		
+	
+		<div style="margin-left:180px;" class="row">
+			<% campgrounds.forEach(function(campground) { %>
+			<div style="float:left;margin-left:40px; margin:20px;padding:15px 0px;" class=" text-center  card col-lg-3 float-right">
+				<h4 style="background:#d3d3d3" class="well well-sm "><strong><%= campground.adTitle %></strong></h4>
+			<img src="<%= campground.img1 %>">
+					<h5 style="padding-top:5px;" >
+						RS.<%= campground.price1 %>
+
+				</h5>
+				<div>
+						<a href="/adPost/<%= campground._id %>" class="btn btn-block btn-primary">VIEW AD</a>
+								 </div>
+			</div>
+			<%	}); %>
+		</div>
+	
+		
+	
+		
 
 
 <% include ../partials/footer %>

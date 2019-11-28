@@ -32,7 +32,7 @@ router.post("/register", function(req,res){
 			}
 		passport.authenticate("local")(req, res, function(){
 			req.flash("success","Welcome to vitblog" + user.username);
-			res.redirect("/campgrounds");
+			res.redirect("/adPost");
 		});
 	});
 });
@@ -42,7 +42,7 @@ router.get("/login",function(req,res){
 })
 //handling loginlogic
 router.post("/login", passport.authenticate("local", 
-    {successRedirect:"/campgrounds",
+    {successRedirect:"/adPost",
 	failureRedirect: "/login"
 	}),function(req,res){
 	
@@ -51,7 +51,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout",function(req,res){
 	req.logout();
 	req.flash("success", "Logged you out");
-	res.redirect("/campgrounds");
+	res.redirect("/adPost");
 	
 });
 //forget password
@@ -172,24 +172,26 @@ router.post('/reset/:token', function(req, res) {
       });
     }
   ], function(err) {
-    res.redirect('/campgrounds');
+    res.redirect('/adPost');
   });
 });
 //User profile
 router.get("/users/:id", function(req,res){
-	User.findById(req.params.id, function(err, foundUser){
+	User.findById(req.params.id, function(err, foundUser1){
 		if(err){
 			req.flash("error", "Something went wrong");
 			res.redirect("/");
-		} 
-			Campground.find().where('author.id').equals(foundUser._id).exec(function(err, campgrounds){
+		} else{
+			Campground.find().where('author.id').equals(foundUser1._id).exec(function(err, allAds){
 				if(err){
 					req.flash("error", "Something went wrong");
 			res.redirect("/");
 				}
-			
-			res.render("users/show", {user: foundUser, campgrounds: campgrounds});
+			console.log(allAds);
+				console.log(foundUser1);
+			res.render("users/show", {user: foundUser1, campgrounds: allAds});
 			})
+		}
 	});
 });
 

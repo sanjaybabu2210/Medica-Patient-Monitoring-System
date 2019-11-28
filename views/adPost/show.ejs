@@ -1,0 +1,238 @@
+
+<% include ../partials/header %>
+
+
+
+
+	<div class="row ">
+		
+		<div  style="margin-left:100px; border: 2px solid #d3d3d3; margin-top:50px; padding-top:0px;" class="col-md-7">
+			<div class="card container">
+			<img   src="<%= adpost.img1 %>" >
+				
+				
+				   <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<% if(adpost.img2 > 0){ %>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+		<% } %>
+		<% if(adpost.img3 > 0){ %>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+		<% } %>
+		<% if(adpost.img4 > 0){ %>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+		<% } %>
+		
+		
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active" > -->
+        <!-- <img class="bd-placeholder-img" width="100%" height="100%" src="<%= adpost.img1 %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/>
+        
+       </div>
+      <div class="carousel-item">
+		<% if(adpost.img2 > 0){ %>
+        <img class="bd-placeholder-img" width="100%" height="100%" src="<%= campground.img2 %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/>
+      </div>
+		<% } %>
+      <div class="carousel-item">
+		  <% if(adpost.img3 >0){ %>
+			  
+        <img class="bd-placeholder-img" width="100&" height="100%" src="<%= adpost.img3 %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/>
+        
+      </div>
+		<% } %>
+		<div class="carousel-item">
+		  <% if(adpost.img4 >0){ %>
+			  
+        <img class="bd-placeholder-img" width="100&" height="100%" src="<%= adpost.img3 %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/>
+        
+      </div>
+		<% } %>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+				</div>  -->
+				
+				
+				
+				
+			
+				
+					
+										<h3 style="margin-top:20px;">
+											<a> <%= adpost.adTitle %></a>
+					</h3>
+				<h3 style="margin-left:700px;margin-top:-40px;" class=" card-title  float-right">
+						RS.<%= adpost.price1 %>
+					</h3>
+					
+						<!-- <p > <%= adpost.description %> </p> -->
+					<p style="margin-top:20px"><em>Created at:  <%= moment(adpost.createdAt).fromNow() %></em></p>
+				<div>
+					<div style="margin-top:-40px; margin-right:60px" class="btn-group float-right">
+						<form action="/adPost/<%= adpost._id %>/like" method="POST">
+                            
+                        
+                                <% if (currentUser && adpost.likes.some(function (like) {
+                                    return like.equals(currentUser._id)
+                                })) { %>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-thumbs-up"></i> Liked (<%= adpost.likes.length %>)
+                                </button>
+                                <% } else { %>
+                                <button class="btn btn-sm btn-secondary">
+                                    <i class="fas fa-thumbs-up"></i> Like (<%= adpost.likes.length %>)
+                                </button>
+                                <% } %>
+                            
+				
+					</form>
+						 </div>
+				
+						<% if(currentUser && adpost.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+					
+									<!-- <div class="float-right">
+					<a class="btn btn-success" href = "/campgrounds/<%= adpost._id %>/comments/new">Add New Comment</a>
+				                   </div> -->
+
+									<a style="margin-bottom:20px" class="btn btn-warning" href="/adPost/<%= adpost._id %>/edit">Edit</a>
+									<form id="delete-form" action="/adPost/<%= adpost._id %>?_method=DELETE" method="POST">
+									<button style="margin-bottom:20px" class="btn btn-danger">DELETE</button>	
+										
+										
+									</form>
+				
+						<% } %>
+				</div>
+				</div>   
+</div>
+
+<div style="flota-left;margin-top:50px;" class="col-md-3">
+			
+			<div style="border:2px solid #d3d3d3;width:500px;" class="   list group">
+				<li class="list-group-item border-12">
+					
+					<P >
+						<h4>
+								DESCRIPTION:
+						</h4>
+					
+					</P><%= adpost.description %><button style="float:right; margin-top:-40px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+                                data-target="#adpostLikes">
+                            <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= adpost.likes.length %></span>
+                        </button></li>
+				
+				<li class=" p-10 list-group-item">
+					<p>
+						Address:
+					</p><%= adpost.block %>-<%= adpost.room %></li>
+				
+				<div class="pull-right">
+                        
+                    </div>
+                    <div style="padding-bottom: 10px;">
+                        
+						
+                    </div>
+				
+			</div>
+								<div   style="float-left; margin-top:20px;padding-right:20px;padding-left:20px; width:500px; border:2px solid #d3d3d3;">
+															   <h4 style="margin-top:20px" >
+																   SELLER DESCRIPTION:
+																  
+															   </h4>
+																<h6 style="margin:20px 0px;">
+																	 <i style="margin:0px 20px" class="user icon"></i><a href="/users/<%= adpost.author.id %>"><%= adpost.author.username %></a>
+									</h6>
+									<li class=" p-10 list-group-item">
+					<p>
+						Mobile No:
+					</p><%= adpost.ph %></li>
+									<button style="margin:20px 180px;padding:5px 20px" class="btn btn-success btn-lg">
+										chat
+									</button>
+								</div>
+		</div>
+<div id="adpostLikes" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">AD likes: <%= adpost.likes.length %></h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Liked by:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% adpost.likes.forEach(function(like) { %>
+                        <tr>
+                            <td><span class="badge"><i class="fas fa-user"></i></span> <%= like.username %></td>
+                        </tr>
+                    <% }); %>
+                    <% if (adpost.likes.length === 0) { %>
+                        <tr>
+                            <td><em>No likes yet.</em></td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+			<div class="ui left sidebar"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+
+	</div>
+		     
+    </div>
+	   
+
+<div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+
+    <!-- Form code begins -->
+    <form method="post">
+      <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="date">Date</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+      </div>
+      <div class="form-group"> <!-- Submit button -->
+        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+      </div>
+     </form>
+     <!-- Form code ends --> 
+
+    </div>
+  </div>    
+ </div>
+</div>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
+<% include ../partials/footer %>

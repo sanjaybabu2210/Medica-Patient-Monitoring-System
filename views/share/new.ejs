@@ -1,0 +1,284 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>FormDen Example</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	//////
+	 <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 4 TimePicker</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	//////
+	<script>
+		$('#input_starttime').pickatime({
+// 12 or 24 hour
+twelvehour: true,
+});
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]');
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+	</script>
+	<style type="text/css">
+		.bg-dark {
+			background-color: #041245;
+		}
+		.dropdown-menu {
+			background-color: #041245; 
+		}
+		.dropdown-item {
+			background-color: #041245;
+			color: white;
+		}
+		.navbar-dark {
+			background: #041245; 
+		}
+		#highlight {
+		color: #00F;
+		}
+		.ui-datepicker .ui-widget-content {
+		background: #4A85D3;
+		}
+	</style>
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <a class="navbar-brand" href="#">Vit</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ShareMyCab
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/share/new">Share yours</a>
+          <a class= "dropdown-item " href="/share">Request someone</a>
+        </div>
+      </li>
+	 
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          V-EX
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/adPost">Buy</a>
+          <a class="dropdown-item" href="/adPost/category">Sell</a>
+          <a class="dropdown-item" href="/adPost/category2">Request a Product!</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a id="highlight" class="nav-link" href="/resources">Resources</a>
+      </li>
+    </ul>
+    <form class="form-inline" action="/adPost" method="GET">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search..." name="search" aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit" value="search"><i class="fa fa-search"></i></button>
+    </form>
+ 
+   				 <ul class="navbar-nav ml-auto">
+					<% if(!currentUser){ %>
+
+							<li  class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+								<a href="/login" class="nav-link"><i class="fas fa-user-plus"></i>Login</a></li>
+
+						  <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+							  <a  href="/register" class="nav-link"><i class="fas fa-user"></i>Sign Up</a></li>
+					  <% } else { %>
+						  <li class="nav-item" >
+							  <a href="/users/<%= currentUser._id %>" class="nav-link"><i class="user secret icon"></i><%= currentUser.username %></a></li>
+						  <li class="nav-item">
+							  <a  href="/logout" class="nav-link">Logout</a></li>
+					  <% } %>
+	  </ul>
+		</div>
+	</nav>
+
+<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+
+<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+
+
+
+<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+		 <div style="margin-left:10%;"class="py-5 text-center">
+    <h2>ShareMyCab - Share</h2>
+    <p class="lead">Enter your details of your travel and wait for someone to share cab with you</p>
+</div>
+
+<div class="bootstrap-iso container text-center">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+
+	
+	
+	
+<form action="/share" method="POST">
+
+
+<div class = "container">
+	<h4 class="mb-3">Travel Details</h4>
+        <div class="mb-3 text-left">
+          <label for="username"><b>Username</b></label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+				
+            </div>
+            <input type="text" class="form-control" name="name" id="username" placeholder="Username" required>
+            <div class="invalid-feedback" style="width: 100%;">
+				Your username is required.
+            </div>
+          </div>
+        </div>
+
+<div class="row">
+<div class="col-md-6 text-left">
+    <label for="startingpoint"><b>Starting point</b></label>
+    <input name="fromPlace" type="text" class="form-control" id="startingpoint" placeholder="VIT, Vellore" required>
+    <div class="invalid-feedback">
+        Please enter your starting point.
+    </div>
+</div>
+
+<div class="col-md-6 text-left">
+	<label for="address"><b>Destination</b></label>
+    <input type="text" class="form-control" name="toPlace" id="destination" placeholder="Chennai Airport" required>
+    <div class="invalid-feedback">
+        Please enter your destination.
+    </div>
+</div>
+</div>
+	
+<br>
+
+
+
+
+<br>
+<div class="mb-3 form-group green-border-focus text-left">
+    <label ><b>Description</b></label>
+    <textarea type="textarea" class="form-control" id="description" placeholder="Contact me within this week..." required></textarea>
+    <div class="invalid-feedback">
+        Please enter description.
+    </div>
+</div>
+	
+<div class="col-md-4 text-left">
+    <b>Contact Number</b><small class="text-muted">(Optional)</small>
+    <input style="width:350px;margin-left:-15px" name="phone" type="text" class="form-control" id="phone" placeholder="XXXXXXXXX">
+</div>
+	<div class="md-form">
+ <div class="md-form">
+  <input placeholder="Selected time" type="text" id="input_starttime" class="form-control timepicker">
+  <label for="input_starttime">Twelve hour clock</label>
+
+</div>
+
+<div style="margin-top:-20px;" class="col-md-4 float-right">
+	<span style="margin-right:40px;"><b>Date</b></span>
+   
+      <div style="margin-top:20px" class="col-sm-10">
+       <div class="input-group">
+        <div class="input-group-addon">
+         <i  class="fa fa-calendar">
+         </i>
+        </div>
+        <input style="margin-top:0px;margin-right:50px;" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+       </div>
+      </div>
+     </div>
+     <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+       <input name="_honey" style="display:none" type="text"/>
+   
+      </div>
+     </div>
+
+</div>
+<hr>
+<button style="margin-left:40%" class="btn btn-primary btn-block btn-lg" type="submit">Share</button>
+
+	   
+	
+	
+	
+	
+	
+	
+	
+	
+
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+	
+	$('#input_starttime').pickatime({
+    twelvehour: true,
+   });
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
