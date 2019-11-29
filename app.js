@@ -113,12 +113,14 @@ passport.use(new FacebookStrategy({
 						if(err)
 							return err;
 						return done(null,newUser);
-					})
-				}
+				
 			})
-		})
+		}
+	
     });
-  }
+			 
+  });
+}
 ));
 
 
