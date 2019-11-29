@@ -92,4 +92,4 @@ app.use("/adPost/:id/comments", commentRoutes);
 
 
 
-app.listen(process.env.PORT || 9000)
+app.listen(process.env.PORT || 8000)
