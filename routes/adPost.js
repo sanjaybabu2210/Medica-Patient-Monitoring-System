@@ -85,9 +85,8 @@ router.get("/category/:category",function(req,res){
 	       console.log(category1);
 	if(category1=="all")
 		{
-			category1=null;
-		}
-			Campground.find({category:category1}, function(err, allAds){
+			
+				Campground.find({}, function(err, allAds){
            if(err){
                console.log(err);
            } else {
@@ -97,8 +96,23 @@ router.get("/category/:category",function(req,res){
               res.render("adPost/index",{adpost:allAds, category1:category1, noMatch: noMatch});
            }
 			});
+		}else{  Campground.find({category:category1}, function(err, allAds){
+           if(err){
+               console.log(err);
+           } else {
+			   if(allAds.length < 1) {
+                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
+              }
+              res.render("adPost/index",{adpost:allAds, category1:category1, noMatch: noMatch});
+           }
+				
+				
+				
 		   
 		   });
+			 }
+});
+			
 
 
 	
@@ -124,7 +138,7 @@ router.get("/category/:category1/blocks/:block",function(req,res){
 			});
 		   
 		   });
-router.get("/category/blocks/:block",function(req,res){
+router.get("/category//blocks/:block",function(req,res){
 	       var noMatch = null;
 	       var category1 = null;
 	var blocks = req.params.block;
