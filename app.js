@@ -17,7 +17,7 @@ mongoose.connect('mongodb+srv://sanjaybabu:.SANJAY2210.@cluster1-fu4qm.mongodb.n
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(() => {
-	console.log('Connected to DB!');
+	console.log('Connected to DB!!');
 }).catch(err => {
 	console.log('ERROR:', err.message);
 });
