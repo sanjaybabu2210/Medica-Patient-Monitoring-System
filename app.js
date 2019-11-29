@@ -9,8 +9,10 @@ var express = require("express"),
 	passport = require("passport"),
 	flash = require("connect-flash"),
 	LocalStrategy = require("passport-local"),
+	FacebookStrategy = require("passport-facebook").Strategy,
 	methodOverride = require("method-override"),
-	User = require("./models/user")
+	User = require("./models/user"),
+	configAuth = require("./auth")
 //requring routescd 
 
 mongoose.connect('mongodb+srv://sanjaybabu:.SANJAY2210.@cluster1-fu4qm.mongodb.net/test?retryWrites=true&w=majority', {
@@ -88,7 +90,36 @@ app.use(authRoutes);
 app.use("/", ShareRoutes)
 app.use("/adPost", adpostRoutes);
 app.use("/adPost/:id/comments", commentRoutes);
-
+//facebook authentication
+passport.use(new FacebookStrategy({
+    clientID: configAuth.facebookAuth.clientID,
+    clientSecret: configAuth.facebookAuth.clientSecret,
+    callbackURL: configAuth.facebookAuth.callbackURL
+  },
+  function(accessToken, refreshToken, profile, cb) {
+		process.nextTick(function(){
+			User.findOne({'facebook.id': profile.id},function(err, user){
+				if(err)
+					return done(err);
+				if(user)
+					return done(null, user);
+				else {
+					var newUser = new User();
+					newUser.facebook.id = profile.id;
+					newUser.facebook.token = accessToken;
+					newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
+					newUser.facebook.email = profile.emails[0].value;
+					newUser.save(function(err){
+						if(err)
+							return err;
+						return done(null,newUser);
+					})
+				}
+			})
+		})
+    });
+  }
+));
 
 
 

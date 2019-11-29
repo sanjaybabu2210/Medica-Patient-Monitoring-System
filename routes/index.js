@@ -48,12 +48,37 @@ router.post("/login", passport.authenticate("local",
 	
 });
 // logout route
+
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/adPost');
+  });
+
+
+
 router.get("/logout",function(req,res){
 	req.logout();
 	req.flash("success", "Logged you out");
 	res.redirect("/adPost");
 	
 });
+
+
+
+
+
+
+
+
+
+
+
 //forget password
 // forgot password
 router.get('/forgot', function(req, res) {
