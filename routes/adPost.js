@@ -73,7 +73,8 @@ router.get("/", function(req, res){
            if(err){
                console.log(err);
            } else {
-              res.render("adPost/index",{adpost:allAds, category1:category1, noMatch: noMatch});
+              // res.render("adPost/index",{adpost:allAds, category1:category1, noMatch: noMatch});
+			   res.redirect("/adPost/category/all");
            }
         });
     }

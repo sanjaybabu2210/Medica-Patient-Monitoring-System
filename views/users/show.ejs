@@ -16,11 +16,11 @@
 	
 		
 	
-		<div style="margin-left:180px;" class="row">
+		<div style="margin:0% 10%; margin-bottom:20%" class="row ">
 			<% campgrounds.forEach(function(campground) { %>
-			<div style="float:left;margin-left:40px; margin:20px;padding:15px 0px;" class=" text-center  card col-lg-3 float-right">
+			<div style="float:left;margin-left:40px; margin:20px;padding:15px 0px;max-height:250px;" class=" text-center  card col-lg-3 float-right">
 				<h4 style="background:#d3d3d3" class="well well-sm "><strong><%= campground.adTitle %></strong></h4>
-			<img src="<%= campground.img1 %>">
+			<img style="max-height:250px;" src="<%= campground.img1 %>">
 					<h5 style="padding-top:5px;" >
 						RS.<%= campground.price1 %>
 
