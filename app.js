@@ -14,7 +14,78 @@ var express = require("express"),
 	User = require("./models/user"),
 	configAuth = require("./auth")
 //requring routescd 
+////
 
+
+
+
+// const upload = require('./multer')
+// const cloudinary = require('./cloudinary')
+// const fs = require('fs');
+
+// app.use(bodyParser.urlencoded({
+//   extended: false
+// }))
+// app.use(bodyParser.json())
+
+// app.use('/upload-images', upload.array('img'), async (req, res) => {
+
+//   const uploader = async (path) => await cloudinary.uploads(path, 'Images');
+
+//   if (req.method === 'POST') {
+//     const urls = []
+//     const files = req.files;
+//     for (const file of files) {
+//       const { path } = file;
+//       const newPath = await uploader(path)
+//       urls.push(newPath)
+//       fs.unlinkSync(path)
+//     }
+
+//     res.status(200).json({
+//       message: 'images uploaded successfully',
+//       data: urls
+//     })
+
+//   } else {
+//     res.status(405).json({
+//       err: `${req.method} method not allowed`
+//     })
+//   }
+// })
+
+// module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////
 mongoose.connect('mongodb+srv://sanjaybabu:.SANJAY2210.@cluster1-fu4qm.mongodb.net/test?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	useCreateIndex: true

@@ -1,95 +1,63 @@
+
+<% include ../partials/header %>
+
+
 <br><br>
-<div class="container">
+<div class="">
 <div class="py-5 text-center">
     <h2>Resources</h2>
     <p class="lead">Discover a whole new place full of books, question papers and a lot more exclusive for VITians</p>
 </div>
 
-    <div class="container h-100">
+    <div class=" h-100">
       <div class="d-flex justify-content-center h-100">
-        <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search...">
-          <a href="#" class="search_icon" style="text-decoration:none;"><i class="fas fa-search"></i></a>
-        </div>
+        
+			<form method="GET" action="/adPost/resources">
+				<input class="form-control mr-sm-2"  type="text" name="search3" placeholder="Search...">
+           <a ><i style="float:left;margin-left:400px;" class="fas fa-search"></i></a> 
+			</form>
+       
       </div>
     </div>
 	<br>
 
-<div class="container">
-  <div class="card-deck mb-3 text-center">
-    
-	<div class="card mb-4 shadow-sm">
-      <div class="card-body" style="background-color:#ff661a;" style="border-radius:25px;">
-        <h1 class="card-title pricing-card-title">Course Title</h1>
+<div style="margin-bottom:300px; margin-right:40%;" class="row mr-3">
+  <div class=" text-center ">
+                         <div >
+							<% if(noMatch !== null){ %>
+								<h3 style="margin-top:100px">
+									<%= noMatch %>
+							</h3>
+							<h4>
+									POST YOUR REQUEST TO GET NOTIFY BY THE SELLER
+								</h4>
+							<a class="btn btn-info btn-lg" href="/adPost/request">
+								REQUEST
+							</a>
+							<% } %>
+						</div>
+	 <% course.forEach(function(course){%>
+	<div class="card shadow-sm col-lg-3 col-xs-9 col-sm-9 float-right" style="margin-bottom:10% ;margin-right:30px;height:400;width:300;">
+      <div class="card-body" style="background-color:#ff661a;height:400;width:300;" style="border-radius:25px;">
+        <h1 class="card-title pricing-card-title"><%= course.course %></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li><h4 class="my-0 font-weight-normal">Course Code</h4></li>
+          <li><h4 class="my-0 font-weight-normal"><%= course.courseCode %></h4></li>
         </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Question Papers</button><br>
+        <a type="button" href="/adPost/resources/<%= course._id %>" class="btn btn-lg btn-block btn-primary">Question Papers</a><br>
 		<button type="button" class="btn btn-lg btn-block btn-primary">Syllabus + Books</button>
       </div>
     </div>
-	
-	<div class="card mb-4 shadow-sm">
-      <div class="card-body" style="background-color:#53ff1a;" style="border-radius:25px;">
-        <h1 class="card-title pricing-card-title">Course Title</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><h4 class="my-0 font-weight-normal">Course Code</h4></li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Question Papers</button><br>
-		<button type="button" class="btn btn-lg btn-block btn-primary">Syllabus + Books</button>
-      </div>
-    </div>
-	
-	<div class="card mb-4 shadow-sm">
-      <div class="card-body" style="background-color:#ff3333;" style="border-radius:25px;">
-        <h1 class="card-title pricing-card-title">Course Title</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><h4 class="my-0 font-weight-normal">Course Code</h4></li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Question Papers</button><br>
-		<button type="button" class="btn btn-lg btn-block btn-primary">Syllabus + Books</button>
-      </div>
-    </div>
-	
-  </div>
-  
-  <div class="card-deck mb-3 text-center">
-    
-	<div class="card mb-4 shadow-sm">
-      <div class="card-body" style="background-color:#e6e600;" style="border-radius:25px;">
-        <h1 class="card-title pricing-card-title">Course Title</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><h4 class="my-0 font-weight-normal">Course Code</h4></li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Question Papers</button><br>
-		<button type="button" class="btn btn-lg btn-block btn-primary">Syllabus + Books</button>
-      </div>
-    </div>
-	
-	<div class="card mb-4 shadow-sm">
-      <div class="card-body" style="background-color:#adad85;" style="border-radius:25px;">
-        <h1 class="card-title pricing-card-title">Course Title</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><h4 class="my-0 font-weight-normal">Course Code</h4></li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Question Papers</button><br>
-		<button type="button" class="btn btn-lg btn-block btn-primary">Syllabus + Books</button>
-      </div>
-    </div>
-	
-	<div class="card mb-4 shadow-sm">
-      <div class="card-body" style="background-color:#339966;" style="border-radius:25px;">
-        <h1 class="card-title pricing-card-title">Course Title</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><h4 class="my-0 font-weight-normal">Course Code</h4></li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-primary">Question Papers</button><br>
-		<button type="button" class="btn btn-lg btn-block btn-primary">Syllabus + Books</button>
-      </div>
-    </div>
-	
+	<% }); %>
+
+
+
+
+
   </div>
   
 </div>
 
 </div>
+<a class="btn btn-success btn-lg" href="/adPost/resources/new">CreatePage</a>
+  
+<% include ../partials/footer %>

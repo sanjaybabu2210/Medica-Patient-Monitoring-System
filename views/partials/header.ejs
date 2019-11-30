@@ -173,11 +173,48 @@
     border-radius: 50%;
     color:white;
     }
-		<!-- img {
-		display: block;
-		max-width: 100%;
-		height: auto;
-		} -->
+	.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
 </style>
 		
 	
@@ -217,7 +254,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a id="highlight" class="nav-link" href="/resources">Resources</a>
+        <a id="highlight" class="nav-link" href="/adPost/resources">Resources</a>
       </li>
     </ul>
     <form class="form-inline" action="/adPost" method="GET">
@@ -308,7 +345,7 @@
 							  <a href="/users/<%= currentUser._id %>" class="nav-link"><i class="user secret icon"></i><%= currentUser.username %></a></li>
 						  <li class="nav-item">
 							  <a  href="/logout" class="nav-link">Logout</a></li> -->
-					  <% } %> -->
+					  <% } %> 
 					<!-- </ul>
     	<li class="nav-item">
     		<a class="nav-link" href="#">Sign Up <i class="fas fa-user-plus"></i></a>
@@ -352,7 +389,7 @@
 							  <a  href="/logout" class="nav-link">Logout</a></li>
 					  <% } %>
 					</ul>
- -->
+ 
 
 
 

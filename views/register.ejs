@@ -20,25 +20,18 @@
         <a href="/campgrounds">Go Back</a>
     </div>
 </div> -->
-<div class="pl-lg-50 pl-md-50 pl-sm-5" id="main">
+<div style="background:url(https://images.unsplash.com/photo-1534009916851-7850ba974f9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80);padding-top:50px;margin-top:-10px" class="">
+	<div style="background:#c2c2d6;z-index:1;margin-top:-10px;width:30%;" class="pl-lg-50 pl-md-50 " id="main">
 
 <h2 align="center">Create Account</h2>
 <form  action="/register" method="post" class="ui form container">
   <div class="required field">
-    <label>First Name</label>
-    <input type="text" name="firstName" placeholder="Enter First Name" required>
-  </div>
-  <div class="required field">
-    <label>Last Name</label>
-    <input type="text" name="lastName" placeholder="Enter Last Name" required>
-  </div>
-  <div class="required field">
     <label>username</label>
-    <input type="email" name="username" placeholder="Enter email Address" required>
+    <input type="text" name="name" placeholder="Enter user name" required>
   </div>
 	<div>
 	<label>Email</label>
-    <input type="email" name="email" placeholder="Enter email Address" required>
+    <input type="email" name="username" placeholder="Enter email Address" required>
   </div>
   <div class="required field">
     <label>Password</label>
@@ -53,16 +46,17 @@
     	<option value="four">Fourth Year</option>
     </select>
   </div>
+
   
  
   
   
-  <div class="required field">
+  <!-- <div class="required field">
   	<label>Hosteller or Dayscholar</label>
   	<input type="radio" name="location" value="dayscholar">&#160;Dayscholar &nbsp;
   	<input type="radio" name="location" value="hosteller">&#160;Hosteller<br>
   </div>
-
+ -->
 
 
 <!-- <div class="scrollable required field">
@@ -98,10 +92,10 @@
 
 
 
-<div class="field">
+<!-- <div class="field">
     <label>avatar_url</label>
     <input type="text" name="avatar" placeholder="avatar url">
-  </div>
+  </div> -->
 
 
   <!-- <div class="required field">
@@ -110,12 +104,14 @@
       <label>I agree to the Terms and Conditions</label>
     </div>
   </div> -->
-  <div class="form-group">
+  <!-- <div class="form-group">
                 <input class="form-control" type="text" name="adminCode" placeholder="Admin Code">
             </div>
-  
+   -->
   
 	<button align="center"  id="submit" class="ui button" type="submit">Submit</button>
 </form><br>
 </div><br>
+	</div>
+
 <% include ./partials/footer %>

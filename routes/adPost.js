@@ -3,10 +3,10 @@ var router = express.Router();
 var router = express.Router({mergeParams: true });
 var Campground = require("../models/campground");
 var Category = require("../models/category");
+var Course = require("../models/resources");
 var Request = require("../models/request");
 var middleware = require("../middleware/index.js");
 
-//install multer cloudinary for image upload
 
 var multer = require('multer');
 
@@ -268,10 +268,44 @@ router.post("/category/new2",function(req,res){
 	
 });
 
-router.post("/", middleware.isLoggedIn, upload.single('img1'),function(req, res ,next) {
+//
+router.post("/resources/:id", middleware.isLoggedIn, upload.single('img1') ,function(req, res ,next) {
 ///
 	
 	cloudinary.uploader.upload(req.file.path, function(result) {
+		console.log(req.file.path);
+
+		Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
+		if(err){
+			console.log(err);
+		}
+		else{
+			
+			foundcourse.img1 = result.secure_url;
+	        foundcourse.img1Id = result.public_id;
+		
+			console.log(foundcourse);
+	
+			
+			 res.render("resources/quesp", {courses: foundcourse});
+			
+		}
+	});
+		
+		
+	
+	
+	});
+});
+
+///
+
+router.post("/", middleware.isLoggedIn, upload.single('img1') ,function(req, res ,next) {
+///
+	
+	cloudinary.uploader.upload(req.file.path, function(result) {
+
+
   // add cloudinary url for the image to the campground object under image property
   
   // add author to campground
@@ -293,6 +327,7 @@ router.post("/", middleware.isLoggedIn, upload.single('img1'),function(req, res 
 	var img1 = result.secure_url;
 	var img1_id = result.public_id;
 	
+	
 		
 	var description = req.body.description;
 	var author = {
@@ -309,20 +344,22 @@ router.post("/", middleware.isLoggedIn, upload.single('img1'),function(req, res 
 
 console.log(ph);
 	
-	 var newAd = {adTitle:adTitle,category: category, ph:ph, img1: img1 ,imgId: img1_id,description: description, author: author,room:room,block:block, price1:price1 }
+	 var newAd = {adTitle:adTitle,category: category, ph:ph, img1: img1 ,img1Id: img1_id,description: description, author: author,room:room,block:block, price1:price1 }
 	console.log(category);
 console.log(ph);
 		console.log(newAd);
 	//create a new campground and save to db
-	Campground.create(newAd, function(err,newlyCreated){
-		if(err){
-			req.flash('error', err.message);
-			return res.redirect('back');
-		}else{
-			
-			res.redirect("/adPost");
-		}
-	});
+					Campground.create(newAd, function(err,newlyCreated){
+						if(err){
+							req.flash('error', err.message);
+							return res.redirect('back');
+						}else{
+
+							res.redirect("/adPost");
+						}
+					});
+		
+		
 	});
 
 });
@@ -330,6 +367,94 @@ console.log(ph);
 router.get("/new", middleware.isLoggedIn, function(req,res){
 	res.render("adPost/new");
 });
+router.get("/resources", function(req, res){
+    var noMatch = null;
+	// eval(require("locus"));
+
+    if(req.query.search3 != 0) {
+        const regex1 = new RegExp(req.query.search3, 'gi');
+	
+        // Get all campgrounds from DB
+        Course.find({course: regex1}, function(err, allcourse){
+           if(err){
+               console.log(err);
+           } else {
+              if(allcourse.length < 1) {
+                  noMatch = "No journey Shceduled on that day";
+              }
+              res.render("resources/index",{ course: allcourse, noMatch: noMatch });
+           }
+        });
+    } else {
+        // Get all campgrounds from DB
+        Course.find({}, function(err, allcourse){
+           if(err){
+               console.log(err);
+           } else {
+              res.render("resources/index",{ course:allcourse, noMatch: noMatch});
+           }
+        });
+    }
+});
+
+router.post("/resources", middleware.isLoggedIn,function(req, res ,next) {
+///
+	
+	
+
+	var course = req.body.course;
+	
+
+
+	var courseCode = req.body.courseCode;
+
+	 var newCourse = {course: course,courseCode:courseCode }
+	console.log(newCourse);
+	//create a new campground and save to db
+	Course.create(newCourse, function(err,newlyCreated){
+		if(err){
+			req.flash('error', err.message);
+			console.log(newlyCreated);
+	
+		}else{
+			
+			res.redirect("/adPost/resources" );
+		}
+	});
+
+});
+router.get("/resources/:id",function(req,res){
+	//find the campground with provided id and show
+	Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
+		if(err){
+			console.log(err);
+		}
+		else{
+			 res.render("resources/quesp", {courses: foundcourse});
+			
+		}
+	});
+});
+
+
+
+
+
+
+
+
+router.get("/resources/new", middleware.isLoggedIn, function(req,res){
+	res.render("resources/new");
+});
+
+
+
+
+
+
+
+
+
 //show route
 router.get("/:id",function(req,res){
 	//find the campground with provided id and show
@@ -388,6 +513,9 @@ router.post("/:id", middleware.checkCampgroundOwnership,upload.single('img1'), f
 		
 	});
 });
+////
+
+////
 //UPDATE CAMPGROUND ROUTE
 // Campground Like Route
 router.post("/:id/like", middleware.isLoggedIn, function (req, res) {
@@ -441,10 +569,84 @@ router.post("/req/:id",middleware.checkCampgroundOwnership, function(req,res){
 	});
 });
 
+
+//middleware
+
+
+// router.get("/pack", function(req, res){
+//     var noMatch = null;
+// 	// eval(require("locus"));
+// res.send("hi send me")
+//     // if(req.query.search3 != 0) {
+//     //     const regex1 = new RegExp(req.query.search3, 'gi');
+	
+//     //     // Get all campgrounds from DB
+//     //     Course.find({course: regex1}, function(err, allcourse){
+//     //        if(err){
+//     //            console.log(err);
+//     //        } else {
+//     //           if(allcourse.length < 1) {
+//     //               noMatch = "No journey Shceduled on that day";
+//     //           }
+//     //           res.render("resources/index",{ course: allcourse, noMatch: noMatch });
+//     //        }
+//     //     });
+//     // } else {
+//     //     // Get all campgrounds from DB
+//     //     Course.find({}, function(err, allcourse){
+//     //        if(err){
+//     //            console.log(err);
+//     //        } else {
+//     //           res.render("resources/index",{ course:allcourse, noMatch: noMatch});
+//     //        }
+//     //     });
+//     // }
+// });
+
+//NEW-ROUTE
+
+
+
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
-//middleware
+
+// router.delete("/:id",middleware.checkShareOwnership, function(req,res){
+// 	Share.findByIdAndRemove(req.params.id, function(err){
+// 		if(err){
+// 			res.redirect("/share");
+// 		}else{
+// 			res.redirect("/share");
+// 		}
+// 	});
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router
