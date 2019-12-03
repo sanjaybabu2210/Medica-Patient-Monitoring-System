@@ -268,22 +268,14 @@ router.post("/category/new2",function(req,res){
 	
 	
 });
-
-//
-router.post("/resources/:id", middleware.isLoggedIn, upload.single('img1') ,function(req, res ,next) {
-///
+router.get("/resources/:id",function(req,res,next){
 	
-	cloudinary.uploader.upload(req.file.path, function(result) {
-		console.log(req.file.path);
-
-		Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
+	Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
 		if(err){
 			console.log(err);
 		}
 		else{
 			
-			foundcourse.img1 = result.secure_url;
-	        foundcourse.img1Id = result.public_id;
 		
 			console.log(foundcourse);
 	
@@ -291,6 +283,40 @@ router.post("/resources/:id", middleware.isLoggedIn, upload.single('img1') ,func
 			 res.render("resources/quesp", {courses: foundcourse});
 			
 		}
+	});
+});
+//
+router.post("/resources/:id", middleware.isLoggedIn, upload.single('img1') ,function(req, res ,next) {
+///
+	
+	cloudinary.uploader.upload(req.file.path, function(result) {
+		console.log(req.file.path);
+
+		Course.findById(req.params.id, function(err, foundcourse){
+		if(err){
+			console.log(err);
+		}
+		else{
+			
+			
+	        foundcourse.img1Id = result.public_id;
+			cloudinary.image("higher", {flags: "attachments"});
+			foundcourse.img1 = result.secure_url;
+			console.log(foundcourse);
+			
+			foundcourse.save(function(err,savedcourse)
+							{
+				if(err){
+					console.log(err);
+				}else{
+					console.log(savedcourse);
+				}
+				res.redirect("/adPost/resources")
+			
+			})
+			
+		}
+		
 	});
 		
 		
@@ -424,18 +450,18 @@ router.post("/resources", middleware.isLoggedIn,function(req, res ,next) {
 	});
 
 });
-router.get("/resources/:id",function(req,res){
-	//find the campground with provided id and show
-	Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
-		if(err){
-			console.log(err);
-		}
-		else{
-			 res.render("resources/quesp", {courses: foundcourse});
+// router.get("/resources/:id",function(req,res){
+// 	//find the campground with provided id and show
+// 	Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
+// 		if(err){
+// 			console.log(err);
+// 		}
+// 		else{
+// 			 res.render("resources/quesp", {courses: foundcourse});
 			
-		}
-	});
-});
+// 		}
+
+// });
 
 
 

@@ -12,6 +12,7 @@ var courseSchema = new mongoose.Schema({
 	img1: String,
 	img1Id: String,
 	img2: String,
+	img2Id: String,
 	img3: String,
 	img4: String,
 	img5: String,

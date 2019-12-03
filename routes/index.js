@@ -20,7 +20,7 @@ router.get("/register", function(req,res){
 //HANDLE SIGN UP LOGIC
 router.post("/register", function(req,res){
 	
-	var newUser = new User({username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName,email: req.body.email, year: req.body.year, location: req.body.location, avatar: req.body.avatar });
+	var newUser = new User({username: req.body.username,email: req.body.email, year: req.body.year });
 	
 	if(req.body.adminCode === "secretcode123"){
 		newUser.isAdmin = true;
