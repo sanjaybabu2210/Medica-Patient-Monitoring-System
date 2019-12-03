@@ -2,13 +2,11 @@
 <% include ../partials/header %>
 
 <div class="text-center">
-	<h1>
-			<%= user.firstName + " " + user.lastName %>
-		</h1>
+	
 
 	<a href="mailto:<%= user.username %>">Email To: <i class="fas fa-envelope"></i>  <%= user.username %></a>
 	<h3>
-			<%= user.username %>'s Advertisements:
+			<%= user.email %>'s Advertisements:
 		</h3>
 	<hr>
 </div>
