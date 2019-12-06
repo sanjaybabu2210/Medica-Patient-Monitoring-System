@@ -68,7 +68,7 @@
 <%  qp.forEach(function(qp1){if(qp1.type == 'cat2'){ %>
 	   
 	   
-	  <a style="margin-bottom:5rem;" href="<%= qp.download%>" download><img style="max-height: 180px" src="<%= qp.imageId%>"  ></a>
+	  <a style="margin-bottom:5rem;" href="<%= qp1.download%>" download><img style="max-height: 180px" src="<%= qp1.imageId%>"  ></a>
 	   
 	   <% }}); %>
 	   <form method= "POST" action="/adPost/resources/<%= courses._id %>/question" enctype="multipart/form-data">
@@ -84,7 +84,7 @@
 	  <%  qp.forEach(function(qp1){if(qp1.type == 'fat'){%>
 	   
 	   
-	  <a style="margin-bottom:5rem;" href="<%= qp.download%>" download><img style="max-height: 180px" src="<%= qp.imageId%>"  ></a>
+	  <a style="margin-bottom:5rem;" href="<%= qp1.download%>" download><img style="max-height: 180px" src="<%= qp1.imageId%>"  ></a>
 	   
 	   <% }}); %>
 	  <form method= "POST" action="/adPost/resources/<%= courses._id %>/question" enctype="multipart/form-data">
