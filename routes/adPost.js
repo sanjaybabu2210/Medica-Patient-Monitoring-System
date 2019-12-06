@@ -4,8 +4,10 @@ var router = express.Router({mergeParams: true });
 var Campground = require("../models/campground");
 var Category = require("../models/category");
 var Course = require("../models/resources");
+var Question = require("../models/questionpaper");
 var Request = require("../models/request");
 var middleware = require("../middleware/index.js");
+var size = require('window-size');
 
 
 var multer = require('multer');
@@ -268,6 +270,11 @@ router.post("/category/new2",function(req,res){
 	
 	
 });
+
+router.get("/resources/subject/newly",  function(req,res){
+	res.render("resources/new");
+});
+
 router.get("/resources/:id",function(req,res,next){
 	
 	Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
@@ -275,16 +282,80 @@ router.get("/resources/:id",function(req,res,next){
 			console.log(err);
 		}
 		else{
-			
+			Question.find({courseTitle: foundcourse.course},function(err,qp){
+				if(err){
+					console.log(err);
+				}else{
+					console.log("qp is:")
+					console.log(qp);
+					res.render("resources/quesp", {courses: foundcourse,qp:qp});
+				}
+			})
 		
-			console.log(foundcourse);
+			
 	
 			
-			 res.render("resources/quesp", {courses: foundcourse});
+			 
 			
 		}
 	});
 });
+
+//
+router.get("/resources/:id/question",function(req,res,next){
+	
+	res.send("HI HERE YOUR QUESTION PAPERS")
+});
+//
+router.post("/resources/:id/question", middleware.isLoggedIn, upload.single('image') ,function(req, res ,next) {
+	cloudinary.uploader.upload(req.file.path, function(result) {
+		
+		Course.findById(req.params.id).populate("comments").exec(function(err, foundcourse){
+		if(err){
+			console.log(err);
+		}
+		else{
+			var courseTitle = foundcourse.course;
+			
+		var type = req.body.category;
+		var image= result.public_id;
+		var imageId= result.secure_url;
+			
+		var download = imageId.slice(0,46) + "/fl_attachment" + imageId.slice(46,80) + 'pdf';
+			console.log("new",imageId);
+		var author = {
+		id: req.user._id,
+		username: req.user.username
+	}
+			
+	var qpNew = {
+		courseTitle:courseTitle,type:type,image:image,imageId:imageId, author: author,download:download
+	}
+	console.log(qpNew);
+	Question.create(qpNew, function(err,newlyCreated){
+		if(err){
+			req.flash('error', err.message);
+			return res.redirect('back');
+		}else{
+			
+			res.redirect("/adPost/resources");
+		}
+	});
+		}
+			});
+		
+			
+	
+			
+			 
+			
+		
+		
+		
+		
+	});
+});
+
 //
 router.post("/resources/:id", middleware.isLoggedIn, upload.single('img1') ,function(req, res ,next) {
 ///
@@ -297,11 +368,43 @@ router.post("/resources/:id", middleware.isLoggedIn, upload.single('img1') ,func
 			console.log(err);
 		}
 		else{
+			// var x;
+			// var x1;
+			// var cat;
+			// cat = req.body.category;
+			// var ls = ['img1','img2','img3','img4','img5','img6','img7','img8','img9','img9','img10','img11','img12','img13','img14','img15','img16','img17','img18','img19','img20','img21'];
+			// var lsid = ['img1Id','img2Id','img3Id','img4Id','img5Id','img6Id','img7Id','img8Id','img9Id','img10Id','img11Id','img12Id','img13Id','img14Id','img15Id','img16Id','img17Id','img18Id','img19Id','img20Id','img21Id'];
+			// if(cat == 'cat1'){
+			// 	for(var i=0;i<8;i++){
+			// 	if(ls[i] == null){
+			// 		x = ls[i];
+			// 		x1 = lsid[i];
+			// 		break;
+			// 	}
+			// 	}
+			// }else if(cat == 'cat2'){
+			// 	for(var i=8;i<15;i++){
+			// 	if(ls[i] == null){
+			// 		x = ls[i];
+			// 		x1 = lsid[i];
+			// 		break;
+			// 	}
+			// 	}
+			// }else{
+			// 	for(var i=15;i<21;i++){
+			// 	if(ls[i] == null){
+			// 		x = ls[i];
+			// 		x1 = lsid[i];
+			// 		break;
+			// 	}
+			// }
+				
+				
+			// }
 			
-			
-	        foundcourse.img1Id = result.public_id;
+	        foundcourse.x = result.public_id;
 			cloudinary.image("higher", {flags: "attachments"});
-			foundcourse.img1 = result.secure_url;
+			foundcourse.x1 = result.secure_url;
 			console.log(foundcourse);
 			
 			foundcourse.save(function(err,savedcourse)
@@ -326,6 +429,7 @@ router.post("/resources/:id", middleware.isLoggedIn, upload.single('img1') ,func
 });
 
 ///
+
 
 router.post("/", middleware.isLoggedIn, upload.single('img1') ,function(req, res ,next) {
 ///
@@ -394,6 +498,9 @@ console.log(ph);
 router.get("/new", middleware.isLoggedIn, function(req,res){
 	res.render("adPost/new");
 });
+
+
+
 router.get("/resources", function(req, res){
     var noMatch = null;
 	// eval(require("locus"));
@@ -424,18 +531,22 @@ router.get("/resources", function(req, res){
     }
 });
 
-router.post("/resources", middleware.isLoggedIn,function(req, res ,next) {
+	router.post("/resources", middleware.isLoggedIn, upload.single('image') ,function(req, res ,next) {
 ///
 	
+	cloudinary.uploader.upload(req.file.path, function(result) {
+
 	
 
 	var course = req.body.course;
 	
-
+   var syllabus = result.secure_url;
+		var syllabusId = result.public_id;
+		var download = syllabus.slice(0,46) + "/fl_attachment" + syllabus.slice(46,80) + 'pdf';
 
 	var courseCode = req.body.courseCode;
 
-	 var newCourse = {course: course,courseCode:courseCode }
+	 var newCourse = {course: course,courseCode:courseCode,download:download,syllabus:syllabus,syllabusId:syllabusId }
 	console.log(newCourse);
 	//create a new campground and save to db
 	Course.create(newCourse, function(err,newlyCreated){
@@ -447,6 +558,7 @@ router.post("/resources", middleware.isLoggedIn,function(req, res ,next) {
 			
 			res.redirect("/adPost/resources" );
 		}
+	});
 	});
 
 });
@@ -470,9 +582,7 @@ router.post("/resources", middleware.isLoggedIn,function(req, res ,next) {
 
 
 
-router.get("/resources/new", middleware.isLoggedIn, function(req,res){
-	res.render("resources/new");
-});
+
 
 
 

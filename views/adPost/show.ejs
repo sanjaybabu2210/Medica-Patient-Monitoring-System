@@ -8,7 +8,8 @@
 		
 		<div  style="margin-left:100px; border: 2px solid #d3d3d3; margin-top:50px; padding-top:0px; margin-bottom:100px;" class="col-md-7">
 			<div  class="card container">
-			<img  style="height:400px; margin-bottom:40px;" src="<%= adpost.img1 %>" >
+			<img  style="height:400px; margin-bottom:40px;position:relative;object-fit:contain;" src="<%= adpost.img1 %>" >
+				<hr>
 				
 				
 				   <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -156,9 +157,10 @@
 					<p>
 						Mobile No:
 					</p><%= adpost.ph %></li>
-									<button style="margin:20px 180px;padding:5px 20px" class="btn btn-success btn-lg">
+									<a  href="https://api.whatsapp.com/send?phone=91<%= adpost.ph %>" style="margin:20px 180px;padding:5px 20px" class="btn btn-success btn-lg">
 										chat
-									</button>
+									</a>
+									
 								</div>
 		</div>
 <div id="adpostLikes" class="modal fade" role="dialog">
@@ -222,19 +224,7 @@
   </div>    
  </div>
 </div>
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>
+
 
 </div>
 <footer style="background: #b4cbcb;margin-top:50px;margin-bottom:-40px;margin-left:10px;padding:0 650px;" class="footer mt-auto py-3">

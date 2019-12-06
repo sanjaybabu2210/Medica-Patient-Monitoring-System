@@ -21,7 +21,7 @@
     </div>
 	<br>
 
-<div style="margin-bottom:300px; margin-right:40%;" class="row mr-3">
+<div  style="margin-left:8rem;"class="row ">
   <div class=" text-center ">
                          <div >
 							<% if(noMatch !== null){ %>
@@ -37,14 +37,14 @@
 							<% } %>
 						</div>
 	 <% course.forEach(function(course){%>
-	<div class="card shadow-sm col-lg-3 col-xs-9 col-sm-9 float-right" style="margin-bottom:10% ;margin-right:30px;height:400;width:300;">
-      <div class="card-body" style="background-color:#ff661a;height:400;width:300;" style="border-radius:25px;">
+	<div class="card shadow-sm col-lg-4  float-right" style="margin-bottom:30px;margin-right:50px;float:left;max-height:400px;max-width:300px;">
+      <div class="card-body" style="background-color:#ff661a;height:400px;width:300px;" style="border-radius:25px;">
         <h1 class="card-title pricing-card-title"><%= course.course %></h1>
-        <ul class="list-unstyled mt-3 mb-4">
+        <ul class="list-unstyled ">
           <li><h4 class="my-0 font-weight-normal"><%= course.courseCode %></h4></li>
         </ul>
         <a type="button" href="/adPost/resources/<%= course._id %>" class="btn btn-lg btn-block btn-primary">Question Papers</a><br>
-		<button type="button" class="btn btn-lg btn-block btn-primary">Syllabus + Books</button>
+		  <a type="button"href="<%= course.download %>" class="btn btn-lg btn-block btn-primary">Syllabus + Books</a>
       </div>
     </div>
 	<% }); %>
@@ -58,6 +58,6 @@
 </div>
 
 </div>
-<a class="btn btn-success btn-lg" href="/adPost/resources/new">CreatePage</a>
+<a class="btn btn-success btn-lg" href="/adPost/resources/subject/newly">CreatePage</a>
   
 <% include ../partials/footer %>

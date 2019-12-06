@@ -329,9 +329,9 @@
 		
 				<% adpost.forEach(function(adpost){%>
 				<div class="col-lg-2.5 col-md-3 float-left " >
-					<div style="margin-bottom:30px" class="card">
+					<div style="margin-bottom:30px;" class="card">
 						<div style="margin-right:0px" class=" mr-0  badge label-primary  "><i class=" heart icon"></i> <%= adpost.likes.length %></div>
-					  <img style="max-height: 180px" src="<%=adpost.img1%>" class="card-img-top" alt="<%= adpost.adTitle %>">
+					  <img style="max-height: 150px;" src="<%=adpost.img1%>" class="card-img-top" alt="<%= adpost.adTitle %>">
 					  <div class="card-body">
 						<h5 class="card-title"><storng><%= adpost.adTitle %></storng></h5>
 						<h6 class="card-subtitle mb-2 text-muted"><h5>RS.<%= adpost.price1 %>
