@@ -3,10 +3,10 @@
 
 
 <br><br>
-<div class="">
+<div style="background-image:url(https://images.unsplash.com/photo-1460518451285-97b6aa326961?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);background-size:cover;background-repeat:no-repeat; margin:-60px auto;min-height:100%;">
 <div class="py-5 text-center">
-    <h2>Resources</h2>
-    <p class="lead">Discover a whole new place full of books, question papers and a lot more exclusive for VITians</p>
+    <h2 style="color:#FEDBD0;">Resources</h2>
+    <p style="color:#FEDBD0;"class="lead">Discover a whole new place full of books, question papers and a lot more exclusive for VITians</p>
 </div>
 
     <div class=" h-100">
@@ -38,18 +38,18 @@
 						</div>
 	 <% course.forEach(function(course){%>
 	<div class="card shadow-sm col-lg-4  float-right" style="margin-bottom:30px;margin-right:50px;float:left;max-height:400px;max-width:300px;">
-      <div class="card-body" style="background-color:#ff661a;height:400px;width:300px;" style="border-radius:25px;">
+      <div class="card-body" style="background-color:#FEEAE6;height:400px;width:300px; margin-left:-15px;z-index:10;" style="border-radius:25px;">
         <h1 class="card-title pricing-card-title"><%= course.course %></h1>
         <ul class="list-unstyled ">
           <li><h4 class="my-0 font-weight-normal"><%= course.courseCode %></h4></li>
         </ul>
-        <a type="button" href="/adPost/resources/<%= course._id %>" class="btn btn-lg btn-block btn-primary">Question Papers</a><br>
-		  <a type="button"href="<%= course.download %>" class="btn btn-lg btn-block btn-primary">Syllabus + Books</a>
+        <a type="button" href="/adPost/resources/<%= course._id %>" style="background-color:#442C2E;color:#FEDBD0;" class="btn btn-lg btn-block ">Question Papers</a><br>
+		  <a type="button"href="<%= course.download %>" style="background-color:#442C2E;color:#FEDBD0;" class="btn btn-lg btn-block ">Syllabus + Books</a>
       </div>
     </div>
 	<% }); %>
 
-
+<a class="btn btn-success btn-lg" href="/adPost/resources/subject/newly">CreatePage</a>
 
 
 
@@ -58,6 +58,6 @@
 </div>
 
 </div>
-<a class="btn btn-success btn-lg" href="/adPost/resources/subject/newly">CreatePage</a>
+
   
 <% include ../partials/footer %>

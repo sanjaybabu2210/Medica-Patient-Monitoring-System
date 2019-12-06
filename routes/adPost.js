@@ -542,7 +542,7 @@ router.get("/resources", function(req, res){
 	
    var syllabus = result.secure_url;
 		var syllabusId = result.public_id;
-		var download = syllabus.slice(0,46) + "/fl_attachment" + syllabus.slice(46,80) + 'pdf';
+		var download = syllabus.slice(0,46) + "/I_vitweb/fl_attachment" + syllabus.slice(46,80) + 'pdf';
 
 	var courseCode = req.body.courseCode;
 
