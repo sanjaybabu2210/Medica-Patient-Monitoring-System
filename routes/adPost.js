@@ -271,7 +271,7 @@ router.post("/category/new2",function(req,res){
 	
 });
 
-router.get("/resources/subject/newly",  function(req,res){
+router.get("/resources/subject/newly", middleware.isLoggedIn, function(req,res){
 	res.render("resources/new");
 });
 
