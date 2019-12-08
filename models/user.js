@@ -12,8 +12,8 @@ var UserSchema = new mongoose.Schema({
 		email: String,
 		name: String
 	},
-	firstName: String,
-	lastName: String,
+	  
+
 	year: String,
 	location: String,
 	avatar: String,
