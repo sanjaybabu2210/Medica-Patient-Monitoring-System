@@ -81,6 +81,9 @@ router.get("/", function(req, res){
         });
     }
 });
+router.get("/about",function(req,res){
+	res.render("adPost/about");
+})
 
 router.get("/category/:category",function(req,res){
 	       var noMatch = null;
