@@ -6,15 +6,73 @@ var Campground = require("../models/campground");
 var async = require("async");
 var nodemailer = require("nodemailer");
 var crypto = require("crypto");
+var exphbs = require("express-handlebars");
+var messagebird = require("messagebird")('puCDEk8mQjUVGkv4dqaz3p1lx');
 var size = require('window-size');
 
 
 router.get("/",function(req,res){
 	res.render("landing");
+	
 }); 
 
 
+router.get("/phone",function(req,res){
+	res.render("adPost/ph_new")
+	const messagebird = require('messagebird')('puCDEk8mQjUVGkv4dqaz3p1lx');
 
+const params = {
+  'originator': '+919943677316',
+  'recipients': [
+    '+919943677316'
+  ],
+    'body': 'MESSAGE'
+  };
+
+  messagebird.messages.create(params, function (err, response) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(response);
+  });
+	
+});
+router.post("/step2",function(req,res){
+	var number = req.body.number;
+	messagebird.verify.create(number,{
+		template: "Your verification code is %token."
+		
+	}, function(err, response){
+		if(err){
+			console.log(err);
+			res.render('adPost/ph_new',{
+				error: err.errors[0].description
+				
+			});
+		}else{
+			console.log(response);
+			res.render('adPost/step2'),{
+				id : response.id
+			}
+		}
+	})
+})
+router.post("/step3",function(req,res){
+	var id = req.body.id;
+	var token = req.body.token;
+	
+	messagebird.verify.verify(id, token, function(err, response){
+		if(err){
+			res.render('adPost/step2',{
+				error: err.errors[0].description,
+				id : id
+			});
+		}else{
+			res.send('succesfully registered');
+		}
+	})
+	
+})
 //===============
 //AUTH ROUTES
 //============
@@ -303,5 +361,7 @@ router.get("/users/:id", function(req,res){
 		}
 	});
 });
+
+// curl -X POST https://rest.messagebird.com/messages -H 'Authorization: AccessKey puCDEk8mQjUVGkv4dqaz3p1lx' -d "recipients=+9199436-77316" -d "originator=+9199436-77316" -d "body=Hi! This is your first message."
 
 module.exports = router;
