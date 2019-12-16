@@ -14,63 +14,6 @@ router.get("/",function(req,res){
 }); 
 
 
-rand=Math.floor((Math.random() * 100) + 54);
-
-
-var smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-        user: "keerthisany@gmail.com",
-        pass: ".sanjay2210."
-    }
-});
-var rand,mailOptions,host,link;
-router.get('/email/',function(req,res){
-    res.sendfile('index.html');
-});
-router.get('/email/send',function(req,res){
-        rand=Math.floor((Math.random() * 100) + 54);
-    host=req.get('host');
-    link="http://"+req.get('host')+"/verify?id="+rand;
-    mailOptions={
-        to : req.query.to,
-        subject : "Please confirm your Email account",
-        html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
-    }
-    console.log(mailOptions);
-    smtpTransport.sendMail(mailOptions, function(error, response){
-     if(error){
-            console.log(error);
-        res.end("error");
-     }else{
-            console.log("Message sent: " + response.message);
-        res.end("sent");
-         }
-});
-});
-
-router.get('/email/verify',function(req,res){
-console.log(req.protocol+":/"+req.get('host'));
-if((req.protocol+"://"+req.get('host'))==("http://"+host))
-{
-    console.log("Domain is matched. Information is from Authentic email");
-    if(req.query.id==rand)
-    {
-        console.log("email is verified");
-        res.end("<h1>Email "+mailOptions.to+" is been Successfully verified");
-    }
-    else
-    {
-        console.log("email is not verified");
-        res.end("<h1>Bad Request</h1>");
-    }
-}
-else
-{
-    res.end("<h1>Request is from unknown source");
-}
-});
-
 
 //===============
 //AUTH ROUTES
@@ -80,22 +23,95 @@ router.get("/register", function(req,res){
 })
 //HANDLE SIGN UP LOGIC
 router.post("/register", function(req,res){
+	// var newUser = new User({username: req.body.username,  name: req.body.name, year: req.body.year});
 	
-	var newUser = new User({username: req.body.username,email: req.body.email, year: req.body.year });
-	
-	if(req.body.adminCode === "secretcode123"){
-		newUser.isAdmin = true;
-	}
-	User.register(newUser, req.body.password, function(err, user){
-		if(err){
-    console.log(err);
-    return res.render("register", {error: err.message});
-			}
-		passport.authenticate("local")(req, res, function(){
-			req.flash("success","Welcome to vitblog" + user.username);
-			res.redirect("/adPost");
-		});
+	// if(req.body.adminCode === "secretcode123"){
+	// 	newUser.isAdmin = true;
+	// }
+	// User.register(newUser, req.body.password, function(err, user){
+	// 	if(err){
+	// console.log(err);
+	// return res.render("register", {error: err.message});
+	// 		}
+	// 	passport.authenticate("local")(req, res, function(){
+	// 		req.flash("success","Welcome to vitblog" + user.username);
+	// 		res.redirect("/adPost");
+	// 	});
+	// });
+	async.waterfall([
+	function(done) {
+	crypto.randomBytes(20, function(err, buf) {
+	var token = buf.toString('hex');
+	done(err, token);
 	});
+	},
+	function(token, done) {
+					User.findOne({ username: req.body.username }, function(err, user) {
+					if (user && user.verified) {
+					req.flash('error', 'account with that email address exists.');
+					return res.redirect('/login');
+					}
+					// 	else if(user && !user.verified){
+					// 		req.flash('error', 'email has been sent to your account ');
+					// return res.redirect('/login');
+					// 	}
+						else{
+							User.deleteOne(user, function(err, obj) {
+								if (err) throw err;
+								console.log("1 document deleted");
+								
+							  });
+
+						 var exp =  Date.now() + 3600000;  
+					var newUser = {username: req.body.username,name:req.body.name, year: req.body.year, resetPasswordToken: token, resetPasswordExpires: exp };
+
+
+					User.register(newUser, req.body.password, function(err, user){
+						if(err){
+							console.log(user);
+
+					return res.render("login", {error: err.message});
+							}
+						else{
+							console.log(user);
+						passport.authenticate("local")(req, res, function(){
+							console.log(user);
+							req.flash("success","Welcome to vitblog " + user.name);
+						});
+							 var smtpTransport = nodemailer.createTransport({
+        service: 'Gmail', 
+        auth: {
+          user: 'backton2022@gmail.com',
+          pass: 'jaguars2022'
+        }
+      });
+      var mailOptions = {
+        to: user.username,
+        from: 'backton2022@gmail.com',
+        subject: 'VITWEB ACCOUNT VERIFICATION',
+        text: 'You are receiving this because you (or someone else) have tried to sign in for VITWEB account.\n\n' +
+          'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
+          'http://' + req.headers.host + '/verify/' + token + '\n\n' +
+          'If you did not request this, please ignore this email \n'
+      };
+      smtpTransport.sendMail(mailOptions, function(err) {
+        console.log('mail sent');
+        req.flash('success', 'An e-mail has been sent to ' + user.username + ' with further instructions.');
+        done(err, 'done');
+      });
+						}
+						});
+						}
+					})
+		},
+   
+  ], function(err) {
+    if (err){
+		console.log(err)};
+    res.redirect('/register');
+  });
+	
+	
 });
 //SHOW LOGIN FORM
 router.get("/login",function(req,res){
@@ -106,6 +122,7 @@ router.post("/login", passport.authenticate("local",
     {successRedirect:"/adPost",
 	failureRedirect: "/login"
 	}),function(req,res){
+		req.flash("success", "User Name is not registered");
 	
 });
 // logout route
@@ -132,20 +149,9 @@ router.get("/logout",function(req,res){
 
 
 
-
-
-
-
-
-
-
-
 //forget password
-// forgot password
 router.get('/forgot', function(req, res) {
-	
   res.render('forgot');
-	
 });
 
 router.post('/forgot', function(req, res, next) {
@@ -157,7 +163,7 @@ router.post('/forgot', function(req, res, next) {
       });
     },
     function(token, done) {
-      User.findOne({ email: req.body.email }, function(err, user) {
+      User.findOne({ username: req.body.username }, function(err, user) {
         if (!user) {
           req.flash('error', 'No account with that email address exists.');
           return res.redirect('/forgot');
@@ -172,9 +178,7 @@ router.post('/forgot', function(req, res, next) {
       });
     },
     function(token, user, done) {
-		
       var smtpTransport = nodemailer.createTransport({
-		  
         service: 'Gmail', 
         auth: {
           user: 'backton2022@gmail.com',
@@ -182,9 +186,9 @@ router.post('/forgot', function(req, res, next) {
         }
       });
       var mailOptions = {
-        to: user.email,
-        from: 'VITBLOGS@gmail.com',
-        subject: 'VITBLOGS  Password Reset',
+        to: user.username,
+        from: 'backton2022@gmail.com',
+        subject: 'VITWEB Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -192,7 +196,7 @@ router.post('/forgot', function(req, res, next) {
       };
       smtpTransport.sendMail(mailOptions, function(err) {
         console.log('mail sent');
-        req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+        req.flash('success', 'An e-mail has been sent to ' + user.username + ' with further instructions.');
         done(err, 'done');
       });
     }
@@ -209,6 +213,25 @@ router.get('/reset/:token', function(req, res) {
       return res.redirect('/forgot');
     }
     res.render('reset', {token: req.params.token});
+  });
+});
+router.get('/verify/:token', function(req, res) {
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    if (!user) {
+      req.flash('error', 'verify token is invalid or has expired.');
+      return res.redirect('/register');
+    }
+ 
+	  user.verified = true;
+	  user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
+	   user.save(function(err) {
+          if(err){
+			  req.flash('error',err);
+		  }
+		   res.redirect('/adPost');
+        });
+	  
   });
 });
 
@@ -246,11 +269,11 @@ router.post('/reset/:token', function(req, res) {
         }
       });
       var mailOptions = {
-        to: user.email,
-        from: 'VITBLOGS@mail.com',
+        to: user.username,
+        from: 'backton2022@mail.com',
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +
-          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+          'This is a confirmation that the password for your account ' + user.username + ' has just been changed.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
         req.flash('success', 'Success! Your password has been changed.');

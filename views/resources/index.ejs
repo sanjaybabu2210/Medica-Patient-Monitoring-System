@@ -21,23 +21,19 @@
     </div>
 	<br>
 
-<div  style="margin-left:8rem;"class="row ">
+<div  style="margin-left:8rem;"class="row text-center">
   <div class=" text-center ">
-                         <div >
+                         <div class=" py-5 text-center">
 							<% if(noMatch !== null){ %>
-								<h3 style="margin-top:100px">
-									<%= noMatch %>
+								<h3 style="margin-top:100px;" class="text-center">
+									No Subject Found On the Search
 							</h3>
-							<h4>
-									POST YOUR REQUEST TO GET NOTIFY BY THE SELLER
-								</h4>
-							<a class="btn btn-info btn-lg" href="/adPost/request">
-								REQUEST
-							</a>
+							
+							
 							<% } %>
 						</div>
 	 <% course.forEach(function(course){%>
-	<div class="card shadow-sm col-lg-4  float-right" style="margin-bottom:30px;margin-right:50px;float:left;max-height:400px;max-width:300px;">
+	<div class="card shadow-sm col-lg-4  float-right text-center" style="margin-bottom:30px;margin-right:50px;float:left;max-height:400px;max-width:300px;">
       <div class="card-body" style="background-color:#FEEAE6;height:400px;width:300px; margin-left:-15px;z-index:10;" style="border-radius:25px;">
         <h1 class="card-title pricing-card-title"><%= course.course %></h1>
         <ul class="list-unstyled ">
@@ -49,7 +45,7 @@
     </div>
 	<% }); %>
 
-<a class="btn btn-success btn-lg" href="/adPost/resources/subject/newly">CreatePage</a>
+<a class="btn btn-success btn-lg text-center" href="/adPost/resources/subject/newly">CreatePage</a>
 
 
 

@@ -86,7 +86,7 @@ var express = require("express"),
 
 
 ////
-mongoose.connect('mongodb+srv://sanjaybabu:.SANJAY2210.@cluster1-fu4qm.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://sanjaybabu:.SANJAY2210.@cluster1-fu4qm.mongodb.net/vitWeb?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(() => {

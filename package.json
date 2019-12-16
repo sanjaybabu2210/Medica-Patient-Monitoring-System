@@ -32,7 +32,10 @@
     "request": "^2.81.0",
     "tempusdominus-bootstrap-4": "^5.1.2",
     "twilio": "^3.38.0",
-    "window-size": "^1.1.1"
+    "window-size": "^1.1.1",
+	  "bcrypt-nodejs": "0.0.3",
+	  "cookie-parser": "^1.4.3",
+	  "geocoder": "^0.2.2"
   },
   "devDependencies": {},
   "keywords": []
