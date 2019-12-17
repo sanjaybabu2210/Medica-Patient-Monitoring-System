@@ -35,12 +35,12 @@
 	 <% course.forEach(function(course){%>
 	<div class="card shadow-sm col-lg-4  float-right text-center" style="margin-bottom:30px;margin-right:50px;float:left;max-height:400px;max-width:300px;">
       <div class="card-body" style="background-color:#FEEAE6;height:400px;width:300px; margin-left:-15px;z-index:10;" style="border-radius:25px;">
-        <h1 class="card-title pricing-card-title"><%= course.course %></h1>
+        <h2 class="card-title pricing-card-title"><%= course.course %></h2>
         <ul class="list-unstyled ">
           <li><h4 class="my-0 font-weight-normal"><%= course.courseCode %></h4></li>
         </ul>
         <a type="button" href="/adPost/resources/<%= course._id %>" style="background-color:#442C2E;color:#FEDBD0;" class="btn btn-lg btn-block ">Question Papers</a><br>
-		  <a type="button"href="<%= course.download %>" style="background-color:#442C2E;color:#FEDBD0;" class="btn btn-lg btn-block ">Syllabus + Books</a>
+		  <a  type="button"href="<%= course.download %>" style="background-color:#442C2E;color:#FEDBD0;" class="btn btn-lg btn-block ">Syllabus + Books</a>
       </div>
     </div>
 	<% }); %>

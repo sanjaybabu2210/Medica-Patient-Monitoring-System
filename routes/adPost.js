@@ -31,7 +31,7 @@ var cloudinary = require('cloudinary');
 cloudinary.config({ 
   cloud_name: 'tycoon', 
   api_key: '167312485966359', 
-  api_secret: 'uD9LwJ61EhmLk4Y95rrXQNflIt8',
+  api_secret: 'uD9LwJ61EhmLk4Y95rrXQNflI',
 });
 
 //index route
@@ -551,7 +551,7 @@ router.get("/resources", function(req, res){
 	
    var syllabus = result.secure_url;
 		var syllabusId = result.public_id;
-		var download = syllabus.slice(0,46) + "/fl_attachment" + syllabus.slice(46,80) + 'pdf';
+		var download = syllabus.slice(0,46) + syllabus.slice(46,80) + 'pdf';
 
 	var courseCode = req.body.courseCode;
 
