@@ -1,10 +1,10 @@
 <% include ../partials/header %>
 
-<body>
-	<div  style="padding-top: 30px;z-index: 1; "  class="container row rounded ">	
+<body style="background-image:url(https://images.unsplash.com/photo-1455849318743-b2233052fcff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);background-size:cover;background-repeat:no-repeat;height:110%;width:100%;">
+	<div  style="padding-top: 30px;z-index: 1;"  class="container row rounded ">	
 
 
-		<form style=" margin-left: 33%;border: 1.5px solid grey; z-index: 1" class="container col-lg-6" method="POST" action="/adPost/request">
+		<form style=" margin-left: 33%;border: 1.5px solid grey; z-index: 1;background:#45B8AC;padding-top:2%;" class="container col-lg-6" method="POST" action="/adPost/request">
 			<div class="form-group">
 				    <label for="requestTitle">Request Title*</label>
 				    <input type="text" class="form-control" name="requestTitle" id="requestTitle" placeholder="reqeustTitle">
@@ -83,12 +83,9 @@
 </div>
 			
 		</div>
-<button type="submit" class="btn btn-success">
+<button type="submit" class="btn btn-success" style="margin-bottom:2%;">
 	POST
 			</button>
 
-   <%console.log(currentUser._id) %>
-                           <%console.log(currentUser._id) %><%console.log(currentUser._id) %><%console.log(currentUser._id) %>   <%console.log(currentUser._id) %>
-                           <%console.log(currentUser._id) %><%console.log(currentUser._id) %><%console.log(currentUser._id) %>
 	</form></div>
 <% include ../partials/footer %>
