@@ -20,7 +20,7 @@ var storage = multer.diskStorage({
 });
 var imageFilter = function (req, file, cb) {
     // accept image files only
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif|pdf)$/i)) {
         return cb(new Error('Only image files are allowed!'), false);
     }
     cb(null, true);
@@ -323,10 +323,15 @@ router.post("/resources/:id/question", middleware.isLoggedIn, upload.single('ima
 			
 		var type = req.body.category;
 		var image= result.public_id;
+			
 		var imageId= result.secure_url;
 			
-		var download = imageId.slice(0,46) + "/fl_attachment" + imageId.slice(46,80) + 'pdf';
-			console.log("new",imageId);
+		var download = imageId.slice(0,46) + imageId.slice(46,80) + 'pdf';
+			if(imageId.slice(80,83)=='pdf')
+				{
+					imageId =  imageId.slice(0,80) + 'jpg';
+				}
+			
 		var author = {
 		id: req.user._id,
 		username: req.user.username
@@ -335,7 +340,7 @@ router.post("/resources/:id/question", middleware.isLoggedIn, upload.single('ima
 	var qpNew = {
 		courseTitle:courseTitle,type:type,image:image,imageId:imageId, author: author,download:download
 	}
-	console.log(qpNew);
+
 	Question.create(qpNew, function(err,newlyCreated){
 		if(err){
 			req.flash('error', err.message);

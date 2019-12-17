@@ -2,13 +2,42 @@
 <% include ../partials/header %>
 
 
+<style>
+		@media only screen and (max-width: 700px) {
+			#rawcard{
+				margin-left:40px;
+				
+				max-width:460px;
+			},
+			#price{
+		
+				margin-left:70%;
+			},
+			#imr{
+				object-fit:contain;
+			}
+	}
+		@media only screen and (min-width: 1200px) {
+			#rawcard{
+				margin-left:5%;
+				background-color:blue;
+			},
+			#imr{
+				object-fit:contain;
+			},
+			#price{
+				margin-left:70%;
+			}
+	}
+			
 
+</style>
 
 	<div class="row ">
 		
-		<div  style="margin-left:100px; border: 2px solid #d3d3d3; margin-top:50px; padding-top:0px; margin-bottom:100px;" class="col-md-7 col-xs-12">
+		<div id="rawcard" style=" border: 2px solid #d3d3d3; margin-top:50px; padding-top:0px; margin-bottom:100px;" class="col-md-7 col-xs-12">
 			<div  class="card container">
-			<img  style="height:400px; margin-bottom:40px;position:relative;object-fit:contain;" src="<%= adpost.img1 %>" >
+			<img id="imr" style="height:400px; margin-bottom:40px;position:relative;" src="<%= adpost.img1 %>" >
 				<hr>
 				
 				
@@ -71,7 +100,7 @@
 										<h3 style="margin-top:20px;">
 											<a> <%= adpost.adTitle %></a>
 					</h3>
-				<h3 style="margin-left:700px;margin-top:-40px;" class=" card-title  float-right">
+				<h3 id="price" style="margin-top:-40px;" class=" card-title  float-right">
 						RS.<%= adpost.price1 %>
 					</h3>
 					
