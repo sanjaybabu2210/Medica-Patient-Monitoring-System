@@ -114,11 +114,7 @@ router.post("/register", function(req,res){
 					// return res.redirect('/login');
 					// 	}
 						else{
-							User.deleteOne(user, function(err, obj) {
-								if (err) throw err;
-								console.log("1 document deleted");
-								
-							  });
+							
 
 						 var exp =  Date.now() + 3600000;  
 					var newUser = {username: req.body.username,name:req.body.name, year: req.body.year, resetPasswordToken: token, resetPasswordExpires: exp };
@@ -145,7 +141,7 @@ router.post("/register", function(req,res){
       });
       var mailOptions = {
         to: user.username,
-        from: 'backton2022@gmail.com',
+        from: 'vitWeb@gmail.com',
         subject: 'VITWEB ACCOUNT VERIFICATION',
         text: 'You are receiving this because you (or someone else) have tried to sign in for VITWEB account.\n\n' +
           'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
