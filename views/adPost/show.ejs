@@ -4,30 +4,34 @@
 
 <style>
 		@media only screen and (max-width: 700px) {
+			#desc{
+				margin-left:30px;
+				max-width:440px;
+				
+			}}
+		@media only screen and (max-width: 700px) {
 			#rawcard{
 				margin-left:40px;
-				
-				max-width:460px;
-			},
-			#price{
-		
-				margin-left:70%;
-			},
-			#imr{
-				object-fit:contain;
+			
+				max-width:440px;
 			}
 	}
+			@media only screen and (max-width: 700px) {
+
+				#dis{
+					margin-left: 30px;
+					max-width:440px;
+				}	
+				
+				
+	}
+			
 		@media only screen and (min-width: 1200px) {
+		
 			#rawcard{
-				margin-left:5%;
-				background-color:blue;
-			},
-			#imr{
-				object-fit:contain;
-			},
-			#price{
-				margin-left:130%;
-			}
+				margin-left:100px;
+			
+}
 	}
 			
 
@@ -37,7 +41,7 @@
 		
 		<div id="rawcard" style=" border: 2px solid #d3d3d3; margin-top:50px; padding-top:0px; margin-bottom:100px;" class="col-md-7 col-xs-12">
 			<div  class="card container">
-			<img id="imr" style="height:400px; margin-bottom:40px;position:relative;" src="<%= adpost.img1 %>" >
+			<img id="imr" style="height:400px; margin-bottom:40px;position:relative;object-fit:contain;" src="<%= adpost.img1 %>" >
 				<hr>
 				
 				
@@ -147,15 +151,15 @@
 
 <div style="flota-left;margin-top:50px;" class="col-md-3">
 			
-			<div style="border:2px solid #d3d3d3;width:500px;" class="   list group">
-				<li class="list-group-item border-12">
+			<div  id="desc" style="border:2px solid #d3d3d3;width:500px;" class="list group">
+				<li  class="list-group-item border-12">
 					
 					<P >
 						<h4>
 								DESCRIPTION:
 						</h4>
 					
-					</P><%= adpost.description %><button style="float:right; margin-top:-40px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+					</P><%= adpost.description %><button style="float:right; margin-top:-70px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
                                 data-target="#adpostLikes">
                             <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= adpost.likes.length %></span>
                         </button></li>
@@ -174,7 +178,7 @@
                     </div>
 				
 			</div>
-								<div   style="float-left; margin-top:20px;padding-right:20px;padding-left:20px; width:500px; border:2px solid #d3d3d3;">
+								<div id="dis"  style="float-left; margin-top:20px;padding-right:20px;padding-left:20px; width:500px; border:2px solid #d3d3d3;">
 															   <h4 style="margin-top:20px" >
 																   SELLER DESCRIPTION:
 																  
