@@ -109,11 +109,57 @@ router.post("/register", function(req,res){
 					req.flash('error', 'account with that email address exists.');
 					return res.redirect('/login');
 					}
-					// 	else if(user && !user.verified){
-					// 		req.flash('error', 'email has been sent to your account ');
-					// return res.redirect('/login');
-					// 	}
+					else if(user && !(user.verified)){
+					User.deleteOne(user, function(err,usr){
+						if(err){
+							console.log(err)
+						}else{
+							console.log(usr);           
+							var exp =  Date.now() + 3600000;  
+					var newUser = {username: req.body.username,name:req.body.name, year: req.body.year, resetPasswordToken: token, resetPasswordExpires: exp };
+
+
+					User.register(newUser, req.body.password, function(err, user){
+						if(err){
+							console.log(user);
+
+					return res.render("login", {error: err.message});
+							}
 						else{
+							console.log(user);
+						passport.authenticate("local")(req, res, function(){
+							console.log(user);
+							req.flash("success","Welcome to vitblog " + user.name);
+						});
+																 var smtpTransport = nodemailer.createTransport({
+											service: 'Gmail', 
+											auth: {
+											  user: 'backton2022@gmail.com',
+											  pass: '.sanj289@vkifo.'
+											}
+										  });
+										  var mailOptions = {
+											to: user.username,
+											from: 'vitWeb@gmail.com',
+											subject: 'VITWEB ACCOUNT VERIFICATION',
+											text: 'You are receiving this because you (or someone else) have tried to sign in for VITWEB account.\n\n' +
+											  'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
+											  'http://' + req.headers.host + '/verify/' + token + '\n\n' +
+											  'If you did not request this, please ignore this email \n'
+										  };
+										  smtpTransport.sendMail(mailOptions, function(err) {
+											console.log('mail sent');
+											req.flash('success', 'An e-mail has been sent to ' + user.username + ' with further instructions.');
+											done(err, 'done');
+										  });
+														
+										
+						}
+						});
+					}
+					});
+					}
+					else{
 							
 
 						 var exp =  Date.now() + 3600000;  
