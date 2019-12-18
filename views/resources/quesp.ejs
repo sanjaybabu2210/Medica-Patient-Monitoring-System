@@ -1,13 +1,23 @@
 <% include ../partials/header %>
+<style>
+	@media only screen and (max-width: 700px) {
+			#paper{
+				margin-top:20%;
+				
+				
+				
+			}
+	}
 
+</style>
+	
 
-
-<div class="responsive" style="background-image:url(https://images.unsplash.com/photo-1460518451285-97b6aa326961?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);background-size:cover;background-repeat:no-repeat; margin:-60px auto;min-height:100%">
+<div class="responsive" style="background-image:url(https://images.unsplash.com/photo-1460518451285-97b6aa326961?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);background-size:cover;background-repeat:no-repeat; margin:-95px auto;min-height:140%">
 
 
 <div class="container">
 
-		<div class="py-5 text-center">
+		<div style="margin-top:140px;" class="py-5 text-center">
 			<h2 style="color:#FEDBD0;"><b>Resources - Question  Papers<b></h2>
 			<p style="color:#FEDBD0;" class="lead">Updated set of question papers which are easy to access</p>
 		</div>
@@ -15,8 +25,8 @@
 
 <div class="card-deck mb-3 text-center">
 
-<div style="max-height:200px;" class="card mb-4 shadow-sm">
-      <div class="card-body" style="background-color:#53ff1a;" style="border-radius:25px;">
+<div  style="max-height:200px;margin-bottom:35%; " class="card mb-4 shadow-sm">
+      <div class="card-body" style="background-color:#53ff1a;margin-bottom:40rem;" style="border-radius:25px;">
         <h1 class="card-title pricing-card-title"><%= courses.course %></h1>
         <ul class="list-unstyled mt-3 mb-4">
           <li><h4 class="my-0 font-weight-normal"><%= courses.courseCode %></h4></li>
@@ -27,7 +37,7 @@
 
 
 
-<div class="card mb-8 shadow-sm">
+<div id="paper" style="margin-bottom:10%;" class="card mb-8 shadow-sm">
   <div class="card-header"> 
     <ul class="nav nav-tabs card-header-tabs pull-right"  id="myTab" role="tablist">
       <li class="nav-item">
@@ -50,7 +60,7 @@
 	   <% qp.forEach(function(qp1){if(qp1.type == 'cat1'){ %>
 	   
 	   
-	  <a style="margin-bottom:20rem;" href="<%= qp1.download%>" ><img style="max-height: 180px" src="<%= qp1.imageId%>"  ></a>
+	  <a style="margin:2%" href="<%= qp1.download%>" ><img style="max-height: 220px;width:150px;margin-bottom:2%;" src="<%= qp1.imageId%>"  ></a>
 	   
 	   <% }}); %>
 	       <form method= "POST" action="/adPost/resources/<%= courses._id %>/question" enctype="multipart/form-data">

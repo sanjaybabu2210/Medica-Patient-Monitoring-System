@@ -3,7 +3,24 @@
 <% include ../partials/header %>
 
 
-
+<style>
+	@media only screen and (max-width: 700px) {
+			#selli{
+				margin:7%;
+				
+				
+				
+			}
+	}
+	@media only screen and (min-width: 1200px) {
+			#selli{
+				margin:70px 20%;
+				
+				
+				
+			}
+	}
+</style>
 
 <!-- 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -50,7 +67,7 @@
 
  -->
 
-<div  style="width:auto;" class="container jumbotron">
+<div  id="selli" style="width:auto;" class="container jumbotron">
 					<form class="container" action="/adPost" method="POST" enctype="multipart/form-data">
 						<div style="margin-top:40px" class="form-group display-5">
 							DETAILS OF YOUR AD

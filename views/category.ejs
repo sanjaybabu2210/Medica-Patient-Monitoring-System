@@ -1,7 +1,26 @@
 <% include ./partials/header %>
-
+<style>
+	@media only screen and (max-width: 700px) {
+			#cat{
+				max-width:280px;
+				margin-left:5%;
+				
+				
+				
+			}
+	}
+	@media only screen and (min-width: 1200px) {
+			#cat{
+				margin:5% auto;
+				max-width:570px;
+				
+				
+				
+			}
+	}
+</style>
 <form method="POST" action="/adPost/category/new">
-	<div  style="margin:5% auto;max-width:600px" >
+	<div  id="cat" style="" >
 	<div class="ui fluid vertical menu">
   <h3 align="center">
     Categories
