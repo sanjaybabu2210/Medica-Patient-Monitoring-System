@@ -136,7 +136,7 @@ router.post("/register", function(req,res){
         service: 'Gmail', 
         auth: {
           user: 'backton2022@gmail.com',
-          pass: 'jaguars2022'
+          pass: '.sanj289@vkifo.'
         }
       });
       var mailOptions = {
@@ -236,7 +236,7 @@ router.post('/forgot', function(req, res, next) {
         service: 'Gmail', 
         auth: {
           user: 'backton2022@gmail.com',
-          pass: 'jaguars2022'
+          pass: '.sanj289@vkifo.'
         }
       });
       var mailOptions = {
@@ -319,7 +319,7 @@ router.post('/reset/:token', function(req, res) {
         service: 'Gmail', 
         auth: {
           user: 'backton2022@gmail.com',
-          pass: 'jaguars2022'
+          pass: '.sanj289@vkifo.'
         }
       });
       var mailOptions = {
