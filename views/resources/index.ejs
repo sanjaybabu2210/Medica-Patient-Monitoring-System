@@ -10,8 +10,25 @@
 				
 			}
 	}
+	@media only screen and (max-width: 700px) {
+			#srcc{
+				
+				margin-left:20%;
+				width:250px;
+				
+				
+			}
+	}
 	@media only screen and (min-width: 1200px) {
 			#cour{
+				margin-right:50px;
+				
+				
+				
+			}
+	}
+	@media only screen and (min-width: 1200px) {
+			#srcc{
 				margin-right:50px;
 				
 				
@@ -22,7 +39,7 @@
 		
 
 <br><br>
-<div style="background-image:url(https://images.unsplash.com/photo-1460518451285-97b6aa326961?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);background-size:cover;background-repeat:no-repeat; margin:-80px auto;min-height:100%;">
+<div style="background-image:url(https://images.unsplash.com/photo-1460518451285-97b6aa326961?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);background-size:cover;background-repeat:no-repeat; margin:-90px auto;min-height:100%;">
 <div class="py-5 text-center">
     <h2 style="color:#442C2E;">Resources</h2>
     <p style="color:#FEDBD0;"class="lead">Discover a whole new place full of books, question papers and a lot more exclusive for VITians</p>
@@ -32,8 +49,8 @@
       <div class="d-flex justify-content-center h-100">
         
 			<form method="GET" action="/adPost/resources">
-				<input class="form-control form-inline mr-sm-2"  type="text" name="search3" placeholder="Search...">
-           <a ><i style="float:left;margin-left:400px;" class="fas fa-search"></i></a> 
+				<input  id="srcc" class="form-control form-inline mr-sm-2"  type="text" name="search3" placeholder="Search...">
+           <a ><i style="float:left;margin-left:400px;margin-top:-30px;" class="fas fa-search"></i></a> 
 			</form>
        
       </div>
@@ -44,7 +61,7 @@
   <div class=" text-center ">
                          <div class=" py-5 text-center">
 							<% if(noMatch !== null){ %>
-								<h3 style="margin-top:100px;" class="text-center">
+								<h3 style="margin-top:80px;color:green;margin:30%;" class="text-center">
 									No Subject Found On the Search
 							</h3>
 							

@@ -5,22 +5,31 @@
 <style>
 		@media only screen and (max-width: 700px) {
 			#desc{
-				margin-left:30px;
-				max-width:440px;
+				margin-left:10px;
+				max-width:330px;
 				
 			}}
 		@media only screen and (max-width: 700px) {
 			#rawcard{
-				margin-left:40px;
+				margin-left:20px;
 			
-				max-width:440px;
+				max-width:340px;
 			}
 	}
 			@media only screen and (max-width: 700px) {
 
 				#dis{
-					margin-left: 30px;
-					max-width:440px;
+					margin-left: 10px;
+					max-width:330px;
+				}	
+				
+				
+	}
+	@media only screen and (max-width: 700px) {
+
+				#dis{
+					margin-top:
+					
 				}	
 				
 				
@@ -159,7 +168,7 @@
 								DESCRIPTION:
 						</h4>
 					
-					</P><%= adpost.description %><button style="float:right; margin-top:-70px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+					</P><%= adpost.description %><button id="butt" style="float:right; margin-top:-85px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
                                 data-target="#adpostLikes">
                             <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= adpost.likes.length %></span>
                         </button></li>
@@ -236,27 +245,7 @@
     </div>
 	   
 
-<div class="bootstrap-iso">
- <div class="container-fluid">
-  <div class="row">
-   <div class="col-md-6 col-sm-6 col-xs-12">
 
-    <!-- Form code begins -->
-    <form method="post">
-      <div class="form-group"> <!-- Date input -->
-        <label class="control-label" for="date">Date</label>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-      </div>
-      <div class="form-group"> <!-- Submit button -->
-        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
-      </div>
-     </form>
-     <!-- Form code ends --> 
-
-    </div>
-  </div>    
- </div>
-</div>
 
 
 </div>
