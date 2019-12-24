@@ -1,6 +1,38 @@
 
 <% include ../partials/header %>
-<div class="row conatainer">
+
+
+
+<style>
+	@media only screen and (max-width: 700px) {
+			#cad{
+				
+				margin:10px;
+				margin-left:20px;
+				width:320px;
+				
+				
+				
+			}
+	}
+	@media only screen and (min-width: 1200px) {
+			#cad{
+				
+				margin:25px;
+				width:460px;
+				
+				
+			}
+		#new{
+			margin-top:-25px;
+			float:right;
+		}
+		#imm{
+			left:-50px;
+		}
+	}
+</style>
+<div style="margin-top:5%;" class="row conatainer">
 	
 <div class="col-lg-3">
 	
@@ -216,13 +248,13 @@
 		
 	
 	
-		<div style="margin-top :60px; margin:10px; float:left; width:460px;max-hegith550px;" class="col-lg-3 ui raised card">
+		<div id="cad" style="margin-top :60px;  float:left; hegith950px;" class="col-lg-3 ui raised card">
 		  <div class="content">
 			<div class="header"><%= adpost.reqTitle %></div>
 			<div class="meta">
 			  <span class="category">Expected-range:RS.<%= adpost.priceRange %></span>
 			</div>
-			<div class="description">
+			<div style="height:70px;" class="description">
 			  <p><%= adpost.description %> <%= moment(adpost.createdAt).fromNow() %></p>
 			</div>
 		  </div>
@@ -231,8 +263,8 @@
 		<p style="float:left; margin-right:100px">
 			<%= adpost.block %> <%= adpost.Phone %>
 		</p>
-      <img class="ui avatar image" src="https://image.flaticon.com/icons/svg/146/146031.svg"><%= adpost.author.username %>
-		
+      <img id="imm"  class="ui avatar image" src="https://image.flaticon.com/icons/svg/146/146031.svg"><span id="new"  ><%= adpost.author.username %>
+		</span>
 				
     </div>
   </div>
