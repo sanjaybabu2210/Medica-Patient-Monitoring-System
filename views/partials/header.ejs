@@ -47,11 +47,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/container.min.css" integrity="sha256-7rJADGJ6l3YF6uxVoTB1b6xhQb93nEsuYsCBmXQX7Ds=" crossorigin="anonymous" />
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css">
 	
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integfrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"> */ -->
-			
+
+	<script type="text/javascript" language="javascript" src="datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+   <link rel="stylesheet" href="/stylesheets/jquery.datetimepicker.min.css">
+   <script type="text/javascript" language="javascript" src="/stylesheets/jquery.datetimepicker.full.js"></script>
+		////////////////
 			
 			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
@@ -79,6 +85,28 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		
+	<style type="text/css">
+		.bg-dark {
+			background-color: #041245;
+		}
+		.dropdown-menu {
+			background-color: #041245; 
+		}
+		.dropdown-item {
+			background-color: #041245;
+			color: white;
+		}
+		.navbar-dark {
+			background: #041245; 
+		}
+		#highlight {
+		color: #00F;
+		}
+		.ui-datepicker .ui-widget-content {
+		background: #4A85D3;
+		}
+	</style>
 		<script>
     
 		$(document).ready(function(){
@@ -450,7 +478,10 @@
 	}
 </style>
 		
-	
+	<script>
+    $(document).ready(function(){
+        $('#date-time').datetimepicker();});
+	</script>
 
 		 
 	</head>
