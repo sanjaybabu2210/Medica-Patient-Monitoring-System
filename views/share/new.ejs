@@ -8,11 +8,8 @@
 <html>
 <head>
 	<title>ShareMyCab</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -21,8 +18,7 @@
 	<script type="text/javascript" language="javascript" src="datetimepicker/js/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-   <link rel="stylesheet" href="/stylesheets/jquery.datetimepicker.min.css">
-   <script type="text/javascript" language="javascript" src="/stylesheets/jquery.datetimepicker.full.js"></script>
+
 
 
 	<script>
@@ -54,11 +50,11 @@
 	</style>
 </head>
 	   
-<body style="background: url(https://res.cloudinary.com/tycoon/image/upload/v1577200487/background_aaje0v.jpg); background-size:cover;background-repeat:no-repeat; margin:-90px auto;min-height:140%;color: #F6C298">	   
+<body style="background: url(https://images.unsplash.com/photo-1565115551503-ea90acc84e2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80); background-size:cover;background-repeat:no-repeat; margin:-90px 0px auto;min-height:140%;color: #ECF0F1  ">	   
 	   
 	   
-<form>
-<div style="color:#FE4B1B; margin-top:5%;" class="py-5 text-center" action="/share" method="POST">
+<form action="/share" method="POST">
+<div style="color:#EAFAF1  ; margin-top:5%;" class="py-5 text-center" >
     <h2>ShareMyCab - Share</h2>
     <p class="lead">Enter your details of your travel and wait for someone to share cab with you</p>
 </div>
@@ -113,7 +109,7 @@
 <br>
 <div class="mb-3 form-group green-border-focus">
     <label><b>Description</b></label>
-    <textarea type="textarea" class="form-control" id="description" placeholder="Contact me within this week..." required></textarea>
+    <textarea type="textarea" class="form-control" id="description" name="description" placeholder="Contact me within this week..." required></textarea>
     <div class="invalid-feedback">
         Please enter description.
     </div>
@@ -123,7 +119,7 @@
 	
 	<div class="col-md-6">
 	<label for="date-time"><b>Language Preference(first)</b></label>
-	<input type="text" id="date-time" name="preference1"class="form-control" placeholder="Hindi" required >
+	<input type="text" name="preference1"class="form-control" placeholder="Hindi" required >
     </div>
 
     <div class="col-md-6">
@@ -134,7 +130,7 @@
 </div>
 
 <hr class="mb-2">
-<button style="margin-bottom:10%; background-color: #804636" class="btn btn-primary btn-block btn-lg" type="submit">Share</button>
+<button style="margin-bottom:10%; background-color: #CB4335 " class="btn btn-primary btn-block btn-lg" type="submit">Share</button>
 </div>
 </form>
 	
@@ -3068,6 +3064,13 @@ var datetimepickerFactory = function ($) {
 
 
 </script>
+<footer style="background: #b4cbcb;margin-bottom:0px;margin-left:0px;padding-bottom:0px;width:100%;min-height:10%;" class=" footer py-lg-3 py-xs-2">
+	<div class="container">
+		<p class="text-muted" style="padding-top:10px;">
+			&copy; VITBLOG 2020 | <a href="/">Home</a> | <a href="/adPost/new">New Ads</a> | <a href="/adPost/about">about</a>
+		</p>
+	</div>
+</footer>
 </body>
 	
 </html>

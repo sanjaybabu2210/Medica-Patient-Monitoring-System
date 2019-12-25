@@ -10,8 +10,11 @@ var shareSchema = new mongoose.Schema({
 	phone: String,
 	date: String,
 	time: String,
+    description: String,
 	fromPlace: String,
 	toPlace: String,
+	preference1: String,
+	preference2: String,
 	createdAt: {type: Date, default: Date.now},
 	
 	author:{

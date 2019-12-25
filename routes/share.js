@@ -21,6 +21,7 @@ router.get("/share", function(req, res){
               if(allshares.length < 1) {
                   noMatch = "No journey Shceduled on that day";
               }
+			   console.log(noMatch);
               res.render("share/index",{ share: allshares, noMatch: noMatch });
            }
         });
@@ -38,38 +39,42 @@ router.get("/share", function(req, res){
 router.post("/share", middleware.isLoggedIn,function(req, res ,next) {
 ///
 	
-	
+	console.log("i go it");
 
 	var name = req.body.name;
 	
 
 
-	var date = req.body.date;
-	var time = req.body.time;
+	var date = req.body.date.slice(0,11);
+	var time = req.body.date.slice(11,18);
 	var fromPlace = req.body.fromPlace;
 	var toPlace = req.body.toPlace;
+	var description = req.body.description;
+	var preference1 = req.body.preference1;
+	var preference2 = req.body.preference2;
 	var phone = req.body.phone;
 
 	var author = {
 		id: req.user._id,
 		username: req.user.username
 	}
-	 var newShare = {toPlace: toPlace,author:author, fromPlace: fromPlace, time: time, date:date, name:name,phone:phone }
-	console.log(toPlace);
+	 var newShare = {toPlace: toPlace,author:author,description:description, preference1:preference1, preference2:preference2, fromPlace: fromPlace, time:time, date:date, name:name,phone:phone }
+
 	console.log(newShare);
 	//create a new campground and save to db
 	Share.create(newShare, function(err,newlyCreated){
 		if(err){
 			req.flash('error', err.message);
-			console.log(newlyCreated);
+			
 			return res.redirect('back');
 		}else{
-			
+			console.log(newlyCreated);
 			res.redirect("/share" );
 		}
 	});
 
 });
+
 //NEW-ROUTE
 router.get("/share/new", middleware.isLoggedIn, function(req,res){
 	res.render("share/new");
@@ -82,7 +87,7 @@ router.get("/share/new", middleware.isLoggedIn, function(req,res){
 // };
 
 
-router.delete("/:id",middleware.checkShareOwnership, function(req,res){
+router.delete("/share/:id", function(req,res){
 	Share.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redirect("/share");

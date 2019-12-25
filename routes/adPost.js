@@ -230,6 +230,16 @@ router.post("/request", middleware.isLoggedIn,function(req,res){
 	});
 
 });
+router.delete("/request/:id", function(req,res){
+	Request.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			req.flash('error', err.message);
+			res.redirect("/adPost/request");
+		}else{
+			res.redirect("/adPost/request");
+		}
+	});
+});
 
 router.post("/category/new",function(req,res){
 	var category = req.body.category;
@@ -629,9 +639,9 @@ router.post("/:id", middleware.checkCampgroundOwnership,upload.single('img1'), f
 			
 	if (req.file){
 		try {
-			await cloudinary.v2.uploader.destroy(adpost.img1Id) ;
+			await cloudinary.uploader.destroy(adpost.img1Id) ;
 			
-			var result = await cloudinary.v2.uploader.upload(req.file.path);
+			var result = await cloudinary.uploader.upload(req.file.path);
 				adpost.img1Id = result.public_id;
 				adpost.img1 = result.secure_url;
 			
@@ -644,7 +654,7 @@ router.post("/:id", middleware.checkCampgroundOwnership,upload.single('img1'), f
 			
 		
 	}
-			Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
+			Campground.findByIdAndUpdate(req.params.id, req.body.adpost, function(err, updatedCampground){
 				if(err){
 					req.flash("error", err.message);
 					req.redirect("back");

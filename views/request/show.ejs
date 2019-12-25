@@ -251,6 +251,20 @@
 		<div id="cad" style="margin-top :60px;  float:left; hegith950px;" class="col-lg-3 ui raised card">
 		  <div class="content">
 			<div class="header"><%= adpost.reqTitle %></div>
+			  <% if(currentUser && adpost.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+					
+									<!-- <div class="float-right">
+					<a class="btn btn-success" href = "/campgrounds/<%= adpost._id %>/comments/new">Add New Comment</a>
+				                   </div> -->
+
+						
+									<form id="delete-form" action="/adPost/request/<%= adpost._id %>?_method=DELETE" method="POST">
+									<button style="margin-bottom:20px;margin-top:-10px;float:right;" class="btn btn-danger">DELETE</button>	
+										
+										
+									</form>
+				
+						<% } %>
 			<div class="meta">
 			  <span class="category">Expected-range:RS.<%= adpost.priceRange %></span>
 			</div>
@@ -265,6 +279,7 @@
 		</p>
       <img id="imm"  class="ui avatar image" src="https://image.flaticon.com/icons/svg/146/146031.svg"><span id="new"  ><%= adpost.author.username %>
 		</span>
+		
 				
     </div>
   </div>
