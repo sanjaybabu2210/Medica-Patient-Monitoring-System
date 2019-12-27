@@ -106,8 +106,122 @@
 		.ui-datepicker .ui-widget-content {
 		background: #4A85D3;
 		}
+		*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+
+}
+/* nav{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 8vh;
+	background-color: #5d4954;
+	font-family: 'Kulim Park', sans-serif;
+	
+
+
+
+}
+.logo{
+	color: rgb(226,226,226);
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-size: 20px;
+}
+.nav-links{
+	display: flex;
+	justify-content: space-around;
+	width: 30%;
+}
+.nav-links li{
+	list-style: none;
+}
+.nav-links a{
+	color:rgb(226,226,226);
+	text-decoration: none;
+	letter-spacing: 3px;
+	font-weight: bold;
+	font-size: 14px;
+
+
+}
+.burger div{
+	width: 25px;
+	height: 3px;
+	background-color:rgb(226,226,226);
+	margin:5px;
+
+}
+.nav-links li a:hover{
+		background-color: blue;
+		background-size:80px 60px;
+		padding: 18px;
+	}
+	.nav-links li a:click {
+		background-color: green;
+		background-size:80px 60px;
+		padding: 18px -10px;
+	}
+.burger {
+	display: none;
+	cursor: pointer;
+}
+@media screen and (max-width: 1024px){
+	.nav-links{
+		
+		width: 60%;
+	}
+}
+@media screen and (max-width: 768px){
+	body{
+		overflow-x: hidden;
+	}
+	.nav-links{
+		position: absolute;
+		left:0px;
+		height: 92vh;
+		top:8vh;
+		background-color: #5D4954;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 50%;
+		z-index:5;
+	position:absolute;
+		transform: translateX(-100%);
+		transition: transform 0.5s ease-in;
+	}
+	.nav-links li{
+		opacity:1;
+	}
+	.nav-links li a:hover{
+		background-color: blue;
+	}
+	.burger{
+		display: block;
+	}
+}
+.nav-active{
+	z-index:5;
+	position:absolute;
+	transform: translateX(0%);
+} */
+
 	</style>
-		<script>
+		<script >
+		const navSlide = () => {
+		const burger = document.querySelector('.burger');
+		const nav = document.querySelector('.nav-links');
+		const navLinks = document.querySelectorAll('.nav-links li');
+		burger.addEventListener('click',function(){
+			nav.classList.toggle('nav-active');
+		});
+		}
+		navSlide();
+		
+		
     
 		$(document).ready(function(){
         var date_input=$('input[name="date"]');
@@ -184,177 +298,7 @@
 .align-right {
   float: right;
 }
-#cssmenu ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: block;
-}
-#cssmenu ul li {
-  position: relative;
-  margin: 0;
-  padding: 0;
-}
-#cssmenu ul li a {
-  text-decoration: none;
-  cursor: pointer;
-}
-#cssmenu > ul > li > a {
-  color: #dddddd;
-  text-transform: uppercase;
-  display: block;
-  padding: 20px;
-  border-top: 1px solid #000000;
-  border-left: 1px solid #000000;
-  border-right: 1px solid #000000;
-  background: #222222;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  letter-spacing: 1px;
-  font-size: 16px;
-  font-weight: 300;
-  -webkit-transition: all 0.25s ease-in;
-  -moz-transition: all 0.25s ease-in;
-  -ms-transition: all 0.25s ease-in;
-  -o-transition: all 0.25s ease-in;
-  transition: all 0.25s ease-in;
-  position: relative;
-}
-#cssmenu > ul > li:first-child > a {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-#cssmenu > ul > li:last-child > a {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom: 1px solid #000000;
-}
-#cssmenu > ul > li:hover > a,
-#cssmenu > ul > li.open > a,
-#cssmenu > ul > li.active > a {
-  background: #151515;
-  color: #ffffff;
-}
-#cssmenu ul > li.has-sub > a::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 13px solid #000000;
-  border-botom: 13px solid transparent;
-  border-left: 125px solid transparent;
-  border-right: 125px solid transparent;
-  left: 0;
-  bottom: -13px;
-  bottom: 0px;
-  z-index: 1;
-  opacity: 0;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease;
-}
-#cssmenu ul > li.has-sub > a::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 13px solid #151515;
-  border-botom: 13px solid transparent;
-  border-left: 125px solid transparent;
-  border-right: 125px solid transparent;
-  left: 0;
-  bottom: -12px;
-  bottom: -1px;
-  z-index: 3;
-  opacity: 0;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease;
-}
-#cssmenu ul > li.has-sub::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border: 7px solid transparent;
-  border-top-color: #dddddd;
-  z-index: 2;
-  right: 20px;
-  top: 24.5px;
-  pointer-events: none;
-}
-#cssmenu ul > li:hover::after,
-#cssmenu ul > li.active::after,
-#cssmenu ul > li.open::after {
-  border-top-color: #ffffff;
-}
-#cssmenu ul > li.has-sub.open > a::after {
-  opacity: 1;
-  bottom: -13px;
-}
-#cssmenu ul > li.has-sub.open > a::before {
-  opacity: 1;
-  bottom: -12px;
-}
-#cssmenu ul ul {
-  display: none;
-}
-#cssmenu ul ul li {
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-}
-#cssmenu ul ul li a {
-  background: #f1f1f1;
-  display: block;
-  position: relative;
-  font-size: 15px;
-  padding: 14px 20px;
-  border-bottom: 1px solid #dddddd;
-  color: #777777;
-  font-weight: 300;
-  -webkit-transition: all 0.25s ease-in;
-  -moz-transition: all 0.25s ease-in;
-  -ms-transition: all 0.25s ease-in;
-  -o-transition: all 0.25s ease-in;
-  transition: all 0.25s ease-in;
-}
-#cssmenu ul ul li:first-child > a {
-  padding-top: 18px;
-}
-#cssmenu ul ul ul li {
-  border: 0;
-}
-#cssmenu ul ul li:hover > a,
-#cssmenu ul ul li.open > a,
-#cssmenu ul ul li.active > a {
-  background: #e4e4e4;
-  color: #666666;
-}
-#cssmenu ul ul > li.has-sub > a::after {
-  border-top: 13px solid #dddddd;
-}
-#cssmenu ul ul > li.has-sub > a::before {
-  border-top: 13px solid #e4e4e4;
-}
-#cssmenu ul ul ul li a {
-  padding-left: 30px;
-}
-#cssmenu ul ul > li.has-sub::after {
-  top: 18.5px;
-  border-width: 6px;
-  border-top-color: #777777;
-}
-#cssmenu ul ul > li:hover::after,
-#cssmenu ul ul > li.active::after,
-#cssmenu ul ul > li.open::after {
-  border-top-color: #666666;
-}
+
 
   a{
   color: black;
@@ -489,14 +433,15 @@
 
 
  
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <a class="navbar-brand" href="#">Vit</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav nav-links mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ShareMyCab
@@ -521,6 +466,7 @@
         <a class="nav-link" href="/adPost/resources">Resources</a>
       </li>
     </ul>
+
     <form class="form-inline" action="/adPost" method="GET">
       <input class="form-control mr-sm-2" type="search" placeholder="Search..." name="search" aria-label="Search">
       <button class="btn btn-outline-light my-2 my-sm-0" type="submit" value="search"><i class="fa fa-search"></i></button>
@@ -547,16 +493,51 @@
 
 	
 		</nav>
+ 
 
+		
+		
+		
+		
+<!-- 		
+		
+<nav>
+	<div class="logo">
+		<h4>The Nav</h4>
+	</div>
+	<ul class="nav-links">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">About</a></li>
+		<li><a href="#">Work</a></li>
+		<li><a href="#">Project</a></li>
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"> </div>
+		<div class="line3"></div>
+		<div class="line4"></div>
+	</div>
+</nav>
+		
+		 -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
