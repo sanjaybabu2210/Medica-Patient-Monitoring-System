@@ -59,7 +59,7 @@ border: 1px solid #ffca28;
 				height:400px;
 			}
 			#to{
-				margin-top:-45px; padding-left:250px;float:left;
+				margin-top:-15px; padding-left:250px;float:left;
 			}
 			#fo{
 				margin-left:40%;
@@ -80,7 +80,7 @@ border: 1px solid #ffca28;
 </style>
 
 
-<div style="margin:-3.8% 0%;min-height:100%;background-color:#ffeaea;background-repeat:no-repeat;background-size:cover;margin-top:-13%;margin-bottom:-12%;">
+<div style="margin:-3.8% 0%;min-height:100%;background-color:#ffeaea;background-repeat:no-repeat;background-size:cover;">
 
 
 			
@@ -89,7 +89,7 @@ border: 1px solid #ffca28;
 	  
 	
 <div  class="py-5 text-center ">
-    <h2 style="margin-top:5%;margin-bottom:20%;" id="newlyccc">ShareMyCab - Request</h2>
+    <h2 style="margin-top:5%;" id="newlyccc">ShareMyCab - Request</h2>
     <p class="lead">Request someone to join with them in their journey</p>
 </div>
 		<form action="/share" method="GET" class="form-inline">
@@ -107,7 +107,7 @@ border: 1px solid #ffca28;
 							</div>
 </form>
 	
-	<div class="text-center" style="margin-left:6%;margin-top:5%;margin-bottom:29%;" >
+	<div class="text-center" style="margin-left:6%;margin-top:5%;" >
 							<% if(noMatch !== null){ %>
 											<% console.log(noMatch) %>
 								<h3 >
@@ -122,7 +122,7 @@ border: 1px solid #ffca28;
 							<% } %>
 						</div>
 	
-<div style="margin-left:30px;;height:100%;" class="row ">
+<div style="margin-left:30px;margin-bottom:5%;height:100%;" class="row ">
 <% share.forEach(function(share){%>
 	
 
@@ -141,19 +141,20 @@ border: 1px solid #ffca28;
 					  <div  id="from">
 						  <%= share.fromPlace %>
 				  </div>
-				</div>
-					   <div id="to" style=" ">
-						  <label  for= "to"><h5>To Location:</h5></label>
+				
+					   <div >
+						  <label  style="float:right;margin-top:-12%; "for= "to"><h5>To Location:</h5></label>
 						  <div  id="to">
 							  <%= share.toPlace %>
 					  </div>
 					</div>
+		  </div>
 		  <hr style="weight:3px;">
 		  <label for="describe"><h5>
 			  Description:
 			  </h5></label>
 		  <div id="describe" style="margin-bottom:50px;" >
-		
+			  <%= console.log(share.description) %>
 			  <%= share.description %>
 		  </div>
 		<div class="well">
