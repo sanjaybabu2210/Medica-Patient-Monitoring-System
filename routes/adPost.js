@@ -85,6 +85,12 @@ router.get("/", function(req, res){
 router.get("/about",function(req,res){
 	res.render("adPost/about");
 })
+router.get("/contact",function(req,res){
+	res.render("adPost/contact");
+})
+router.get("/faq",function(req,res){
+	res.render("adPost/faq");
+})
 
 router.get("/category/:category",function(req,res){
 	       var noMatch = null;
@@ -486,6 +492,8 @@ router.post("/", middleware.isLoggedIn, upload.single('img1') ,function(req, res
 	}
 	var category = req.body.category;
 	var ph = req.body.ph;
+		var img2 = "https://res.cloudinary.com/tycoon/image/upload/v1577472450/Capture_ruirju.png"
+		var img3 = "https://res.cloudinary.com/tycoon/image/upload/v1577472450/Capture_ruirju.png"
 		
 	var room = req.body.room;
 	var block = req.body.block;
@@ -494,7 +502,7 @@ router.post("/", middleware.isLoggedIn, upload.single('img1') ,function(req, res
 
 console.log(ph);
 	
-	 var newAd = {adTitle:adTitle,category: category, ph:ph, img1: img1 ,img1Id: img1_id,description: description, author: author,room:room,block:block, price1:price1 }
+	 var newAd = {adTitle:adTitle,category: category,added1:0,added2:0, ph:ph, img2:img2, img3:img3,img1: img1 ,img1Id: img1_id,description: description, author: author,room:room,block:block, price1:price1 }
 	console.log(category);
 console.log(ph);
 		console.log(newAd);
@@ -669,8 +677,79 @@ router.post("/:id", middleware.checkCampgroundOwnership,upload.single('img1'), f
 		
 	});
 });
-////
 
+////
+router.post("/:id/image2", middleware.checkCampgroundOwnership,upload.single('img1'), function(req,res){
+	//find and update the correct campground and redirect show page
+	cloudinary.uploader.upload(req.file.path, function(result) {
+
+	
+var imgid = result.public_id;
+
+   var img = result.secure_url;
+	Campground.findById(req.params.id,async function(err, adpost){
+		if(err){
+			req.flash("error", err.message)
+			res.redirect("back");
+		}else{
+			if(adpost.added1=='0'){
+				adpost.img2id = imgid;
+			adpost.img2 = img;
+				adpost.added1 = 1;
+				
+			}else{
+				adpost.img3id = imgid;
+				adpost.img3 = img;
+				adpost.added2= 1;
+			}
+			
+
+			Campground.findByIdAndUpdate(req.params.id, adpost, function(err, updatedCampground){
+				if(err){
+					req.flash("error", err.message);
+					req.redirect("back");
+					
+				}else{
+					req.flash("success", "Successfully Updated")
+			res.redirect("/adPost/" + req.params.id);
+				}
+				});
+			
+		}
+	});
+	});
+});
+router.post("/:id/image3", middleware.checkCampgroundOwnership,upload.single('img1'), function(req,res){
+	//find and update the correct campground and redirect show page
+	cloudinary.uploader.upload(req.file.path, function(result) {
+
+	
+var img3id = result.public_id;
+
+   var img3 = result.secure_url;
+	Campground.findById(req.params.id,async function(err, adpost){
+		if(err){
+			req.flash("error", err.message)
+			res.redirect("back");
+		}else{
+			adpost.img3id = img3id;
+			adpost.img3 = img3;
+
+			Campground.findByIdAndUpdate(req.params.id, adpost, function(err, updatedCampground){
+				if(err){
+					req.flash("error", err.message);
+					req.redirect("back");
+					
+				}else{
+					req.flash("success", "Successfully Updated")
+			res.redirect("/adPost/" + req.params.id);
+				}
+				});
+			
+		}
+	});
+	});
+});
 ////
 //UPDATE CAMPGROUND ROUTE
 // Campground Like Route

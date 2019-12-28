@@ -6,32 +6,62 @@
 <% include ../partials/header %>
 
 
-
-
-<!-- 
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"> -->
-		<!-- Latest compiled and minified CSS -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
-
-<!-- Optional theme -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"> -->
-<!-- <style >
-	.man{
-		text-decoration: line-through;
+<style>
+	@media only screen and (max-width: 700px) {
+			#selli{
+				margin:7%;
+				
+				
+				
+			}
 	}
-	 -->
-<!-- </style>
-	<link rel = "stylesheet" href="/stylesheets/main.css">
+	@media only screen and (max-width: 700px) {
+			#pri{
+				margin:1%;
+				width:100px;
+				
+				
+				
+			}
+	}
+	@media only screen and (max-width: 700px) {
+			#sale{
+				width:20px;
+				
+				
+			}
+	}
+	@media only screen and (min-width: 1200px) {
+			#selli{
+				margin:70px 20%;
+				
+				
+				
+			}
+	}
+	
+.imagediv {
+	float:left;
+    margin-top:50px;
+}
+.imagediv .showonhover {
+	background:red;
+	padding:20px;
+	opacity:0.9;
+	color:white;
+	width: 100%;
+	display:block;	
+	text-align:center;
+	cursor:pointer;
+}
+</style>
 
 
-</head>
-<body>
- -->
 
-<div style="margin-top: 40px" class="container jumbotron">
+
+<div id="selli" style="width:auto;" class="container jumbotron">
 					<form class="container" action="/adPost/<%= adpost._id %>?_method = PUT" method="POST" enctype="multipart/form-data">
-						<div class="form-group display-5">
+						<div style="margin-top:40px" class="form-group display-5">
 							DETAILS OF YOUR AD
 								 
 						</div>
@@ -63,29 +93,61 @@
 						         
 									 
 						
-				        </div>
+				
+						
 						<div class="form-group">
 							 <label for="address">ENTER YOUR PICK ADRRESS *</label>
 							    <div class="row">
 							    	<div class="col">
-							    		<input required type="text" class="form-control" value="<%= adpost.block %> "name="adpost[block]" placeholder="Block-HOSTEL/ACADEMIC">
-							    	</div>
+							    	
+<div class="scrollable required field">
+<label for="block" ><h4>Hostel/Academic Block</h4></label>
+<select id="block" class="form-control" name="adpost[block]" placeholder="Block-HOSTEL/ACADEMIC">
+    <option value="A-BLOCK(MH)" selected>A Block Men's</option>
+    <option value="B-BLOCK(MH)">B Block Men's</option>
+    <option value="C-BLOCK(MH)">C Block Men's</option>
+    <option value="D-BLOCK(MH)">D Block Men's</option>
+    <option value="E-BLOCK(MH)">E Block Men's</option>
+    <option value="F-BLOCK(MH)">F Block Men's</option>
+	<option value="G-BLOCK(MH)">G Block Men's</option>
+	<option value="H-BLOCK(MH)">H Block Men's</option>
+	<option value="J-BLOCK(MH)">J Block Men's</option>
+	<option value="K-BLOCK(MH)">K Block Men's</option>
+	<option value="L-BLOCK(MH)">L Block Men's</option>
+	<option value="M-BLOCK(MH)">M Block Men's</option>
+	<option value="N-BLOCK(MH)">N Block Men's</option>
+	<option value="P-BLOCK(MH)">P Block Men's</option>
+	<option value="Q-BLOCK(MH)">Q Block Men's</option>
+	<option value="R-BLOCK(MH)">R Block Men's</option>
+	<option value="A-BLOCK(LH)">A Block Women's</option>
+	<option value="B-BLOCK(LH)">B Block Women's</option>
+	<option value="C-BLOCK(LH)">C Block Women's</option>
+	<option value="D-BLOCK(LH)">D Block Women's</option>
+	<option value="E-BLOCK(LH)">E Block Women's</option>
+	<option value="F-BLOCK(LH)">F Block Women's</option>
+	<option value="G-BLOCK(LH)">G Block Women's</option>
+	<option value="H-BLOCK(LH)">H Block Women's</option>
+	<option value="Technoly Tower">Technology Tower</option>
+	<option value="Silver Jubliee Tower">Silver Jubliee Tower</option>
+</select>
+</div>
+</div>
 							    	<div class="col">
-							    		<input type="text" class="form-control" name="adpost[room]" value="<%= adpost.room %>" placeholder="Room NO:(optional)">
+										<label for="room"><h4>Room NO:</h4> </label>
+							    		<input id="room" value="<%= adpost.room %>" type="text" class="form-control " name="room" placeholder="Room NO:(optional)">
 							    	</div>
 							    	
 							    </div>
-						</div>
 
 
-						<div class=" form-group ">
-							<label for="PRICE"  class="display-5">SET A PRICE</label>
+						<div id="pri" sytle="margn-left:500px;" class=" form-group ">
+							<label for="PRICE"  class="display-5">SET A PRICE(SALE/RENT)</label>
 							<hr>
 									<div class="row">
-										<div  class="col ui left action input  ">
+										<div  id="sale" class="col ui left action input  ">
 											  <a class="ui teal labeled icon button">
 											    <i class="cart icon"></i>
-											    For Sale(INR)
+											    PRICE(INR)
 											  </a>
 											  <input name="adpost[price1]" value="<%= adpost.price1 %>" type="number" min="1" step="1">
 										</div>
@@ -94,17 +156,10 @@
 						</div>
 						<hr>
 						<div class="form-group">
-								<label required pattern="{10}" for="adTitle">Phone No*</label>
+								<label required pattern="[6-9]{1}[0-9]{9}" for="adTitle">Phone No*</label>
 							    <input name="adpost[ph]" value="<%= adpost.ph %>" type="number" class="form-control" id="adTitle" placeholder="Enter Mobile Number">
 						</div>
-						<label required  for="photos">Photos </label>
-								<div style="margin: 0px 60px 0px 100px " class="form-group">
-										
-										<div class="row">
-											    <input type="file" id="image" name="img1" style="padding:60px 30px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control" accept="image/*" >
-											    
-										</div>
-								</div>
+					
 										<hr>
 								
 									<div class="form-group">
@@ -112,22 +167,15 @@
 									</div>
 					
 					
-					</form>
-
+					
+							 </div>
 </div>
 
 
-
-<!-- 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- -->
 
 
 
-
-
-<!-- </body>
-</html> -->
 <% include ../partials/footer %>

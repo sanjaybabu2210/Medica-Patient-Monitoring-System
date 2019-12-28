@@ -36,52 +36,24 @@
 				
 			}
 	}
+	
+.imagediv {
+	float:left;
+    margin-top:50px;
+}
+.imagediv .showonhover {
+	background:red;
+	padding:20px;
+	opacity:0.9;
+	color:white;
+	width: 100%;
+	display:block;	
+	text-align:center;
+	cursor:pointer;
+}
 </style>
 
-<!-- 
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"> -->
-		<!-- Latest compiled and minified CSS -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
 
-<!-- Optional theme -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"> -->
-<!-- <style >
-	.man{
-		text-decoration: line-through;
-	}
-	 -->
-<!-- </style>
-	<link rel = "stylesheet" href="/stylesheets/main.css">
-
-
-</head>
-<body>
- -->
-<!-- 
-    <div class="row">
-        <h1 style="text-align: center">Create a New Campground</h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/campgrounds" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="campground[name]" placeholder="name">
-                </div>
-                <div class="form-group">
-                    <label for="image">Image</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="campground[description]" placeholder="description">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            <a href="/campgrounds">Go Back</a>
-        </div>
-    </div>
-
- -->
 
 <div  id="selli" style="width:auto;" class="container jumbotron">
 					<form class="container" action="/adPost" method="POST" enctype="multipart/form-data">
@@ -97,7 +69,7 @@
 						<hr>
 						<div class="form-group">
 							 <label  for="adTitle">CATEGORY*</label>
-							<input type="text"    name="category" value=<%= category %>&#160; &nbsp;>
+							<input type="text"    name="category" value=<%= category %>&#160; &nbsp; disabled>
 					
 						</div>
 						<hr>
@@ -114,24 +86,8 @@
 						 <hr>
 						 <div style="margin-left: 20px; margin-bottom:20px; " class="form-group">
 						 	
-<!-- 
-									 	<div class="form-check col ">
-										          <input class="form-check-input " type="radio" name="type" id="gridRadios1" value="option1" checked>
-										          <label class="form-check-label " for="gridRadios1">
-										            Day Scholar
-										          </label>
-							        </div>
-							        <div class="form-check col">
-									          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-									          <label class="form-check-label" for="gridRadios2">
-									            Hosteler
-												          </label> -->
-						               <!-- <div style="margin:auto 350px;" class="ui large buttons">
-										  <button id="typer" name="type" value="1" class="ui button">Hosteller</button>
-										  <div class="or"></div>
-										  <button id="typer" name="type" value="2" class="ui button ">Day Scholar</button>
-										</div>
-								 -->
+
+							
 						
 				        </div>
 						<div class="form-group">
@@ -181,13 +137,13 @@
 </div>
 
 						<div id="pri" sytle="margn-left:500px;" class=" form-group ">
-							<label for="PRICE"  class="display-5">SET A PRICE</label>
+							<label for="PRICE"  class="display-5">SET A PRICE(SALE OR RENT)</label>
 							<hr>
 									<div class="row">
 										<div id="sale" class="col ui left action input  ">
 											  <a class="ui teal labeled icon button">
 											    <i class="cart icon"></i>
-											    For Sale(INR)
+											    PRICE(INR)
 											  </a>
 											  <input name="price1" type="number" placeholder="enter price " min="1" step="1">
 										</div>
@@ -205,7 +161,7 @@
 						
 						<div class="form-group">
 						    <label for="phone">Phone No *</label>
-						    <input type="text" pattern="[7-9]{1}[0-9]{9}"class="form-control" placeholder="phone Number" name="ph" id="phone" required>
+						    <input type="text" pattern="[6-9]{1}[0-9]{9}"class="form-control" placeholder="phone Number" name="ph" id="phone" required>
 						 </div>
 						<label required  for="photos">Photos </label>
 								<div style="margin: 0px 60px 0px 60px " class="form-group">
@@ -214,19 +170,17 @@
 											    
 											
                     
-										<input type="file" id="image" name="img1" style="padding:60px 20px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" requiered >
-											<!-- <input type="file" id="image" name="img2" style="padding:60px 20px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" >
-											<input type="file" id="image" name="img3" style="padding:60px 20px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" > -->
-											<!-- <input type="file" id="image" name="img4" style="padding:60px 20px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" >
-											<!-- <input type="file" id="image" name="img5" style="padding:60px 30px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" > -->
-											<!-- <input type="file" id="image" name="img6" style="padding:60px 30px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" > --> 
-               
+										<!-- <input type="file" id="image" name="img1" style="padding:60px 20px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" requiered  > -->
+											
+								
+<input type="file" id="file1" name="img1" accept="image/*"  capture style="display:none" required/>
+<img src="https://www.pngtube.com/myfile/detail/32-327440_add-photo-icon-png.png"  id="upfile1" style="cursor:pointer;height:160px;width:160px;" />
+</p>
 											   
 										</div>
 								</div>
 										<hr>
-									<!-- <div class="form-group">
-											<label required name="show" for="adTitle">Show My Phone No in Ad<input type="Radio" class="form-control" id="adTitle" ></label> -->
+							
 										    
 									
 									<div class="form-group">
@@ -247,7 +201,68 @@
 
 
 
+<script>
+	$(document).ready(function(e) {
+        $(".showonhover").click(function(){
+			$("#selectfile").trigger('click');
+		});
+    });
 
+
+var input = document.querySelector('input[type=file]'); // see Example 4
+
+input.onchange = function () {
+  var file = input.files[0];
+
+  drawOnCanvas(file);   // see Example 6
+  displayAsImage(file); // see Example 7
+};
+
+function drawOnCanvas(file) {
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    var dataURL = e.target.result,
+        c = document.querySelector('canvas'), // see Example 4
+        ctx = c.getContext('2d'),
+        img = new Image();
+
+    img.onload = function() {
+      c.width = img.width;
+      c.height = img.height;
+      ctx.drawImage(img, 0, 0);
+    };
+
+    img.src = dataURL;
+  };
+
+  reader.readAsDataURL(file);
+}
+
+function displayAsImage(file) {
+  var imgURL = URL.createObjectURL(file),
+      img = document.createElement('img');
+
+  img.onload = function() {
+    URL.revokeObjectURL(imgURL);
+  };
+
+  img.src = imgURL;
+  document.body.appendChild(img);
+}
+
+$("#upfile1").click(function () {
+    $("#file1").trigger('click');
+});
+$("#upfile2").click(function () {
+    $("#file2").trigger('click');
+});
+$("#upfile3").click(function () {
+    $("#file3").trigger('click');
+});
+
+
+</script>
 
 
 <!-- </body>

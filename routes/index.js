@@ -220,9 +220,14 @@ router.get("/login",function(req,res){
 //handling loginlogic
 router.post("/login", passport.authenticate("local", 
     {successRedirect:"/adPost",
-	failureRedirect: "/login"
+	failureRedirect: "/login",
+	  badRequestMessage : 'Missing username or password.',
+    failureFlash: true
 	}),function(req,res){
-		req.flash("success", "User Name is not registered");
+		
+		return req.flash("error", "User Name is not registered");
+	
+		
 	
 });
 // logout route
@@ -287,7 +292,7 @@ router.post('/forgot', function(req, res, next) {
       });
       var mailOptions = {
         to: user.username,
-        from: 'backton2022@gmail.com',
+        from: 'VitConnex@gmail.com',
         subject: 'VITWEB Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +

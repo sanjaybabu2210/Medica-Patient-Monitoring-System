@@ -1,6 +1,29 @@
 
 <% include ./partials/header %>
+<style>
+@media only screen and (max-width: 700px) {
+			#divid{
+				display:none
+				
+			}
+	#dividm{
+		margin-left:43%;
+	}
+	
+	}
+@media only screen and (min-width: 1200px) {
+			#divid{
+			margin-left:50%;
+				
+				
+				
+			}
+	#dividm{
+display:none;}
+	}
 
+
+</style>
 <!-- <script>ff
   window.fbAsyncInit = function() {
     FB.init({
@@ -60,7 +83,7 @@
 </div>
 	
 	
-<div class="ui placeholder segment">
+<div style="margin-top:10%;" class="ui placeholder segment">
   <div class="ui two column very relaxed stackable grid">
     <div class="column">
 <form class="form-signin" action="/login" method="POST">
@@ -85,15 +108,23 @@
       </div>
 	<!-- <a style="margin-left:32%;margin-top:4px;" href="/auth/facebook" class="btn btn-primary"><span style="padding-right:20px;"class="fa fa-facebook"></span>facebook</a> -->
 	<div class="text-center">
-		<a  href="/forgot">Forget Password</a>
+		<a   style="color:blue;text-decoration:underline;"href="/forgot">Forget Password</a>
     </div>
 
-		
+		</form>
 	</div>
+	  <div id="divid" class="ui vertical divider">
+		  or
+		  
+	  </div>
+<div id="dividm" >
+	<h3>or</h3>
+		  
+	  </div>
 	  
-</form>
     <div class="middle aligned column">
-      <div class="ui big button">
+		
+      <div class="ui big button mb-2">
         <i class="signup icon"></i>
         <a href="/register">Sign Up</a>
       </div>

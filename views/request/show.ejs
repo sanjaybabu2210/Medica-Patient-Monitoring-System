@@ -32,6 +32,7 @@
 		}
 	}
 </style>
+
 <div style="margin-top:5%;" class="row conatainer">
 	
 <div class="col-lg-3">
@@ -244,6 +245,11 @@
 </div>
 		
 	<div class="col-lg-9" style=" "> 
+		<a  href="/adPost/category2" data-toggle="tooltip" data-placement="top" title="POST YOUR JOURNEY">
+  <i style="margin-left:45%; margin-top:2%;" class="fas fa-plus-circle fa-3x"></i>
+</a>
+		
+		<hr>
 		<% allreq.forEach(function(adpost){%>
 		
 	
@@ -277,7 +283,7 @@
 		<p style="float:left; margin-right:100px">
 			<%= adpost.block %> <%= adpost.Phone %>
 		</p>
-      <img id="imm"  class="ui avatar image" src="https://image.flaticon.com/icons/svg/146/146031.svg"><span id="new"  ><%= adpost.author.username %>
+      <img id="imm"  class="ui avatar image" src="https://f0.pngfuel.com/png/980/304/man-profile-illustration-computer-icons-user-profile-avatar-png-clip-art.png"><span id="new"  ><%= adpost.author.username %>
 		</span>
 		
 				
