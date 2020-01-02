@@ -125,6 +125,47 @@ router.get("/category/:category",function(req,res){
 		   });
 			 }
 });
+
+router.get("/category/:category/request",function(req,res){
+	       var noMatch = null;
+		   var cat = req.params.category;
+	       console.log(cat);
+	if(cat=="all")
+		{
+			
+				Request.find({}, function(err, allAds){
+           if(err){
+               console.log(err);
+           } else {
+			   if(allAds.length < 1) {
+                  noMatch = "SORRY NO REQUEST FOUND FOR YOUR SEARCH ):";
+              }
+			   console.log(allAds);
+              res.render("request/show",{allreq:allAds, category:cat,  noMatch: noMatch});
+           }
+			});
+		}else{  Request.find({category:cat}, function(err, allnew){
+           if(err){
+               console.log(err);
+           } else {
+			   if(allnew.length < 1) {
+                  noMatch = "SORRY NO REQUEST FOUND FOR YOUR SEARCH ):";
+              }
+			    console.log(allnew);
+              res.render("request/show",{allreq:allnew,category:cat,  noMatch: noMatch});
+		   }
+			
+			   
+			  
+           
+				
+				
+				
+		   
+		   });
+			 }
+});
+			
 			
 
 
@@ -221,6 +262,7 @@ router.post("/request", middleware.isLoggedIn,function(req,res){
 		username: req.user.username
 	}
 			var category = req.body.category;
+	console.log(category);
 	var reqNew = {
 		reqTitle:reqTitle, description:description, priceRange: priceRange, author: author,Phone:Phone,block:block, category:category
 	}
@@ -231,6 +273,7 @@ router.post("/request", middleware.isLoggedIn,function(req,res){
 			return res.redirect('back');
 		}else{
 			
+			console.log(newlyCreated);
 			res.redirect("/adPost/request");
 		}
 	});

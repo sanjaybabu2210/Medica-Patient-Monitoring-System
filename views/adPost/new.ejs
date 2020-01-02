@@ -36,7 +36,7 @@
 				
 			}
 	}
-	
+/* 	
 .imagediv {
 	float:left;
     margin-top:50px;
@@ -50,7 +50,7 @@
 	display:block;	
 	text-align:center;
 	cursor:pointer;
-}
+} */
 </style>
 
 
@@ -69,7 +69,7 @@
 						<hr>
 						<div class="form-group">
 							 <label  for="adTitle">CATEGORY*</label>
-							<input type="text"    name="category" value=<%= category %>&#160; &nbsp; disabled>
+							<input type="text"    name="category" value=<%= category %>&#160; &nbsp;>
 					
 						</div>
 						<hr>
@@ -171,12 +171,15 @@
 											
                     
 										<!-- <input type="file" id="image" name="img1" style="padding:60px 20px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" requiered  > -->
-											
-								
+											<div style="margin-bottom:50px;" class="custom-file">
+    <input  type="file" name="img1" id="image" accept="image/*"  class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">Choose file</label>
+	
+  </div>
+<!-- 								
 <input type="file" id="file1" name="img1" accept="image/*"  capture style="display:none" required/>
 <img src="https://www.pngtube.com/myfile/detail/32-327440_add-photo-icon-png.png"  id="upfile1" style="cursor:pointer;height:160px;width:160px;" />
-</p>
-											   
+									    -->
 										</div>
 								</div>
 										<hr>
@@ -201,7 +204,7 @@
 
 
 
-<script>
+<!-- <script>
 	$(document).ready(function(e) {
         $(".showonhover").click(function(){
 			$("#selectfile").trigger('click');
@@ -262,7 +265,7 @@ $("#upfile3").click(function () {
 });
 
 
-</script>
+</script> -->
 
 
 <!-- </body>

@@ -134,15 +134,15 @@ router.post("/register", function(req,res){
 																 var smtpTransport = nodemailer.createTransport({
 											service: 'Gmail', 
 											auth: {
-											  user: 'backton2022@gmail.com',
-											  pass: '.sanj289@vkifo.'
+											  user: 'vitconnex@gmail.com',
+											  pass: 'mybusiness'
 											}
 										  });
 										  var mailOptions = {
 											to: user.username,
-											from: 'vitWeb@gmail.com',
-											subject: 'VITWEB ACCOUNT VERIFICATION',
-											text: 'You are receiving this because you (or someone else) have tried to sign in for VITWEB account.\n\n' +
+											from: 'vitconnex@gmail.com',
+											subject: 'VITCONNEX ACCOUNT VERIFICATION',
+											text: 'You are receiving this because you (or someone else) have tried to sign in for VITCONNEX account.\n\n' +
 											  'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
 											  'http://' + req.headers.host + '/verify/' + token + '\n\n' +
 											  'If you did not request this, please ignore this email \n'
@@ -181,15 +181,15 @@ router.post("/register", function(req,res){
 							 var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'backton2022@gmail.com',
-          pass: '.sanj289@vkifo.'
+          user: 'vitconnex@gmail.com',
+          pass: 'mybusiness'
         }
       });
       var mailOptions = {
         to: user.username,
-        from: 'vitWeb@gmail.com',
-        subject: 'VITWEB ACCOUNT VERIFICATION',
-        text: 'You are receiving this because you (or someone else) have tried to sign in for VITWEB account.\n\n' +
+        from: 'vitconnex@gmail.com',
+        subject: 'VITCONNEX ACCOUNT VERIFICATION',
+        text: 'You are receiving this because you (or someone else) have tried to sign in for VITCONNEX account.\n\n' +
           'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
           'http://' + req.headers.host + '/verify/' + token + '\n\n' +
           'If you did not request this, please ignore this email \n'
@@ -286,14 +286,14 @@ router.post('/forgot', function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'backton2022@gmail.com',
-          pass: '.sanj289@vkifo.'
+          user: 'vitconnex@gmail.com',
+          pass: 'mybusiness'
         }
       });
       var mailOptions = {
         to: user.username,
         from: 'VitConnex@gmail.com',
-        subject: 'VITWEB Password Reset',
+        subject: 'VITCONNEX Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -369,13 +369,13 @@ router.post('/reset/:token', function(req, res) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'backton2022@gmail.com',
-          pass: '.sanj289@vkifo.'
+          user: 'vitconnex@gmail.com',
+          pass: 'mybusiness'
         }
       });
       var mailOptions = {
         to: user.username,
-        from: 'backton2022@mail.com',
+        from: 'vitconnex@gmail.com',
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +
           'This is a confirmation that the password for your account ' + user.username + ' has just been changed.\n'
