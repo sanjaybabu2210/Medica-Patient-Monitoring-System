@@ -259,7 +259,8 @@ router.post("/request", middleware.isLoggedIn,function(req,res){
 			var block = req.body.block;
 	var author = {
 		id: req.user._id,
-		username: req.user.username
+		username: req.user.username,
+		name:req.user.name
 	}
 			var category = req.body.category;
 	console.log(category);

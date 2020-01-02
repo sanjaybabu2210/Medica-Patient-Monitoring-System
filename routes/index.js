@@ -79,6 +79,9 @@ router.post("/step3",function(req,res){
 router.get("/register", function(req,res){
 	res.render("register",{page: 'register'});
 })
+router.get("/register/admin", function(req,res){
+	res.render("admin",{page: 'register'});
+})
 //HANDLE SIGN UP LOGIC
 router.post("/register", function(req,res){
 	// var newUser = new User({username: req.body.username,  name: req.body.name, year: req.body.year});
@@ -117,7 +120,10 @@ router.post("/register", function(req,res){
 							console.log(usr);           
 							var exp =  Date.now() + 3600000;  
 					var newUser = {username: req.body.username,name:req.body.name, year: req.body.year, resetPasswordToken: token, resetPasswordExpires: exp };
-
+						if(req.body.adminCode === "Tyc00n2020"){
+								newUser.isAdmin = true;
+							}
+							
 
 					User.register(newUser, req.body.password, function(err, user){
 						if(err){
@@ -127,6 +133,8 @@ router.post("/register", function(req,res){
 							}
 						else{
 							console.log(user);
+							console.log(req.body.adminCode);
+							console.log(newUser.isAdmin);
 						passport.authenticate("local")(req, res, function(){
 							console.log(user);
 							req.flash("success","Welcome to vitblog " + user.name);
@@ -164,7 +172,10 @@ router.post("/register", function(req,res){
 
 						 var exp =  Date.now() + 3600000;  
 					var newUser = {username: req.body.username,name:req.body.name, year: req.body.year, resetPasswordToken: token, resetPasswordExpires: exp };
-
+	if(req.body.adminCode === "Tyc00n2020"){
+								newUser.isAdmin = true;
+							}
+							
 
 					User.register(newUser, req.body.password, function(err, user){
 						if(err){
