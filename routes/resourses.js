@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var router = express.Router({mergeParams: true });
 var Share = require("../models/share");
+var Feed = require("../models/feedb");
 var middleware = require("../middleware/index.js");
 
 
@@ -65,6 +66,39 @@ router.post("/share", middleware.isLoggedIn,function(req, res ,next) {
 		}else{
 			
 			res.redirect("/share" );
+		}
+	});
+
+});
+router.get("/feedback",function(req,res){
+	res.send("hig")
+})
+router.post("/feedback", function(req, res ,next) {
+///
+	
+	
+
+	var fname = req.body.fname;
+	var lname = req.body.lname;
+	
+
+
+	var comment = req.body.comment;
+	
+	var email = req.body.email;
+
+
+	 var newfeed = {fname: fname,lname:lname, comment: comment, email:email}
+	
+	//create a new campground and save to db
+	Feed.create(newfeed, function(err,newlyCreated){
+		if(err){
+			req.flash('error', err.message);
+			console.log(newlyCreated);
+			return res.redirect('back');
+		}else{
+			
+			res.redirect("/" );
 		}
 	});
 

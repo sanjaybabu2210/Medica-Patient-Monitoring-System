@@ -11,7 +11,7 @@
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <title>Home</title>
 			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -36,11 +36,398 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css">
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 		
  <style type="text/css">
+	 		.bg-dark {
+			background-color: #1c2331;;
+		}
+		.dropdown-menu {
+			background-color: #1c2331;; 
+		}
+		.dropdown-item {
+			background-color: #1c2331;;
+			color: white;
+		}
+		.navbar-dark {
+			background: #1c2331;; 
+		}
+		#highlight {
+		color: #00F;
+		}
+		.ui-datepicker .ui-widget-content {
+		background: #4A85D3;
+		}
+		*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+
+}
+nav{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 8vh;
+	background-color: #1c2331;;
+	font-family: 'Cairo', sans-serif;
+
+	
+	
+
+
+
+}
+		
+.logo{
+	color: rgb(226,226,226);
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-size: 20px;
+}
+		/*
+.nav-links{
+	display: flex;
+	justify-content: space-around;
+	width: 30%;
+}
+.nav-links li{
+	list-style: none;
+}
+.nav-links a{
+	color:rgb(226,226,226);
+	text-decoration: none;
+	letter-spacing: 3px;
+	font-weight: bold;
+	font-size: 14px;
+
+
+}
+.burger div{
+	width: 25px;
+	height: 3px;
+	background-color:rgb(226,226,226);
+	margin:5px;
+
+}
+.nav-links li a:hover{
+		background-color: blue;
+		background-size:80px 60px;
+		padding: 18px;
+	}
+	.nav-links li a:click {
+		background-color: green;
+		background-size:80px 60px;
+		padding: 18px -10px;
+	}
+.burger {
+	display: none;
+	cursor: pointer;
+}
+@media screen and (max-width: 1024px){
+	.nav-links{
+		
+		width: 60%;
+	}
+}
+@media screen and (max-width: 768px){
+	body{
+		overflow-x: hidden;
+	}
+	.nav-links{
+		position: absolute;
+		left:0px;
+		height: 92vh;
+		top:8vh;
+		background-color: #5D4954;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 50%;
+		z-index:5;
+	position:absolute;
+		transform: translateX(-100%);
+		transition: transform 0.5s ease-in;
+	}
+	.nav-links li{
+		opacity:1;
+	}
+	.nav-links li a:hover{
+		background-color: blue;
+	}
+	.burger{
+		display: block;
+	}
+}
+.nav-active{
+	z-index:5;
+	position:absolute;
+	transform: translateX(0%);
+} 
+
+	</style>
+		<script >
+		const navSlide = () => {
+		const burger = document.querySelector('.burger');
+		const nav = document.querySelector('.nav-links');
+		const navLinks = document.querySelectorAll('.nav-links li');
+		burger.addEventListener('click',function(){
+			nav.classList.toggle('nav-active');
+		});
+		}
+		navSlide();
+		
+		
+    
+		$(document).ready(function(){
+        var date_input=$('input[name="date"]');
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        });
+
+		})
+	     </script>
+
+		<style media="screen"></style>
+	
+	<style type="text/css">
+	.bg-dark {
+			background-color: #1c2331;;
+		}
+	.dropdown-menu {
+			background-color: #1c2331;; 
+		}
+	.dropdown-item {
+		background-color: #1c2331;;
+			color: white;
+		}
+	.navbar-dark {
+			background: #1c2331;; 
+		}
+		#show{
+			margin-left: 100px;
+		}
+	#highlight {
+		color: #00F;
+		}
+		.ui-datepicker .ui-widget-content {
+		background-color: #494049;
+		
+	}
+	#date{
+			color:white;
+			}
+		
+	
+
+  #main{
+  background-color:#1c2331;;
+  border-radius:25px;
+  padding:50px;
+  margin-right: 3.75%;
+  margin-left: 45%;
+	
+  }
+
+		@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300);
+#cssmenu {
+  position: relative;
+  margin: 0;
+  font-family: 'Roboto Condensed';
+  line-height: 1;
+  width: 250px;
+}
+.align-right {
+  float: right;
+}
+
+.dropbtn {
+
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+	
+  color: #1c2331;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #6351ce;
+	color:white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown1:hover .dropdown-content {display: block;
+
+		}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown1:hover .dropbtn {background-color: #263238;
+		}
+		#pri:hover {background-color:#263238;
+		}
+  a{
+  color: black;
+  }
+  .scrollable{
+   overflow: auto;
+   height: 80px; 
+ 
+ }
+		#blocks .btn: visited{
+			color: blue;
+		}
+		
+ .scrollable select{
+   border: none;
+ }
+			.im {
+		width : 100%;
+		z-index : 0;
+		
+	}
+		body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+    }
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+ 
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+ 
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: black;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
+	.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
+		@media only screen and (max-width: 700px) {
+			#msg{
+				margin-top:20%;
+				
+				
+				
+			}
+			#fl{
+				margin-left:16%;
+			}
+	}
+		@media only screen and (min-width: 1200px) {
+			#fl{
+				
+				
+				
+				
+				
+			}
+		
+	}
 	 .bg-dark {
 		
 		}
@@ -4950,7 +5337,7 @@ body {
   
 </head>
 <body>
-	 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+	 <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
   <a class="navbar-brand" href="#">Vit</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -4988,21 +5375,60 @@ body {
       <input  class=" form-group mr-sm-2 rounded" type="search" placeholder="Search..." name="search" aria-label="Search">
 		
       <button  style="margin:5px 5px;padding:-20px -40px;" class="btn btn-outline-light btn-sm" type="submit" value="search"><i class="fa fa-search"></i></button>
-    </form>
+ 
+
+	
+		</nav> -->
+	
+ <nav style="letter-spacing:0.1rem;" class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <a class="navbar-brand" href="/"><img style="width:40px;height:40px;" src="https://res-console.cloudinary.com/tycoon/thumbnails/v1/image/upload/v1578044285/Y2lyY2xlLWNyb3BwZWRfMl94YTdiMHY=/preview"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"  aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div  style="	font-family: 'Cairo', sans-serif;" class="collapse navbar-collapse navbar-toggleable-sm text-center" id="navbarNav">
+    <ul class="navbar-nav nav-links mr-auto text-center">
+      <li class="nav-item dropdown1 text-center ">
+        <a style="	font-family: 'Cairo', sans-serif;" class="nav-link  dropbtn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hover="dropdown">
+          SHARE MY CAB
+        </a>
+        <div  class=" dropdown-content" aria-labelledby="navbarDropdown">
+          <a class="" href="/share/new"><b>Share yours</b></a>
+          <a class= " " href="/share"><b>Request someone</b></a>
+        </div>
+      </li>
+	 
+      <li class="nav-item dropdown1">
+        <a class="nav-link dropbtn" href="#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hover="dropdown">
+          VIT-EX
+        </a>
+        <div style="	font-family: 'Cairo', sans-serif;" class=" dropdown-content" aria-labelledby="navbarDropdown">
+          <a style="	font-family: 'Cairo', sans-serif;" class="" href="/adPost"><b>Buy</b></a>
+          <a style="	font-family: 'Cairo', sans-serif;" class="" href="/adPost/category"><b>Sell</b></a>
+          <a style="	font-family: 'Cairo', sans-serif;"  class="" href="/adPost/category2"><b>Request a Product!</b></a>
+        </div>
+      </li>
+      <li id="pri" style="	font-family: 'Cairo', sans-serif;" style="" class="nav-item dropdown1 ">
+        <a class="nav-link " href="/adPost/resources">RESOURCES</a>
+      </li>
+    </ul>
+
+   
  
    				 <ul class="navbar-nav ml-auto">
-					<% if(!currentUser){ %>
+					<% if(!currentUser || !(currentUser.verified) ){ %>
 
-							<li  class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
-								<a href="/login" class="nav-link"><i class="fas fa-user-plus"></i>Login</a></li>
+							<li   class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+								<a  href="/login" class="nav-link"><i class="fas fa-user-plus"></i> LOGIN</a></li>
 
 						  <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
-							  <a  href="/register" class="nav-link"><i class="fas fa-user"></i>Sign Up</a></li>
+							  <a    href="/register" class="nav-link"><i class="fas fa-user"></i> SIGN UP</a></li>
 					  <% } else { %>
 						  <li class="nav-item" >
-							  <a href="/users/<%= currentUser._id %>" class="nav-link"><i class="user secret icon"></i><%= currentUser.username %></a></li>
+							  <a href="/users/<%= currentUser._id %>" class="nav-link"><i class="fas fa-user-tie"></i><%= currentUser.name %></a></li>
 						  <li class="nav-item">
-							  <a  href="/logout" class="nav-link">Logout</a></li>
+							  <a  href="/logout" class="nav-link">LOGOUT</a></li>
 					  <% } %>
 				
     	</ul>
@@ -5011,6 +5437,7 @@ body {
 
 	
 		</nav>
+ 
   <section class="carousel slide cid-rJNPWgJrrs" data-interval="false" id="slider1-3">
 
     
@@ -5110,95 +5537,150 @@ body {
     </div>
 </section>
 
-<section class="cid-rJQHBg2RE4" id="footer1-n">
 
-    
+ 
+<footer style="background-color:#1c2331;color:white;" class="page-footer font-small unique-color-dark">
 
-    
-
+  <div style="background-color: #6351ce;">
     <div class="container">
-        <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
-                <div class="media-wrap">
-                    <a href="https://mobirise.co/">
-                        <img style="width:140px;height:140px;" src="images/circle-cropped.png" alt="Mobirise">
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    Address
-                </h5>
-                <p class="mbr-text">
-                    1234 Street Name
-                    <br>City, AA 99999
-                </p>
-            </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    Contacts
-                </h5>
-                <p class="mbr-text">
-                    Email: support@mobirise.com
-                    <br>Phone: +1 (0) 000 0000 001
-                    <br>Fax: +1 (0) 000 0000 002
-                </p>
-            </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    Links
-                </h5>
-                <p class="mbr-text">
-                    <a class="text-primary" href="/adPost/about">about us</a>
-                    <br><a class="text-primary" href="/adPost/contact">contact us</a>
-                    <br><a class="text-primary" href="/adPost/faq">Faq</a>
-                </p>
-            </div>
-        </div>
-        <div class="footer-lower">
-            <div class="media-container-row">
-                <div class="col-sm-12">
-                    <hr>
-                </div>
-            </div>
-            <div class="media-container-row mbr-white">
-                <div class="col-sm-6 copyright">
-                    <p class="mbr-text mbr-fonts-style display-7">
-                        © Copyright 2019 VitConnex - All Rights Reserved
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="social-list align-right">
-                        <div class="soc-item">
-                            <a href="https://twitter.com/mobirise" target="_blank">
-								
-                                <span class=" socicon mbr-iconfont mbr-iconfont-social"><i class="fab fa-twitter-square fa-lg"></i></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
-                                <span class=" socicon mbr-iconfont mbr-iconfont-social"><i class="fab fa-facebook fa-lg"></i></span>
-                            </a>
-                        </div>
-                      
-                        <div class="soc-item">
-                            <a href="https://instagram.com/mobirise" target="_blank">
-                                <span class=" socicon mbr-iconfont mbr-iconfont-social"><i class="fab fa-instagram fa-lg"></i></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                <span class=" socicon mbr-iconfont mbr-iconfont-social"><i class="fab fa-google-plus-square fa-lg"></i></span>
-                            </a>
-                        </div>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
+      <!-- Grid row-->
+      <div style="color:white;" class="row py-4 d-flex align-items-center">
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h6 class="mb-0">Get connected with us on social networks!</h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter white-text mr-4"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+          </a>
+          <!--Instagram-->
+          <a href="https://www.instagram.com/vit_connex/" class="ins-ic">
+            <i style="color:white" class="fab fa-instagram white-text"> </i>
+          </a>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+      
+    
+        <img style="width:200px;height:200px;" src="https://res-console.cloudinary.com/tycoon/thumbnails/v1/image/upload/v1578046356/Q2FwdHVyZV95cHFjamM=/preview">
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div  class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Navigate to</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #6351ce;">
+        <p>
+          <a style="color:white" href="/">Home</a>
+        </p>
+        <p>
+          <a style="color:white" href="/share">Share my cab</a>
+        </p>
+        <p>
+          <a style="color:white" href="/adPost">Buy & sell</a>
+        </p>
+        <p>
+          <a style="color:white" href="/adPost/resources">Resources</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+        <hr  class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;background-color: #6351ce;">
+        <p>
+          <a style="color:white" href="/adPost/about">About Us</a>
+        </p>
+        <p>
+          <a style="color:white" href="/adPost/contact">Contact Us</a>
+        </p>
+        <p>
+          <a style="color:white" href="/adPost/faq">Faq</a>
+        </p>
+        <p>
+          <a style="color:white" href="#!">Help</a>
+        </p>
+		   <p>
+          <a style="color:white" href="#!">Privacy policy</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <hr  class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;background-color: #6351ce;">
+        <p>
+          <i class="fas fa-home mr-3"></i> VIT Vellore,Mens Hostel</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> <a style="color:white" href="mailto:vitconnex@gmail.com">vitconnex@gmail.com </a></p>
+        <p>
+          <i class="fas fa-phone mr-3"></i>+91 6383831327</p>
+        <p>
+       
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div style="background-color:#263238" class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a style="color:white" href="https://mdbootstrap.com/education/bootstrap/"> vitconnex.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
 <script type="text/javascript">
 	
 	/*! jQuery v1.11.2 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */

@@ -1,10 +1,28 @@
 <% include ../partials/header %>
+<style>
 
-<body style="background-image:url(https://images.unsplash.com/photo-1455849318743-b2233052fcff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);background-repeat:no-repeat;height:120%;position:absolute;width:100%;margin-top:3%;">
+@media only screen and (max-width: 700px) {
+		
+			.bori{
+				background: url(https://images.unsplash.com/photo-1565115551503-ea90acc84e2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80); background-repeat:no-repeat; margin-bottom:-1020px;background-size:inherit; position:absolute; background-attachment: fixed;min-height:190%;color: #ECF0F1;margin-top:-60px;
+		
+			}
+	}
+@media only screen and (min-width: 1200px) {
+		
+	.bori{
+		background: url(https://images.unsplash.com/photo-1565115551503-ea90acc84e2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80); background-repeat:no-repeat; margin-bottom:-1200px;background-size:inherit; position:absolute; background-attachment: fixed;min-height:220%;color: #ECF0F1;
+		
+	}
+	}
+		
+
+</style>
+<body class="bori">
 	<div  style="z-index: 1;"  class="container row rounded ">	
 
 
-		<form style=" margin-left: 33%;border: 1.5px solid grey; z-index: 1;background:#45B8AC;padding-top:2%;" class=" col-lg-6" method="POST" action="/adPost/request">
+		<form  style=" margin-top:20%;margin-left: 33%;border: 1.5px solid grey; background:#45B8AC;padding-top:2%;" class=" col-lg-6" method="POST" action="/adPost/request">
 			<div class="form-group">
 				    <label for="requestTitle">Request Title*</label>
 				    <input type="text" class="form-control" name="requestTitle" id="requestTitle" placeholder="reqeustTitle">
