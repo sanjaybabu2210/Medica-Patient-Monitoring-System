@@ -9,10 +9,11 @@
 				max-width:330px;
 				
 			}
-			#imr{
-				margin:0px 5px;
-				margin-left:20px;
-				width:220px;
+			.imr{
+				margin-top:40px;
+				margin-bottom:40px;
+				margin-left:-20px;
+				max-width:280px;
 			}
 			#price{
 				margin-left:30%;
@@ -50,7 +51,7 @@
 				margin-left:100px;
 			
 }
-			#imr{
+			.imr{
 				margin:0px 15%;
 			}
 			.io{
@@ -74,16 +75,16 @@ display:none
 				<div  id="carouselExampleInterval" class="carousel slide" data-ride="carousel" data-interval="false">
   <div  style="margin-top:-20px;"class="carousel-inner">
     <div  class="carousel-item active" >
-      <img id="imr" class="text-center" style="height:400px; " src="<%= adpost.img1 %>" alt="https://images.unsplash.com/photo-1478104718532-efe04cc3ff7f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80">
+      <img class="imr" class="text-center" style="height:400px; " src="<%= adpost.img1 %>" alt="https://images.unsplash.com/photo-1478104718532-efe04cc3ff7f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80">
     </div>
     <div  class="carousel-item" >
 	
-      <img id="imr" style="height:400px;" src="<%= adpost.img2 %>" alt="https://images.unsplash.com/photo-1457301547464-91995555cd25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1073&q=80">
+      <img class="imr" style="height:400px;" src="<%= adpost.img2 %>" alt="https://images.unsplash.com/photo-1457301547464-91995555cd25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1073&q=80">
 	
     </div>
     <div class="carousel-item">
 		
-      <img id="imr" style="height:400px; position:relative;" src="<%= adpost.img3 %>" class="" alt="https://res.cloudinary.com/tycoon/image/upload/v1576515476/Capture_amplmj.png">
+      <img class="imr" style="height:400px; position:relative;" src="<%= adpost.img3 %>" class="" alt="https://res.cloudinary.com/tycoon/image/upload/v1576515476/Capture_amplmj.png">
 	
     </div>
 	
@@ -204,7 +205,7 @@ $(".custom-file-input").on("change", function() {
 								DESCRIPTION:
 						</h4>
 					
-					</P><%= adpost.description %><button id="butt" style="float:right; margin-top:-95px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+					</P><%= adpost.description %><button id="butt" style="float:right; margin-top:-80px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
                                 data-target="#adpostLikes">
                             <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= adpost.likes.length %></span>
                         </button></li>

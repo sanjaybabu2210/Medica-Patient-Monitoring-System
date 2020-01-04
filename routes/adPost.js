@@ -271,6 +271,7 @@ router.post("/request", middleware.isLoggedIn,function(req,res){
 		name:req.user.name
 	}
 			var category = req.body.category;
+	var category = req.body.category.slice(0,-1);
 	console.log(category);
 	var reqNew = {
 		reqTitle:reqTitle, description:description, priceRange: priceRange, author: author,Phone:Phone,block:block, category:category
