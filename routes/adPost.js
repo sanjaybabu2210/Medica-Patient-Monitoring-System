@@ -526,7 +526,7 @@ router.post("/", middleware.isLoggedIn, upload.single('img1') ,function(req, res
 	var adTitle = req.body.adTitle;
 	var img1 = result.secure_url;
 	var img1_id = result.public_id;
-	
+
 	
 		
 	var description = req.body.description;
