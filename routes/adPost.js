@@ -82,6 +82,46 @@ router.get("/", function(req, res){
         });
     }
 });
+router.get("/category/:category1",function(req,res){
+	       var noMatch = null;
+		   var c1 = req.params.category1;
+	       console.log(c1);
+	if(c1=="all")
+		{
+			
+				
+	Campground.find( {} , function(err, allAds){
+           if(err){
+               console.log(err);
+           } else {
+			   
+			   if(allAds.length < 1) {
+                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
+              }
+			      console.log(allAds);
+              res.render("adPost/index",{adpost:allAds, category1:c1, noMatch: noMatch});
+           }
+			});
+		}
+	else{  Campground.find( {category:c1},function(err, allAds){
+			
+           if(err){
+               console.log(err);
+           } else {
+			   if(allAds.length < 1) {
+                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
+              }
+			   console.log(allAds);
+			   console.log(c1);
+              res.render("adPost/index",{adpost:allAds, category1:c1, noMatch: noMatch});
+           }
+				
+				
+				
+		   
+		   });
+			 }
+});
 router.get("/about",function(req,res){
 	res.render("adPost/about");
 })
@@ -91,40 +131,14 @@ router.get("/contact",function(req,res){
 router.get("/faq",function(req,res){
 	res.render("adPost/faq");
 })
+router.get("/category/new",function(req,res){
 
-router.get("/category/:category",function(req,res){
-	       var noMatch = null;
-		   var category1 = req.params.category;
-	       console.log(category1);
-	if(category1=="all")
-		{
-			
-				Campground.find({}, function(err, allAds){
-           if(err){
-               console.log(err);
-           } else {
-			   if(allAds.length < 1) {
-                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
-              }
-              res.render("adPost/index",{adpost:allAds, category1:category1, noMatch: noMatch});
-           }
-			});
-		}else{  Campground.find({category:category1}, function(err, allAds){
-           if(err){
-               console.log(err);
-           } else {
-			   if(allAds.length < 1) {
-                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
-              }
-              res.render("adPost/index",{adpost:allAds, category1:category1, noMatch: noMatch});
-           }
-				
-				
-				
-		   
-		   });
-			 }
+	res.render("adPost/new");
+	
 });
+
+
+
 
 router.get("/category/:category/request",function(req,res){
 	       var noMatch = null;
@@ -219,12 +233,6 @@ router.get("/category//blocks/:block",function(req,res){
 router.get("/category",middleware.isLoggedIn, function(req,res){
 	res.render("category")
 })
-router.get("/category/new",function(req,res){
-
-	res.render("adPost/new");
-	
-});
-
 
 
 router.get("/request/new",function(req,res){
@@ -308,7 +316,7 @@ router.post("/category/new",function(req,res){
 	// 	}
 	// });
 
-	res.render("adPost/new",{category:category});
+	res.render("adPost/new",{cat:category});
 	
 	
 	
@@ -534,7 +542,7 @@ router.post("/", middleware.isLoggedIn, upload.single('img1') ,function(req, res
 		id: req.user._id,
 		username: req.user.username
 	}
-	var category = req.body.category;
+	var category = req.body.category.slice(0,-1);
 	var ph = req.body.ph;
 		var img2 = "https://res.cloudinary.com/tycoon/image/upload/v1577472450/Capture_ruirju.png"
 		var img3 = "https://res.cloudinary.com/tycoon/image/upload/v1577472450/Capture_ruirju.png"

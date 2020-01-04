@@ -18,7 +18,7 @@ var campgroundSchema = new mongoose.Schema({
 	img2id: String,
 	img3: String,
 	img3id: String,
-
+	category: String,
 	createdAt: {type: Date, default: Date.now},
 	price1: String,
 	price2: String,
@@ -35,14 +35,14 @@ var campgroundSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
-        }],
+        }]
 	
 	// category:{
 	// 	id: {
 	// 		type: mongoose.Schema.Types.ObjectId,
 	// 	ref: "Category"
 	// 	},
-	category: String
+
 		// },
     
 	
