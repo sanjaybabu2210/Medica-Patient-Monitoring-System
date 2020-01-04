@@ -181,31 +181,6 @@ router.get("/category/:category/request",function(req,res){
 });
 			
 			
-
-
-	
-router.get("/category/:category1/blocks/:block",function(req,res){
-	       var noMatch = null;
-		   var category2 = req.params.category1;
-		   var blocks = req.params.block;
-		
-	if(blocks=="all")
-		{
-			blocks = null;
-		}
-	
-			Campground.find({category:category2,block:blocks}, function(err, allAds){
-           if(err){
-               console.log(err);
-           } else {
-			     if(allAds.length < 1) {
-                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
-              }
-              res.render("adPost/index",{adpost:allAds,category1:category2, noMatch: noMatch});
-           }
-			});
-		   
-		   });
 router.get("/category//blocks/:block",function(req,res){
 	       var noMatch = null;
 	       var category1 = null;
@@ -229,6 +204,53 @@ router.get("/category//blocks/:block",function(req,res){
 			});
 		   
 		   });
+
+	
+router.get("/category/:category1/blocks/:block",function(req,res){
+	       var noMatch = null;
+		   var category2 = req.params.category1;
+		   var blocks = req.params.block;
+		
+	console.log(category2);
+	if(blocks=="all")
+		{
+			Campground.find({category:category2}, function(err, allAds){
+           if(err){
+               console.log(err);
+           } else {
+			     if(allAds.length < 1) {
+                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
+              }
+              res.render("adPost/index",{adpost:allAds,category1:category2, noMatch: noMatch});
+           }
+			});
+		}
+	if(category2 =="all"){
+			Campground.find({block:blocks}, function(err, allAds){
+           if(err){
+               console.log(err);
+           } else {
+			     if(allAds.length < 1) {
+                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
+              }
+              res.render("adPost/index",{adpost:allAds,category1:category2, noMatch: noMatch});
+           }
+			});
+		}
+	else{
+			Campground.find({category:category2,block:blocks}, function(err, allAds){
+           if(err){
+               console.log(err);
+           } else {
+			     if(allAds.length < 1) {
+                  noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
+              }
+              res.render("adPost/index",{adpost:allAds,category1:category2, noMatch: noMatch});
+           }
+			});
+	}
+		   });
+
 //CREATE-ROUTE
 router.get("/category",middleware.isLoggedIn, function(req,res){
 	res.render("category")
