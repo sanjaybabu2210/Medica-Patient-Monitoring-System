@@ -212,7 +212,19 @@ router.get("/category/:category1/blocks/:block",function(req,res){
 		   var blocks = req.params.block;
 		
 	console.log(category2);
-	if(blocks=="all")
+	if(category2 =="all" && blocks == "all"){
+			Campground.find({}, function(err, allAds){
+	if(err){
+	console.log(err);
+	} else {
+			     if(allAds.length < 1) {
+	noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
+	}
+	res.render("adPost/index",{adpost:allAds,category1:category2, noMatch: noMatch});
+	}
+			});
+		}
+	else if(blocks=="all")
 		{
 			Campground.find({category:category2}, function(err, allAds){
            if(err){
@@ -225,7 +237,7 @@ router.get("/category/:category1/blocks/:block",function(req,res){
            }
 			});
 		}
-	if(category2 =="all"){
+	else if(category2 =="all"){
 			Campground.find({block:blocks}, function(err, allAds){
            if(err){
                console.log(err);
@@ -237,6 +249,7 @@ router.get("/category/:category1/blocks/:block",function(req,res){
            }
 			});
 		}
+		
 	else{
 			Campground.find({category:category2,block:blocks}, function(err, allAds){
            if(err){
