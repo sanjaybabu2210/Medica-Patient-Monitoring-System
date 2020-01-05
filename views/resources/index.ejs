@@ -86,9 +86,10 @@
       </div>
     </div>
 	<% }); %>
-
+<% if( currentUser && currentUser.isAdmin){ %>
+					
 <a class="btn btn-success btn-lg text-center" href="/adPost/resources/subject/newly">CreatePage</a>
-
+<% }; %>
 
 
   </div>

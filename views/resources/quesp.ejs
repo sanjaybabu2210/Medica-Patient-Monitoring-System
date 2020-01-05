@@ -63,12 +63,14 @@
 	  <a style="margin:2%" href="<%= qp1.download%>" ><img style="max-height: 220px;width:150px;margin-bottom:2%;" src="<%= qp1.imageId%>"  ></a>
 	   
 	   <% }}); %>
+	     <% if( currentUser && currentUser.isAdmin){ %>
 	       <form method= "POST" action="/adPost/resources/<%= courses._id %>/question" enctype="multipart/form-data">
 		   <input type="file" id="image" name="image" style="padding:10px 10px; " class=" mani form-control"accept="image/*" required >
 		   <div class="form-group">
 		<button style="padding: auto 600px;" class="btn  btn-lg btn-success" name="category"  type="submit" value ="cat1" class="form-control"  >POST</button>
 			</div>
 	   </form>
+	   <% }; %>
 	   </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 	   
@@ -81,12 +83,14 @@
 	  <a style="margin-bottom:5rem;" href="<%= qp1.download%>" ><img style="max-height: 180px" src="<%= qp1.imageId%>"  ></a>
 	   
 	   <% }}); %>
+	  <% if( currentUser && currentUser.isAdmin){ %>
 	   <form method= "POST" action="/adPost/resources/<%= courses._id %>/question" enctype="multipart/form-data">
 		   <input type="file" id="image" name="image" style="padding:10px 10px; " class=" mani form-control"accept="image/*" required >
 		   <div class="form-group">
 		<button style="padding: auto 600px;" class="btn  btn-lg btn-success" type="submit" name="category"  value ="cat2" class="form-control"  >POST</button>
 			</div>
 	   </form>
+	  <% }; %>
 	   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 	   
@@ -97,12 +101,14 @@
 	  <a style="margin-bottom:5rem;" href="<%= qp1.download%>" ><img style="max-height: 180px" src="<%= qp1.imageId%>"  ></a>
 	   
 	   <% }}); %>
+	  <% if( currentUser && currentUser.isAdmin){ %>
 	  <form method= "POST" action="/adPost/resources/<%= courses._id %>/question" enctype="multipart/form-data">
 		   <input type="file" id="image" name="image" style="padding:30px 10px;" class=" mani form-control"accept="image/*" required >
 		   <div class="form-group">
 		<button style="padding: auto 600px;" class="btn  btn-lg btn-success" name="category" type="submit" value ="fat" class="form-control"  >POST</button>
 			</div>
 	   </form>
+	  <% }; %>
 	   </div>
         </div>
   </div>
