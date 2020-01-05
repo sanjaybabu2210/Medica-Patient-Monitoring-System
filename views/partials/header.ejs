@@ -513,7 +513,9 @@ nav{
  
  <nav style="letter-spacing:0.2rem;" class="navbar navbar-expand-lg navbar-dark fixed-top">
   <a class="navbar-brand" href="/"><img style="width:40px;height:40px;" 
-										src="/images/circle-cropped.png"></a>
+										src="/images/circle-cropped.png">
+	  <span style="font-family: 'Cairo';color: grey">HOME</span>
+	  </a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"  aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -550,6 +552,9 @@ nav{
       <input id="fl" style="max-width:200px;margin-top:4%;margin-bottom:4%;" class="form-control mr-sm-2" type="search" placeholder="Search For Ads" name="search" aria-label="Search">
       <button style="float:left;" class="btn btn-outline-light my-2 my-sm-0" type="submit" value="search"><i class="fa fa-search"></i></button>
     </form>
+	  <li style="	font-family: 'Cairo', sans-serif;margin-top:10px;margin-left:15px;margin-bottom:10px;padding-bottom:-20px;" class="nav-item btn btn-info btn-sm text-center">
+        <a class="nav-link " href="/adPost/category">POST ADS</a>
+      </li>
  
    				 <ul class="navbar-nav ml-auto">
 					<% if(!currentUser || !(currentUser.verified) ){ %>
