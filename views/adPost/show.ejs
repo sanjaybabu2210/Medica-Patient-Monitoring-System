@@ -200,15 +200,15 @@ $(".custom-file-input").on("change", function() {
 			<div  id="desc" style="border:2px solid #d3d3d3;width:430px;" class="list group">
 				<li  class="list-group-item border-12">
 					
-					<P >
+					<p >
 						<h4>
 								DESCRIPTION:
-						</h4>
-					
-					</P><%= adpost.description %><button id="butt" style="float:right; margin-top:-80px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+						</h4><button id="butt" style="float:right; margin-top:-35px" type="button" class="btn btn-xs btn-primary" data-toggle="modal"
                                 data-target="#adpostLikes">
                             <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= adpost.likes.length %></span>
-                        </button></li>
+                        </button>
+					
+					<%= adpost.description %></p></li>
 				
 				<li class=" p-10 list-group-item">
 					<p>

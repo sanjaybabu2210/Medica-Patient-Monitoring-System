@@ -111,8 +111,8 @@ router.get("/category/:category1",function(req,res){
 			   if(allAds.length < 1) {
                   noMatch = "SORRY NO ADS FOUND FOR YOUR SEARCH ):";
               }
-			   console.log(allAds);
-			   console.log(c1);
+			 
+			   
               res.render("adPost/index",{adpost:allAds, category1:c1, noMatch: noMatch});
            }
 				
@@ -122,6 +122,9 @@ router.get("/category/:category1",function(req,res){
 		   });
 			 }
 });
+router.get("/privacy",function(req,res){
+	res.render("adPost/privacy");
+})
 router.get("/about",function(req,res){
 	res.render("adPost/about");
 })
@@ -154,7 +157,7 @@ router.get("/category/:category/request",function(req,res){
 			   if(allAds.length < 1) {
                   noMatch = "SORRY NO REQUEST FOUND FOR YOUR SEARCH ):";
               }
-			   console.log(allAds);
+			  
               res.render("request/show",{allreq:allAds, category:cat,  noMatch: noMatch});
            }
 			});
@@ -165,7 +168,7 @@ router.get("/category/:category/request",function(req,res){
 			   if(allnew.length < 1) {
                   noMatch = "SORRY NO REQUEST FOUND FOR YOUR SEARCH ):";
               }
-			    console.log(allnew);
+			  
               res.render("request/show",{allreq:allnew,category:cat,  noMatch: noMatch});
 		   }
 			
@@ -287,7 +290,7 @@ router.get("/request",function(req,res){
 			     if(allreq.length < 1) {
                   noMatch = "SORRY NO ADS Request FOR YOUR SEARCH ):";
               }
-			   console.log(allreq);
+			  
 			   
               res.render("request/show",{allreq:allreq,noMatch: noMatch});
            }
@@ -311,7 +314,7 @@ router.post("/request", middleware.isLoggedIn,function(req,res){
 	var reqNew = {
 		reqTitle:reqTitle, description:description, priceRange: priceRange, author: author,Phone:Phone,block:block, category:category
 	}
-	console.log(reqNew);
+	
 	Request.create(reqNew, function(err,newlyCreated){
 		if(err){
 			req.flash('error', err.message);

@@ -503,6 +503,7 @@ nav{
 	<script>
     $(document).ready(function(){
         $('#date-time').datetimepicker();});
+		
 	</script>
 
 		 
@@ -512,10 +513,12 @@ nav{
 
  
  <nav style="letter-spacing:0.2rem;" class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <a class="navbar-brand" href="/"><img style="width:40px;height:40px;" 
+  <h6><a class="navbar-brand" href="/"><img style="width:40px;height:40px;" 
 										src="/images/circle-cropped.png">
-	  <span style="font-family: 'Cairo';color: grey">HOME</span>
-	  </a>
+	  <span style="font-family: 'Cairo';color: grey;font-size:12px;"><span>|
+		  VITCONNEX
+		  </span></span>
+	  </a></h6>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"  aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -537,11 +540,14 @@ nav{
         <a style="margin-right:2rem;" class="nav-link dropbtn" href="#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hover="dropdown">
           VIT-EX
         </a>
-        <div style="	font-family: 'Cairo', sans-serif;" class=" dropdown-content" aria-labelledby="navbarDropdown">
+		
+			     <div style="	font-family: 'Cairo', sans-serif;" class=" dropdown-content" aria-labelledby="navbarDropdown">
           <a style="	font-family: 'Cairo', sans-serif;" class="" href="/adPost"><b>Buy</b></a>
           <a style="	font-family: 'Cairo', sans-serif;" class="" href="/adPost/category"><b>Sell</b></a>
           <a style="	font-family: 'Cairo', sans-serif;"  class="" href="/adPost/request"><b>Request a Product!</b></a>
         </div>
+		
+     
       </li>
       <li id="pri" style="	font-family: 'Cairo', sans-serif;margin-top:10px;margin-right:2rem;" style="" class="nav-item dropdown1 ">
         <a class="nav-link " href="/adPost/resources">RESOURCES</a>
@@ -642,7 +648,7 @@ nav{
 	</div>
 				<% } %>
 				<% if(success && success.length > 0){ %>
-			<div style="margin-top:10%"  class="alert alert-success" role="alert">
+			<div style="margin-top:10%;margin-bottom:-10%;"  class="alert alert-success" role="alert">
 	 <%= success %>
 	</div>	
 				<% } %>

@@ -1,9 +1,31 @@
   
 <% include ./partials/header %>
-<div class="row">
+
+<style>
+
+@media only screen and (max-width: 700px) {
+	
+	
+	}
+@media only screen and (min-width: 1200px) {
+		
+	#ll{
+		margin:15%;
+	}
+	
+	
+	
+	
+	}
+
+
+
+
+</style>
+<div id="ll" class="row container" style="height:100%;">
 	<div class="col-md-12">
 		<form action="/reset/<%= token %>" method="POST">
-		  <legend>Reset Password</legend>
+		  <legend class="text-center">Reset Password</legend>
 		  <div class="form-group">
 		    <label for="password">New Password</label>
 		    <input type="password" name="password" value="" placeholder="New password" autofocus="autofocus" class="form-control"/>

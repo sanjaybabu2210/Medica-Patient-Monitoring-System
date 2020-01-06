@@ -412,6 +412,12 @@ nav{
 				
 				
 			}
+			#ng{
+				display:none;
+			}
+			#pg{
+				display:none;
+			}
 			#fl{
 				margin-left:16%;
 			}
@@ -5415,7 +5421,13 @@ body {
       </li>
     </ul>
 
-   
+   <!--<form class="form-inline" action="/adPost" method="GET">
+      <input id="fl" style="max-width:200px;margin-top:4%;margin-bottom:4%;" class="form-control mr-sm-2" type="search" placeholder="Search For Ads" name="search" aria-label="Search">
+      <button style="float:left;" class="btn btn-outline-light my-2 my-sm-0" type="submit" value="search"><i class="fa fa-search"></i></button>
+    </form>
+	  <li style="	font-family: 'Cairo', sans-serif;margin-top:10px;margin-left:15px;margin-bottom:10px;padding-bottom:-20px;" class="nav-item btn btn-info btn-sm text-center">
+        <a class="nav-link " href="/adPost/category">POST ADS</a>
+      </li>-->
  
    				 <ul class="navbar-nav ml-auto">
 					<% if(!currentUser || !(currentUser.verified) ){ %>
@@ -5443,7 +5455,9 @@ body {
 
     
 
-    <div class="full-screen"><div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000"><ol class="carousel-indicators"><li data-app-prevent-settings="" data-target="#slider1-3" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider1-3" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider1-3" data-slide-to="2"></li></ol><div class="carousel-inner" role="listbox"><div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1920x1279.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.4;"></div><img src="assets/images/mbr-1920x1279.jpg" alt="" title=""><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">ShareMyCab !</h2><p class="lead mbr-text mbr-fonts-style display-5">Sign Up Today to discover a lot of trips with your friends!<br>Happy Journey!</p><div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-secondary-outline" href="/register">Sign Up</a> <a class="btn  display-4 btn-secondary-outline" href="/share">ShareMyCab</a></div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1-1920x1279.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.5;"></div><img src="assets/images/mbr-1-1920x1279.jpg" alt="" title=""><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">Academic Resources</h2><p class="lead mbr-text mbr-fonts-style display-5">Browse and study with the large set of question papers and study materials exclusively for Vitians!</p><div class="mbr-section-btn" buttons="0"> <a class="btn  btn-white-outline display-4" href="/adPost/resources">Learn More</a></div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1920x1280.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="background-color: rgb(0, 0, 0);"></div><img src="assets/images/mbr-1920x1280.jpg" alt="" title=""><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">V-Exchange!</h2><p class="lead mbr-text mbr-fonts-style display-5">Sell, Buy and Request products inside the campus.</p><div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success-outline" href="/adPost/category">SELL&nbsp;</a> <a class="btn  display-4 btn-success-outline" href="/adPost">BROWSE PRODUCTS</a></div></div></div></div></div></div></div><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#slider1-3"><span aria-hidden="true" class=" mbr-iconfont"><i style="margin-top:5px;" class="fas fa-arrow-circle-left fa-2x"></i></span><span class="sr-only">Previous</span></a><a data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button" data-slide="next" href="#slider1-3"><span aria-hidden="true" class=" mbr-iconfont"><i style="margin-top:5px;" class="fas fa-arrow-circle-right fa-2x"></i></span><span class="sr-only">Next</span></a></div></div>
+	  <div class="full-screen"><div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000"><ol class="carousel-indicators"><li data-app-prevent-settings="" data-target="#slider1-3" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider1-3" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider1-3" data-slide-to="2"></li></ol><div class="carousel-inner" role="listbox"><div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1920x1279.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.4;"></div><img src="assets/images/mbr-1920x1279.jpg" alt="" title=""><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">ShareMyCab !</h2><p class="lead mbr-text mbr-fonts-style display-5">Sign Up Today to discover a lot of trips with your friends!<br>Happy Journey!</p><div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-secondary-outline" href="/register">Sign Up</a> <a class="btn  display-4 btn-secondary-outline" href="/share">ShareMyCab</a></div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1-1920x1279.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="opacity: 0.5;"></div><img src="assets/images/mbr-1-1920x1279.jpg" alt="" title=""><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">Academic Resources</h2><p class="lead mbr-text mbr-fonts-style display-5">Browse and study with the large set of question papers and study materials exclusively for Vitians!</p><div class="mbr-section-btn" buttons="0"> <a class="btn  btn-white-outline display-4" href="/adPost/resources">Learn More</a></div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1920x1280.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay" style="background-color: rgb(0, 0, 0);"></div><img src="assets/images/mbr-1920x1280.jpg" alt="" title=""><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">V-Exchange!</h2><p class="lead mbr-text mbr-fonts-style display-5">Sell, Buy and Request products inside the campus.</p><div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success-outline" href="/adPost/category">SELL&nbsp;</a> <a class="btn  display-4 btn-success-outline" href="/adPost">BROWSE PRODUCTS</a></div></div></div></div></div></div></div><div id="pg"><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#slider1-3"><span aria-hidden="true" class=" mbr-iconfont"><i style="margin-top:5px;" class="fas fa-arrow-circle-left fa-2x"></i></span><span class="sr-only">Previous</span></a></div><div id="ng"><a data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button" data-slide="next" href="#slider1-3">
+		<span aria-hidden="true" class=" mbr-iconfont"><i style="margin-top:5px;" class="fas fa-arrow-circle-right fa-2x"></i></span>
+		<span class="sr-only">Next</span></a></div></div></div>
 
 </section>
 
@@ -5499,7 +5513,7 @@ body {
                 <h3 class="mbr-section-subtitle align-left mbr-light mbr-white pb-3 mbr-fonts-style display-5">
                     Post Ads of things you don't use anymore!</h3>
                 <p class="mbr-text align-left mbr-white mbr-fonts-style display-4">
-                    Add descriptions and images of your products to hep find better customers<br><br>Happy Shopping :)</p>
+                    Add descriptions and images of your products to help find better customers<br><br>Happy Shopping :)</p>
                 <div class="mbr-section-btn align-left py-4"><a class="btn btn-white-outline display-4" href="/adPost">LIVE DEMO</a></div>
             </div>
         </div>
@@ -5519,19 +5533,19 @@ body {
                     FOLLOW US!
                 </h2>
                 <div class="social-list pl-1 mb-1">
-                    <a href="#" target="_blank">
+                   <!-- <a href="#" target="_blank">
                         <span class="socicon mbr-iconfont mbr-iconfont-social"><i style="width:60px;height:60px;" class="fab fa-twitter fa-2x"></i></span>
-                    </a>
-                    <a href="#" target="_blank">
+                    </a>-->
+                    <a href="https://www.facebook.com/vit.connex.7" target="_blank">
                         <span class="px-2  socicon mbr-iconfont mbr-iconfont-social"><i class="fab fa-facebook fa-2x"></i></span>
                     </a>
-                    <a href="#" target="_blank">
+                    <a href="https://www.instagram.com/vit_connex/" target="_blank">
                         <span class="px-2  socicon mbr-iconfont mbr-iconfont-social"><i class="fab fa-instagram fa-2x"></i></span>
                     </a>
                     
-                    <a href="#" target="_blank">
+                    <!--<a href="#" target="_blank">
                          <span class="px-2  socicon mbr-iconfont mbr-iconfont-social"><i class="fab fa-google-plus-square fa-2x"></i></span>
-                    </a>
+                    </a>-->
                 </div> 
             </div>
         </div>
@@ -5540,55 +5554,18 @@ body {
 
 
  
-<footer style="background-color:#1c2331;color:white;" class="page-footer font-small unique-color-dark">
+<footer style="background-color:#1c2331;color:white;margin-top:-90px;" class="page-footer font-small unique-color-dark">
 
-  <div style="background-color: #6351ce;">
-    <div class="container">
+  <!--<div style="background-color: #6351ce;">
+    <div class="container">-->
 
-      <!-- Grid row-->
-      <div style="color:white;" class="row py-4 d-flex align-items-center">
-
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Get connected with us on social networks!</h6>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-          <!-- Facebook -->
-          <a class="fb-ic">
-            <i class="fab fa-facebook-f white-text mr-4"> </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="fab fa-twitter white-text mr-4"> </i>
-          </a>
-          <!-- Google +-->
-          <a class="gplus-ic">
-            <i class="fab fa-google-plus-g white-text mr-4"> </i>
-          </a>
-          <!--Linkedin -->
-          <a class="li-ic">
-            <i class="fab fa-linkedin-in white-text mr-4"> </i>
-          </a>
-          <!--Instagram-->
-          <a href="https://www.instagram.com/vit_connex/" class="ins-ic">
-            <i style="color:white" class="fab fa-instagram white-text"> </i>
-          </a>
-
-        </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Grid row-->
-
-    </div>
-  </div>
+      
+  
+        
+      
 
   <!-- Footer Links -->
-  <div class="container text-center text-md-left mt-5">
+  <div class="container text-center text-md-left mt-5" style="padding-top:50px;">
 
     <!-- Grid row -->
     <div class="row mt-3">
@@ -5642,10 +5619,10 @@ body {
           <a style="color:white" href="/adPost/faq">Faq</a>
         </p>
         <p>
-          <a style="color:white" href="#!">Help</a>
+          <a style="color:white" href="/adPost/help">Help</a>
         </p>
 		   <p>
-          <a style="color:white" href="#!">Privacy policy</a>
+          <a style="color:white" href="/adPost/privacy">Privacy policy</a>
         </p>
 
       </div>

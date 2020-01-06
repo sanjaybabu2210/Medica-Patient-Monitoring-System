@@ -4,7 +4,7 @@
 @media only screen and (max-width: 700px) {
 		
 			.bori{
-				background: url(https://images.unsplash.com/photo-1565115551503-ea90acc84e2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80); background-repeat:no-repeat; margin-bottom:-1020px;background-size:inherit; position:absolute; background-attachment: fixed;min-height:190%;color: #ECF0F1;margin-top:-60px;
+				background: url(https://images.unsplash.com/photo-1565115551503-ea90acc84e2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80); background-repeat:no-repeat; margin-bottom:-1720px;position:absolute; height:330%;margin-top:-60px;
 		
 			}
 	}
@@ -19,18 +19,23 @@
 
 </style>
 <body class="bori">
+	<div style="color:#2e282c;"class="py-5 text-center">
+    <h2 style="color:white;">Request a Product</h2>
+</div>
 	<div  style="z-index: 1;"  class="container row rounded ">	
 
 
-		<form  style=" margin-top:20%;margin-left: 33%;border: 1.5px solid grey; background:#45B8AC;padding-top:2%;" class=" col-lg-6" method="POST" action="/adPost/request">
+		<form  style=" margin-top:3%;margin-left: 33%;border: 1.5px solid grey; color:black;background:#ddd;padding-top:2%;" class=" col-lg-6" method="POST" action="/adPost/request">
 			<div class="form-group">
+				
+				
 				    <label for="requestTitle">Request Title*</label>
-				    <input type="text" class="form-control" name="requestTitle" id="requestTitle" placeholder="reqeustTitle">
-				    <small>mention the appropriate Request Title</small>
+				    <input type="text" class="form-control" name="requestTitle" id="requestTitle" placeholder="ReqeustTitle">
+				    <!--<small>mention the appropriate Request Title</small>-->
 				    
 		  </div>
 				<div class="form-group">
-							 <label  for="adTitle">CATEGORY*</label>
+							 <label  for="adTitle">CATEGORY*</label><br>
 							<input  type="text"    name="category" value=<%= category %>&#160; &nbsp;>
 					
 						</div>
@@ -52,20 +57,20 @@
 		  </div> -->
 		  <hr>
 		  <div class="form-group">
-		  	<label for="priceRange">PriceRange</label>
+		  	<label for="priceRange">Price Range</label>
 		  	<input type="text" name="priceRange" id="priceRange" class="form-control" placeholder="100-200(INR)">
 
 		  </div>
 		  <hr>
 		  <div class="form-group">
-		  	<label for="phoneNO">Phone NO:</label>
+		  	<label for="phoneNO">Phone No</label>
 		  	<input type="text" name="phone" id="phoneNo" class="form-control " placeholder="phone no">
 
 		  </div>
 		  
 		<hr>
 		  <div class="form-group">
-		  	<label>Enter Your Hostel Block</label>
+		  	<label>Hostel Block</label>
 		  	
 			  							    	
 <div class="scrollable required field">

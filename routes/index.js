@@ -137,7 +137,7 @@ router.post("/register", function(req,res){
 							console.log(newUser.isAdmin);
 						passport.authenticate("local")(req, res, function(){
 							console.log(user);
-							req.flash("success","Welcome to vitblog " + user.name);
+							req.flash("success","Welcome to VITCONNEX "  + user.name);
 						});
 																 var smtpTransport = nodemailer.createTransport({
 											service: 'Gmail', 
@@ -157,7 +157,7 @@ router.post("/register", function(req,res){
 										  };
 										  smtpTransport.sendMail(mailOptions, function(err) {
 											console.log('mail sent');
-											req.flash('success', 'An e-mail has been sent to ' + user.username + ' with further instructions.');
+											req.flash('success', 'An e-mail has been sent to ' + user.username + ' with further instructions to verify the account.');
 											done(err, 'done');
 										  });
 														
