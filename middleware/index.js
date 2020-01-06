@@ -50,8 +50,15 @@ middlewareObj.isLoggedIn = function(req, res, next){
 	if(req.isAuthenticated() && req.user.verified){
 		return next();
 	}
-	req.flash("error","You need to be logged in to do that Or Make sure you Verified your account after signup");
+	else if(req.isAuthenticated() && !(req.user.verified)){
+		req.flash("error","please make sure you verified your account from the mail you received after registering");
+			res.redirect("/login");
+	}
+	else{
+		req.flash("error","You need to be logged in to access this page");
 	res.redirect("/login");
+	}
+	
 }
 
 module.exports = middlewareObj;
