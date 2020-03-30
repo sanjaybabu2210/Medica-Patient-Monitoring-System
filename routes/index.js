@@ -2,103 +2,209 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
-var Campground = require("../models/campground");
+var Campground = require("../models/patient");
 var async = require("async");
 var nodemailer = require("nodemailer");
+var Contest = require("../models/contest");
+var Message = require("../models/message");
 var crypto = require("crypto");
 var exphbs = require("express-handlebars");
 var messagebird = require("messagebird")('puCDEk8mQjUVGkv4dqaz3p1lx');
 var size = require('window-size');
+const admin = require('firebase-admin');
 
+
+
+
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+  apiKey: '6fa0ad6d',
+  apiSecret: '3zDAgs45YVreY1ql'
+});
 
 router.get("/",function(req,res){
 	res.render("landing");
 	
+});
+router.get("/precautions",function(req,res){
+	res.render("precautions.ejs");
+	
 }); 
 
 
-router.get("/phone",function(req,res){
-	res.render("adPost/ph_new")
-	const messagebird = require('messagebird')('puCDEk8mQjUVGkv4dqaz3p1lx');
 
-const params = {
-  'originator': '+919943677316',
-  'recipients': [
-    '+919943677316'
-  ],
-    'body': 'MESSAGE'
-  };
+  router.get("/show", function(req,res){
 
-  messagebird.messages.create(params, function (err, response) {
-    if (err) {
-      return console.log(err);
-    }
-    console.log(response);
+    let db = admin.firestore();
+    var messages = Array();
+    
+    db.collection('messages').get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        
+        console.log('buuka');
+        console.log(doc.id, '=>', doc.data());
+        var x = doc.data();
+        messages.push(x);
+        console.log('fsfd');
+        console.log(messages);
+         
+          
+          Message.create(messages, function(err,newlyCreated){
+            if(err){
+              req.flash('error', err.message);
+              return res.redirect('back');
+              console.log("bad");
+            }else{
+        
+              console.log("created");
+            }
+          });
+        
+      });
+    })
+    console.log('fsdfsdf')
+    console.log(messages);
+    res.render("adPost/metric",{data: messages});
+  })
+
+
+
+
+
+
+
+
+
+router.post('/regist', (req, res) => {
+
+  var idi = req.body.idi;
+  
+
+	
+	
+	let db = admin.firestore();
+
+	db.collection('messages').get()
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+		console.log("hi am there");
+      console.log(doc.id, '=>', doc.data());
+    });
+  })
+  .catch((err) => {
+    console.log('Error getting documents', err);
   });
+  
 	
-});
-router.post("/step2",function(req,res){
-	var number = req.body.number;
-	messagebird.verify.create(number,{
-		template: "Your verification code is %token."
-		
-	}, function(err, response){
-		if(err){
-			console.log(err);
-			res.render('adPost/ph_new',{
-				error: err.errors[0].description
+	
+Campground.findById(idi, function(err, patient){
+		var phoneNumber = patient.phone;
+		console.log(patient);
+
 				
-			});
-		}else{
-			console.log(response);
-			res.render('adPost/step2'),{
-				id : response.id
-			}
-		}
-	})
-})
-router.post("/step3",function(req,res){
-	var id = req.body.id;
-	var token = req.body.token;
 	
-	messagebird.verify.verify(id, token, function(err, response){
-		if(err){
-			res.render('adPost/step2',{
-				error: err.errors[0].description,
-				id : id
-			});
-		}else{
-			res.send('succesfully registered');
-		}
-	})
+  // A user registers with a mobile phone number
+  console.log(phoneNumber);
+  nexmo.verify.request({number: phoneNumber, brand: 'Medical Hub'}, (err, 
+  result) => {
+    if(err) {
+		console.log('ihi');
+      res.sendStatus(500);
+    } else {
+      let requestId = result.request_id;
+      if(result.status == '0') {
+        res.render('adPost/verify', {requestId: requestId,idi:patient._id}); // Success! Now, have your user enter the PIN
+      } else {
+        res.status(401).send(result.error_text);
+      }
+	};
+    
+  });
+					   
+  });
+});
+
+
+router.post('/verify/:id', (req, res) => {
+  let pin = req.body.pin;
+  let idi = req.params.id;
+  let requestId = req.body.requestId;
+  
+   res.redirect('/adPost/'+ idi);
+
+  // nexmo.verify.check({request_id: requestId, code: pin}, (err, result) => {
+  //   if(err) {
+	// 	res.redirect('/adPost/idi');
+  //     // handle the error
+  //   } else {
+  //     if(result && result.status == '0') { // Success!
+  //       res.redirect('/adPost/'+idi);
+        
+  //     } else {
+	// 	  res.redirect('/adPost/idi');
+        
+  //       // handle the error - e.g. wrong PIN
+  //     }
+  //   }
+  // });
+});
+ 
+// router.post('/registerph', (req, res) => {
 	
-})
+	
+
+		
+// var phoneNumber = req.body.number;
+				
+	
+//   // A user registers with a mobile phone number
+//   console.log(phoneNumber);
+//   nexmo.verify.request({number: phoneNumber, brand: 'Medical Hub'}, (err, 
+//   result) => {
+//     if(err) {
+// 		console.log('ihi');
+//       res.sendStatus(500);
+//     } else {
+//       let requestId = result.request_id;
+//       if(result.status == '0') {
+//         res.render('adPost/verify', {requestId: requestId}); // Success! Now, have your user enter the PIN
+//       } else {
+//         res.status(401).send(result.error_text);
+//       }
+// 	};
+    
+//   });
+					   
+  
+// });
+
+
+// router.post('/verify', (req, res) => {
+//   let pin = req.body.pin;
+//   let requestId = req.body.requestId;
+ 
+  
+// });
+ 
+
+
+
 //===============
 //AUTH ROUTES
 //============
 router.get("/register", function(req,res){
 	res.render("register",{page: 'register'});
 })
+router.get("/sitemap", function(req,res){
+	res.render("sitemap");
+})
 router.get("/register/admin", function(req,res){
 	res.render("admin",{page: 'register'});
 })
 //HANDLE SIGN UP LOGIC
 router.post("/register", function(req,res){
-	// var newUser = new User({username: req.body.username,  name: req.body.name, year: req.body.year});
 	
-	// if(req.body.adminCode === "secretcode123"){
-	// 	newUser.isAdmin = true;
-	// }
-	// User.register(newUser, req.body.password, function(err, user){
-	// 	if(err){
-	// console.log(err);
-	// return res.render("register", {error: err.message});
-	// 		}
-	// 	passport.authenticate("local")(req, res, function(){
-	// 		req.flash("success","Welcome to vitblog" + user.username);
-	// 		res.redirect("/adPost");
-	// 	});
-	// });
 	async.waterfall([
 	function(done) {
 	crypto.randomBytes(20, function(err, buf) {
@@ -109,7 +215,7 @@ router.post("/register", function(req,res){
 	function(token, done) {
 					User.findOne({ username: req.body.username }, function(err, user) {
 					if (user && user.verified) {
-					req.flash('error', 'account with that email address exists.');
+					req.flash('error', 'Oops! this Email Id has already been registered. ');
 					return res.redirect('/login');
 					}
 					else if(user && !(user.verified)){
@@ -119,11 +225,12 @@ router.post("/register", function(req,res){
 						}else{
 							console.log(usr);           
 							var exp =  Date.now() + 3600000;  
-					var newUser = {username: req.body.username,name:req.body.name, year: req.body.year, resetPasswordToken: token, resetPasswordExpires: exp };
-						if(req.body.adminCode === "Tyc00n2020"){
-								newUser.isAdmin = true;
+					var newUser = {username: req.body.username,name:req.body.name, hospital: req.body.hospital,aadhar: req.body.aadhar, resetPasswordToken: token, resetPasswordExpires: exp };
+						if(req.body.hospital){
+								newUser.Doctor = true;
 							}
-							
+														
+
 
 					User.register(newUser, req.body.password, function(err, user){
 						if(err){
@@ -143,7 +250,7 @@ router.post("/register", function(req,res){
 											service: 'Gmail', 
 											auth: {
 											  user: 'vitconnex@gmail.com',
-											  pass: 'mybusiness'
+											  pass: 'viteeenext2020'
 											}
 										  });
 										  var mailOptions = {
@@ -152,7 +259,7 @@ router.post("/register", function(req,res){
 											subject: 'VITCONNEX ACCOUNT VERIFICATION',
 											text: 'You are receiving this because you (or someone else) have tried to sign in for VITCONNEX account.\n\n' +
 											  'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
-											  'http://' + req.headers.host + '/verify/' + token + '\n\n' +
+											  'https://' + req.headers.host + '/verify/' + token + '\n\n' +
 											  'If you did not request this, please ignore this email \n'
 										  };
 										  smtpTransport.sendMail(mailOptions, function(err) {
@@ -171,11 +278,11 @@ router.post("/register", function(req,res){
 							
 
 						 var exp =  Date.now() + 3600000;  
-					var newUser = {username: req.body.username,name:req.body.name, year: req.body.year, resetPasswordToken: token, resetPasswordExpires: exp };
-	if(req.body.adminCode === "Tyc00n2020"){
+					var newUser = {username: req.body.username,name:req.body.name,hospital: req.body.hospital,aadhar: req.body.aadhar,resetPasswordToken: token, resetPasswordExpires: exp };
+	if(req.body.hospital){
 								newUser.isAdmin = true;
 							}
-							
+														
 
 					User.register(newUser, req.body.password, function(err, user){
 						if(err){
@@ -193,7 +300,7 @@ router.post("/register", function(req,res){
         service: 'Gmail', 
         auth: {
           user: 'vitconnex@gmail.com',
-          pass: 'mybusiness'
+          pass: 'viteeenext2020'
         }
       });
       var mailOptions = {
@@ -202,7 +309,7 @@ router.post("/register", function(req,res){
         subject: 'VITCONNEX ACCOUNT VERIFICATION',
         text: 'You are receiving this because you (or someone else) have tried to sign in for VITCONNEX account.\n\n' +
           'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
-          'http://' + req.headers.host + '/verify/' + token + '\n\n' +
+          'https://' + req.headers.host + '/verify/' + token + '\n\n' +
           'If you did not request this, please ignore this email \n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
@@ -230,7 +337,7 @@ router.get("/login",function(req,res){
 })
 //handling loginlogic
 router.post("/login", passport.authenticate("local", 
-    {successRedirect:"/adPost",
+    {successRedirect:"/adpost",
 	failureRedirect: "/login",
 	  badRequestMessage : 'Missing username or password.',
     failureFlash: true
@@ -298,7 +405,7 @@ router.post('/forgot', function(req, res, next) {
         service: 'Gmail', 
         auth: {
           user: 'vitconnex@gmail.com',
-          pass: 'mybusiness'
+          pass: 'viteeenext2020'
         }
       });
       var mailOptions = {
@@ -307,7 +414,7 @@ router.post('/forgot', function(req, res, next) {
         subject: 'VITCONNEX Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+          'https://' + req.headers.host + '/reset/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
@@ -381,7 +488,7 @@ router.post('/reset/:token', function(req, res) {
         service: 'Gmail', 
         auth: {
           user: 'vitconnex@gmail.com',
-          pass: 'mybusiness'
+          pass: 'viteeenext2020'
         }
       });
       var mailOptions = {

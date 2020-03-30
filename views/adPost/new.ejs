@@ -51,37 +51,35 @@
 	text-align:center;
 	cursor:pointer;
 } */
+	#mi{
+		display:none;
+	}
+	#mu{
+		display:none;
+	}
 </style>
 
 
 
-<div  id="selli" style="width:auto;" class="container jumbotron">
+<div  id="selli" style="width:auto;border-radius: 7%;" class="container jumbotron">
 					<form class="container" action="/adPost" method="POST" enctype="multipart/form-data">
 						<div style="margin-top:40px" class="form-group display-5">
-							DETAILS OF YOUR AD
+							ADD REPORT
 								 
 						</div>
-						
-						<div class="form-group">
-							 <label required for="adTitle">Ad Title*</label>
-							    <input type="text" name="adTitle" class="form-control" id="adTitle" >
-						</div>
-						<hr>
-						<div class="form-group">
-							 <label  for="adTitle">CATEGORY*</label>
-							<input type="text"    name="category" value=<%= cat %>&#160; &nbsp;>
+						<div class="col">
+										<label for="room"><h5>Name:</h5> </label>
+							    		<input id="room" type="text" class="form-control " name="name" placeholder="Name of patient">
+							    	</div>
+						<div class="col">
+										<label for="room"><h5>Age:</h5> </label>
+							    		<input id="room" type="text" class="form-control " name="age" placeholder="Age of patient">
+							    	</div>
 					
-						</div>
-						<hr>
-						 <div class="required field">
-
-  
-
-  </div>
 										
 						<div class="form-group">
-						    <label for="exampleFormControlTextarea1">Description *</label>
-						    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="5" required></textarea>
+						    <label for="exampleFormControlTextarea1">Address of Patient *</label>
+						    <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="5" required></textarea>
 						 </div>
 						 <hr>
 						 <div style="margin-left: 20px; margin-bottom:20px; " class="form-group">
@@ -90,79 +88,9 @@
 							
 						
 				        </div>
-						<div class="form-group">
-							 <label for="address">ENTER YOUR PICK ADRRESS *</label>
-							    <div class="row">
-							    	<div class="col">
-							    	
-<div class="scrollable required field">
-<label for="block" ><h5>Hostel/Academic Block</h5></label>
-<select id="block" class="form-control" name="block" placeholder="Block-HOSTEL/ACADEMIC">
-    <option value="A-BLOCK(MH)" selected>A Block Men's</option>
-    <option value="B-BLOCK(MH)">B Block Men's</option>
-    <option value="C-BLOCK(MH)">C Block Men's</option>
-    <option value="D-BLOCK(MH)">D Block Men's</option>
-    <option value="E-BLOCK(MH)">E Block Men's</option>
-    <option value="F-BLOCK(MH)">F Block Men's</option>
-	<option value="G-BLOCK(MH)">G Block Men's</option>
-	<option value="H-BLOCK(MH)">H Block Men's</option>
-	<option value="J-BLOCK(MH)">J Block Men's</option>
-	<option value="K-BLOCK(MH)">K Block Men's</option>
-	<option value="L-BLOCK(MH)">L Block Men's</option>
-	<option value="M-BLOCK(MH)">M Block Men's</option>
-	<option value="N-BLOCK(MH)">N Block Men's</option>
-	<option value="P-BLOCK(MH)">P Block Men's</option>
-	<option value="Q-BLOCK(MH)">Q Block Men's</option>
-	<option value="R-BLOCK(MH)">R Block Men's</option>
-	<option value="A-BLOCK(LH)">A Block Women's</option>
-	<option value="B-BLOCK(LH)">B Block Women's</option>
-	<option value="C-BLOCK(LH)">C Block Women's</option>
-	<option value="D-BLOCK(LH)">D Block Women's</option>
-	<option value="E-BLOCK(LH)">E Block Women's</option>
-	<option value="F-BLOCK(LH)">F Block Women's</option>
+					
 
-	<option value="Technoly Tower">Technology Tower</option>
-	<option value="Silver Jubliee Tower">Silver Jubliee Tower</option>
-	<option value="MAIN GATE">Main Gate</option>
-	<option value="SMV">SMV</option>
-</select>
-</div>
-</div>
-									<br>
-									<div>
-										<div class="col">
-										<label for="room"><h5>Room NO:</h5> </label>
-							    		<input id="room" type="text" class="form-control " name="room" placeholder="Room NO:(optional)">
-							    	</div>
-							    	
-									</div>
-							    	
-							    </div>
-						
-</div>
-
-						<div id="priy" sytle="margn-left:500px;" class=" form-group ">
-							<label for="PRICE"  class="display-5">SET A PRICE(SALE OR RENT)</label>
-							<hr>
-									<div class="row">
-										<div id="sale" class="col ui left action input  ">
-											  <a class="ui teal labeled icon button">
-											    <i class="cart icon"></i>
-											    PRICE(INR)
-											  </a>
-											  <input name="price1" type="number" placeholder="enter price " min="1" step="1">
-										</div>
-
-										<!-- <div class="col ui left action input  ">
-											  <a class="ui teal labeled icon button">
-											    <i class="cart icon"></i>
-											    For Rent(INR)
-											  </a>
-											  <input name="price2" type="number" placeholder="enter price ">
-										</div> -->
-									</div>	
-						</div>
-						<hr>
+					
 						
 						<div class="form-group">
 						    <label for="phone">Phone No *</label>
@@ -177,7 +105,7 @@
                     
 										<!-- <input type="file" id="image" name="img1" style="padding:60px 20px; border:2px solid blue; margin:20px;" class=" mani btn btn-secondary col-lg-3 form-control"accept="image/*" requiered  > -->
 											<h5>
-												Add front image*
+												Add photo of Patient*
 											</h5>
 											<div style="margin-bottom:50px;" class="custom-file">
     <input  type="file" name="img1" id="image" accept="image/*"  class="custom-file-input" id="customFile">
@@ -195,7 +123,7 @@
 										    
 									
 									<div class="form-group">
-										<button style="padding: auto 600px;" class="btn  btn-lg btn-success" class="form-control"  >POST</button>
+										<button style="padding: auto 600px;" class="btn  btn-lg btn-success" class="form-control"  >Save</button>
 									</div>
 					
 					
@@ -206,70 +134,4 @@
 
 
 
-<!-- <script>
-	$(document).ready(function(e) {
-        $(".showonhover").click(function(){
-			$("#selectfile").trigger('click');
-		});
-    });
-
-
-var input = document.querySelector('input[type=file]'); // see Example 4
-
-input.onchange = function () {
-  var file = input.files[0];
-
-  drawOnCanvas(file);   // see Example 6
-  displayAsImage(file); // see Example 7
-};
-
-function drawOnCanvas(file) {
-  var reader = new FileReader();
-
-  reader.onload = function (e) {
-    var dataURL = e.target.result,
-        c = document.querySelector('canvas'), // see Example 4
-        ctx = c.getContext('2d'),
-        img = new Image();
-
-    img.onload = function() {
-      c.width = img.width;
-      c.height = img.height;
-      ctx.drawImage(img, 0, 0);
-    };
-
-    img.src = dataURL;
-  };
-
-  reader.readAsDataURL(file);
-}
-
-function displayAsImage(file) {
-  var imgURL = URL.createObjectURL(file),
-      img = document.createElement('img');
-
-  img.onload = function() {
-    URL.revokeObjectURL(imgURL);
-  };
-
-  img.src = imgURL;
-  document.body.appendChild(img);
-}
-
-$("#upfile1").click(function () {
-    $("#file1").trigger('click');
-});
-$("#upfile2").click(function () {
-    $("#file2").trigger('click');
-});
-$("#upfile3").click(function () {
-    $("#file3").trigger('click');
-});
-
-
-</script> -->
-
-
-<!-- </body>
-</html> -->
 <% include ../partials/footer %>

@@ -1,0 +1,11 @@
+
+
+<% include ../partials/header %>
+
+<form action="/verify" method="post"><input name="pin" required="" type="number" placeholder="1234" />
+  <input name="requestId" type="hidden" value=""<%=" />" >
+  <input type="submit" value="Verify PIN" />
+</form>
+		 
+		 
+<% include ../partials/footer %> 

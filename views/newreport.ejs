@@ -1,0 +1,78 @@
+
+<% include ./partials/header %>
+<style>
+@media only screen and (max-width: 700px) {
+			#img{
+				margin-bottom:-100px;
+				margin-top:-170px;
+				
+				
+			}
+	}
+@media only screen and (min-width: 1200px) {
+			#img{
+				margin-bottom:-80px;
+				
+				
+				
+				
+			}
+	}
+
+
+</style>
+
+
+
+<form class="container" style="margin-bottom:10%;margin-top:15%;border-radius:2%;border:3px solid grey;box-shadow:3px green;background-color:#FBE0EC" action="/adPost/report1/rep" method="post" class="ui form " enctype="multipart/form-data">
+	
+	
+<h3 class="text-center">
+	ADD Report Details
+	</h3>
+  <div class="required field form-group ui form">
+    <label>Doctor Name</label>
+    <input type="text" name="doctor" placeholder="Enter name" required>
+  </div>
+	<div class="required field form-group ui form">
+    <label>Patient full Name</label>
+    <input type="text" name="patient" placeholder="Enter fullname" required>
+  </div>
+	<div class="required field form-group ui form">
+    <label>phone No: </label>
+    <input type="text" name="phone" placeholder="phone NO" required>
+  </div>
+
+  <div class="required field form-group ui form">
+    <label>Problem Admitted</label>
+    <input type="text" name="problem" placeholder="Enter Promble Admitted" required>
+  </div>
+	<div class="form-group">
+						    <label for="exampleFormControlTextarea1">Symtoms of Diseases *</label>
+						    <textarea class="form-control" name="symtoms" id="exampleFormControlTextarea1" rows="5" required></textarea>
+						 </div>
+						 <hr>
+	<div class="form-group">
+						    <label for="exampleFormControlTextarea1">Progress of Patient *</label>
+						    <textarea class="form-control" name="progress" id="exampleFormControlTextarea1" rows="5" required></textarea>
+						 </div>
+						 <hr>
+	<div class="form-group">
+	<label for="exampleFormControlTextarea1">Treatment suggested  *</label>
+						    <textarea class="form-control" name="treatment" id="exampleFormControlTextarea1" rows="5" required></textarea>
+						 </div>
+						 <hr>
+	<div style="margin-bottom:50px;" class="custom-file">
+    <input  type="file" name="img1" id="image" accept="image/*"  class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">Choose Image file</label>
+	
+  </div>
+	
+
+
+	<button align="center"  id="submit" class="ui button" type="submit">Save</button>
+
+	</form>	
+	  
+	  
+<% include ./partials/footer %>

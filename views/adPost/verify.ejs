@@ -1,0 +1,14 @@
+
+
+<% include ../partials/header %>
+
+  <section style="margin:20%;" id="main" role="main">
+    <form action="/verify/<%= idi %>" method="post">
+      <div class="fa fa-key"></div>
+      <input type="tel"  name="pin" placeholder="1234" required>
+      <input type="hidden" name="requestId" value="<%= requestId %>" >
+      <input type="submit" value="Verify PIN">
+    </form>
+  </section>
+		 
+<% include ../partials/footer %> 

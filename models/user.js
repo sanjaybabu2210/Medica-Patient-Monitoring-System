@@ -8,12 +8,13 @@ var UserSchema = new mongoose.Schema({
 	password: String,
 
 	  
-	verified: {type:Boolean, default:false},
-	year: String,
-
+	verified: {type:Boolean, default:true},
+	hospital: String,
+	aadhar: String,
+	count: Number,
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
-	isAdmin: {type: Boolean, default: false}
+	Doctor: {type: Boolean, default: false}
 });
 UserSchema.plugin(passportLocalMongoose);
 

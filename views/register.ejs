@@ -21,10 +21,25 @@
 
 
 </style>
-<div id="img" style="background:url(https://images.unsplash.com/photo-1534009916851-7850ba974f9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80);padding-top:10px;height:200%;width:100%;margin-top:-9%;margin-bottom:-25%;" >
-	<div style="background:#c2c2d6;width:30%;margin:10%;margin-top:12%;min-width:300px;margin-right:10rem;margin-bottom:-10%;" class="pl-lg-50 pl-md-50 " id="main">
+<div id="img" style="background:url(https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);margin-left:-10%;background-size:cover;padding-top:10px;height:200%;width:130%;margin-top:-9%;margin-bottom:-25%;" >
+	<div style="background:#dd4455;border-radius:5%;width:30%;margin-top:12%;margin-right:30%;min-width:300px;margin-left:20%;margin-right:10rem;margin-bottom:-10%;" class="pl-lg-50 pl-md-50 " id="main">
 
 <h2 align="center">Create Account</h2>
+		
+<ul class="nav nav-tabs card-header-tabs pull-right" id="myTab" role="tablist" style="margin-left: 30%;">
+<li class="nav-item">
+<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Doctor</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Patient</a>
+</li>
+
+</ul>
+<div class="card-body" style="margin-left:3%;border-radius: 6%;">
+<div class="tab-content" id="myTabContent">		
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+
 <form    style="margin-bottom:10%;" action="/register" method="post" class="ui form ">
   <div class="required field">
     <label>Email</label>
@@ -38,22 +53,52 @@
     <label>Password</label>
     <input type="password" name="password" placeholder="Enter Password" required>
   </div>
-  <div class="required field">
-    <label>Currently in</label>
-    <select name="year" required>
-    	<option value="first" selected>First Year</option>
-    	<option value="second">Second Year</option>
-    	<option value="three">Third Year</option>
-    	<option value="four">Fourth Year</option>
-    </select>
+	 <div class="required field">
+    <label>Adhar No:</label>
+    <input type="password" name="adhar" placeholder="Enter Adhar No" required>
   </div>
+ 
 
   
  
  
   
 	<button align="center"  id="submit" class="ui button" type="submit">Submit</button>
-</form><br>
+</form>
+</div>
+	
+	
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">	
+<form style="margin-bottom:10%;" action="/register" method="post" class="ui form ">
+	
+	
+
+  <div class="required field">
+    <label>Email</label>
+    <input type="email" name="username" placeholder="Enter EmailId" required>
+  </div>
+	<div class="required field">
+	<label>User Name</label>
+    <input type="text" name="name" placeholder="Enter Name" required>
+  </div>
+  <div class="required field">
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Enter Password" required>
+  </div>
+	 <div class="required field">
+    <label>Hospital </label>
+    <input type="text" name="hospital" placeholder="Enter Hospital Name" required>
+  </div>
+
+
+	<button align="center"  id="submit" class="ui button" type="submit">Submit</button>
+
+	</form>	
+	
+	</div>
+
+	
+<br>
 </div><br>
 	</div>
 

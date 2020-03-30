@@ -1,0 +1,268 @@
+<% include ../partials/header %>
+	
+<div class="container col-lg-9 text-ceter" style="margin:10%;text-align:filled;margin-left:15%;height:400px;">
+	
+
+
+<div style="heigth:160%;margin-bottom:-5%;background-size:cover;margin-left:10%;" class="container">
+
+
+
+	<div class="row text-center">
+        <div class="col-lg-8">
+            <div class="tab-content" id="faq-tab-content">
+                <div class="tab-pane show active" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                    <div class="accordion" id="accordion-tab-1">
+                        <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-1">
+                                <h5>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1"></button>
+                                </h5>
+                            </div>
+                            <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
+                                
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><bold><h5>
+										
+										Diagnosed with</h5></bold></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div class="card-body">
+                                    <h5><p><%= data.problem %></p></h5>
+                                </div>
+                            </div>
+                        </div>
+						 <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><h5><bold>Diagnosed By:</bold></h5></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div class="card-body">
+                                    <p><%= data.doctor %>.</p>
+                                </div>
+                            </div>
+                        </div>
+						 <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><bold><h5>Medication:</h5></bold></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div class="card-body">
+                                    <textarea cols="40" rows="5" disabled><%= data.treatment %></textarea>
+                                </div>
+                            </div>
+                        </div>
+						 <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><bold><h5>Progress:</h5></bold></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div class="card-body">
+                                    <textarea cols="40" rows="5" disabled><%= data.progress %></textarea>
+                                </div>
+                            </div>
+                        </div>
+						 <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5>
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><h5><bold>Observed Symptoms</bold></h5></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div class="card-body">
+                                    <textarea cols="40" rows="5" disabled><%= data.symtoms %></textarea>
+                                </div>
+                            </div>
+                        </div><div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5 id="report">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><bold>Daily CheckUPs 1</bold></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div id="record" class="card-body">
+                                    Normal Vitals
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5 id="report">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><bold>Daily CheckUPs 2 </bold></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div id="record" class="card-body">
+                                    Needs a minor surgery
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5 id="report">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><bold>Daily CheckUPs 3</bold></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div id="record" class="card-body">
+                                    Patients recovering well from the disease. Continue the same medication prescribed as before.
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="accordion-tab-1-heading-2">
+                                <h5 id="report">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2"><bold>Additional Comments....</bold></button>
+                                </h5>
+                            </div>
+                            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
+                                <div id="record" class="card-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<style>
+	
+	<input type="text" id="tit">
+	<br>
+	<input type='text' id= 'tat'>
+	<btn class="btn btn-info" id=""></btn>
+body {
+  margin-top: 30px;
+  background-color: #eee;
+}
+
+.btn-link{
+  text-decoration:none;
+  text:bold;
+}
+.btn-link:hover{
+  text-decoration:none;
+}
+
+.tab-content {
+    box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+    
+    .card {
+        border-radius: 0;
+    }
+    
+    .card-header {
+        padding: 15px 16px;
+		font-weight:5px;
+        border-radius: 0;
+        background-color: #f6f6f6;
+        
+        h5 {
+            margin: 0;
+            
+            button {
+                display: block;
+                width: 100%;
+                padding: 0;
+                border: 0;
+                font-weight: 700;
+                color: rgba(0,0,0,.87);
+                text-align: left;
+                white-space: normal;
+                
+                &:hover,
+                &:focus,
+                &:active,
+                &:hover:active {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    
+    .card-body {
+        p {
+            color: #F9D2C8;
+            
+            &:last-of-type {
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+.accordion {
+    > .card {
+        &:not(:first-child) {
+            border-top: 0;
+        }   
+    }
+}
+
+.collapse.show {
+    .card-body {
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+}
+</style>
+	
+	<script>
+		$('#btn').on('click',function(){
+			$('#report').innerHTML= $('#tat').value;
+			$('#record').innerHTML= $('#tit').value;
+
+		});
+	
+	
+	</script>
+
+
+	
+<!-- <div class="btn btn-info " style="margin-left:50%;">
+	<bold>Upload Report Images</bold>
+	
+	
+	<!-- <form method="POST" action="/adPost/resources/<%= data._id %>/report" enctype="multipart/form-data">
+<input type="file" id="image" name="image" style="padding:30px 10px" class="mani form-control"accept="image/*" required>
+<div class="form-group">
+<button style="padding:auto 600px" class="btn btn-lg btn-success" name="category" type="submit" value="fat" class="form-control">POST</button>
+</div>
+</form> -->
+	
+	
+</div> -->
+<div class="row">
+<div  style="border-top:6px solid #ABB2B9;margin-top:100px;height:300px;width:700px;margin-bottom:15%;margin-left:-5%;" class="container col-lg-3">
+	<img style="margin-top:100px;height:300px;widht:300px;" src="<%= data.img1 %>">
+	
+	
+</div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+<% include ../partials/footer %>
