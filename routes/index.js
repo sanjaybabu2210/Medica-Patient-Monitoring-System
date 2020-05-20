@@ -249,15 +249,15 @@ router.post("/register", function(req,res){
 																 var smtpTransport = nodemailer.createTransport({
 											service: 'Gmail', 
 											auth: {
-											  user: 'vitconnex@gmail.com',
-											  pass: 'viteeenext2020'
+											  user: #Email,
+											  pass: #password
 											}
 										  });
 										  var mailOptions = {
 											to: user.username,
-											from: 'vitconnex@gmail.com',
-											subject: 'VITCONNEX ACCOUNT VERIFICATION',
-											text: 'You are receiving this because you (or someone else) have tried to sign in for VITCONNEX account.\n\n' +
+											from: 'medica@gmail.com',
+											subject: 'Medica ACCOUNT VERIFICATION',
+											text: 'You are receiving this because you (or someone else) have tried to sign in for Medica account.\n\n' +
 											  'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
 											  'https://' + req.headers.host + '/verify/' + token + '\n\n' +
 											  'If you did not request this, please ignore this email \n'
@@ -299,15 +299,15 @@ router.post("/register", function(req,res){
 							 var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'vitconnex@gmail.com',
-          pass: 'viteeenext2020'
+          user: 'medica@gmail.com',
+          pass: '#password'
         }
       });
       var mailOptions = {
         to: user.username,
-        from: 'vitconnex@gmail.com',
-        subject: 'VITCONNEX ACCOUNT VERIFICATION',
-        text: 'You are receiving this because you (or someone else) have tried to sign in for VITCONNEX account.\n\n' +
+        from: 'medica@gmail.com',
+        subject: 'Medica ACCOUNT VERIFICATION',
+        text: 'You are receiving this because you (or someone else) have tried to sign in for Medica account.\n\n' +
           'Please click on the following link, or paste this into your browser to verify your account:\n\n' +
           'https://' + req.headers.host + '/verify/' + token + '\n\n' +
           'If you did not request this, please ignore this email \n'
@@ -404,14 +404,14 @@ router.post('/forgot', function(req, res, next) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'vitconnex@gmail.com',
-          pass: 'viteeenext2020'
+          user: 'medica@gmail.com',
+          pass: #medicapassword
         }
       });
       var mailOptions = {
         to: user.username,
-        from: 'VitConnex@gmail.com',
-        subject: 'VITCONNEX Password Reset',
+        from: 'Medica@gmail.com',
+        subject: 'Medica Password Reset',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
           'https://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -487,13 +487,13 @@ router.post('/reset/:token', function(req, res) {
       var smtpTransport = nodemailer.createTransport({
         service: 'Gmail', 
         auth: {
-          user: 'vitconnex@gmail.com',
-          pass: 'viteeenext2020'
+          user: 'medica@gmail.com',
+          pass: 'medica'
         }
       });
       var mailOptions = {
         to: user.username,
-        from: 'vitconnex@gmail.com',
+        from: 'medica@gmail.com',
         subject: 'Your password has been changed',
         text: 'Hello,\n\n' +
           'This is a confirmation that the password for your account ' + user.username + ' has just been changed.\n'
