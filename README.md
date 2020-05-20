@@ -13,6 +13,7 @@ By entering valid ID and OTP of the patient.
 2) cd Medica-Patient-Monitoring-System
 3) node app.js
 ```
+Then provide with the Database access with your own mongoDB password and Cloudinary access with api secret by creating the account. Also provide nodemailer with emailId and password
 ## Its advantage
 Whenever Patients switches the doctor in case of location transfer or any other reason It helps to keep track of all medical records in a database
 to overcome the misplace and lost of medical records by the patient.
