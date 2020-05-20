@@ -32,7 +32,7 @@ var cloudinary = require('cloudinary');
 cloudinary.config({ 
   cloud_name: 'tycoon', 
   api_key: '167312485966359', 
-  api_secret: 'uD9LwJ61EhmLk4Y95rrXQNflIt8'
+  api_secret:  #api_secret_for_your_account
 });
 
 
