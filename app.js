@@ -38,8 +38,8 @@ var express = require("express"),
 
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
-  apiKey: '6fa0ad6d',
-  apiSecret: '3zDAgs45YVreY1ql'
+  apiKey: '#apiKey',
+  apiSecret: '#apiSecret'
 });
 
 
@@ -76,7 +76,7 @@ const nexmo = new Nexmo({
 
 
 ////
-mongoose.connect('mongodb+srv://sanjaybabu:vhRXwndZr3c5jNzH@cluster1-fu4qm.mongodb.net/Medical?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://#password@cluster1-fu4qm.mongodb.net/Medical?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(() => {
