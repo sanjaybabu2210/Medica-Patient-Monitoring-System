@@ -29,3 +29,42 @@ Patients, doctors and nurses.
 5. heroku
 ## What's next
 We intend to add more features suggested by industry professionals to help improve the Portal and link with Adhar ID of the patient.
+
+
+
+# You can pretty print json responses by using pipe operator and
+# the following commands: `| python -mjson.tool` or `| jq`.
+# If needed, install `jq`in OSX: `brew install jq`
+
+# All note ids are using UUIDv4
+
+# GET a list of notes
+curl \
+--request GET \
+http://localhost:3000/api/v1/notes
+
+# Get a single note
+curl \
+--request GET \
+http://localhost:3000/api/v1/notes/:id
+
+# Create a single note
+curl \
+--header "Content-Type: application/json" \
+--request POST \
+--data '{"title": "Test Title", "body": "Test note"}' \
+http://localhost:3000/notes
+
+# Update a note
+curl \
+--header "Content-type: application/json"
+--request PUT \
+--data '{"title:": "Updated title", "body": "Updated note"}' \
+http://localhost:3000/notes/:id
+
+# Delete a note
+curl \
+--header "Content-type: application/json" \
+--request DELETE \
+http://localhost:3000/notes/:id
+
